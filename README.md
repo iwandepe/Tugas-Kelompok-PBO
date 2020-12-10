@@ -1,4 +1,4 @@
-# Repository of Group XYZ - Object Oriented Programming Class E 2020
+# Repository of Group XYZ - OOP Class E 2020
 
 <p align="center">
   <img width="460" height="300" src="https://freepngimg.com/thumb/java/85390-java-language-text-programming-logo-programmer.png">
