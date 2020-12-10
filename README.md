@@ -22,7 +22,7 @@
   - Chapter 12.5 Displaying Text and Images in a Window
   - Make GUI Aplicaion that display your own photo and Name and NRP text in a window
   ```
-- Collision Detection
+- Collision-Detection
   ```
   - Group Task Week 11
   - Do project in tutorial http://zetcode.com/javagames/collision/
