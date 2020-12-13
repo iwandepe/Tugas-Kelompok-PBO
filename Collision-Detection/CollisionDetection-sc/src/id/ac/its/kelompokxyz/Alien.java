@@ -3,7 +3,7 @@ package id.ac.its.kelompokxyz;
 public class Alien extends Sprite {
 
     private final int INITIAL_X = 1280;
-    private final int ALIEN_SPEED = 5;
+    private final int ALIEN_SPEED = 3;
 
     public Alien(int x, int y) {
         super(x+800, y*2+50);

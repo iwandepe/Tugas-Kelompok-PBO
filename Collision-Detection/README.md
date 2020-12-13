@@ -8,11 +8,11 @@ This is Description Section
 ### Class Diagram Image
 
 <p align="center">
-  <img width="200" src="" >
+  <img width="200" src="./img/diagramClass.png" >
 </p>
 
 ### Running Program Image
 
 <p align="center">
-  <img width="200" src="" >
+  <img width="200" src="./img/program.png" >
 </p>
