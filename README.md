@@ -28,3 +28,10 @@
   - Do project in tutorial http://zetcode.com/javagames/collision/
   - Make class diagram for that project
   ```
+- Mod-Collision-Detection
+  ```
+  - Group Task Week 12
+  - Do project in tutorial http://zetcode.com/javagames/collision/ and change the control of spaceship based to mouse move
+  - Make class diagram for that project
+  - make vidio of the runnig program
+  ```
