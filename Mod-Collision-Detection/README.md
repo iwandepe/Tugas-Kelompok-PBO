@@ -5,7 +5,7 @@
 ### Description
 Project ini merupakan project untuk membuat permainan sederhana dengan Java. Permainan yang dibuat berupa game tembak-menembak dua dimensi. dengan pedoman pada projek sebelumnya, kini pesawat (player) dapat dikendalikan menggunakan gerakan mouse dengan implementasi mouse Handling
 
-Pada project ini dibuat beberapa kelas
+### Struktur Program
 1. Sprite.java
     - sebagai kelas parent untuk beberapa objek yang ada dalam game
 2. Spaceship.java (diturunkan dari Sprite.java) 
@@ -19,7 +19,7 @@ Pada project ini dibuat beberapa kelas
 6. CollisionEx.java
     - berisi fungsi main dan inisialisasi papan permainan
 
-Perubahan yang dilakukan terhadap projek sebelumnya
+### Perubahan yang dilakukan terhadap projek sebelumnya
 1. Board.java
     - pada class ini ditambahkan fungsi addMouseMotionListener dengan argumen class TAdapter yang meng override fungsi2 Handling
     - pada class TAdapter yang berada dalam class Board ini ditambah beberapa implementasi dari MouseListener dan MouseMovedListener
@@ -41,7 +41,7 @@ Perubahan yang dilakukan terhadap projek sebelumnya
 </p>
 
 ### Link Video of Running Program
-1. Keyboard Handling
+1. Keyboard Handling<br>
     https://youtu.be/l6K-qijLx94
-2. Mouse Handling
+2. Mouse Handling<br>
     https://youtu.be/Mf5dCJI7puA
