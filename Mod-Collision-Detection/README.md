@@ -26,7 +26,9 @@ Project ini merupakan project untuk membuat permainan sederhana dengan Java. Per
     - pada class TAdapter yang sebelumnya mengoveride fungsi keyRealesed dihilangkan, selain itu ditambahkan definisi Override baru yakni fungsi mouseMoved untuk mempasing mouseEvent ke fungsi pergerakan player di class Spaceship dan fungsi mouseClicked untuk mempasing mouseEvent ke fungsi fire() di class Spaceship.
 
 2. Spaceship.java
-    - 
+    - Pada kelas ini ditambahkan 2 fungsi baru mouseMoved dan mouseClicked. Kedua fungsi ini dipanggil ketika user menggunakan mouse. Fungsi mouseMoved untuk menggerakkan objek kendaraan luar angkasa, sedangkan fungsi mouseClicked digunakan untuk menembakkan missile.
+    - Fungsi keyReleased dihapus
+    - Pada fungsi keyPressed dihapus fitur user dapat menggerakkan objek kendaraan luar angkasa dengan menggunakan keyboard. Akan tetapi, masih tersedia fitur agar user dapat menembakkan missile dengan menggunakan keyboard spasi
 
 ### Class Diagram Image
 
