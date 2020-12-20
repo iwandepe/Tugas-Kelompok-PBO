@@ -41,4 +41,7 @@ Perubahan yang dilakukan terhadap projek sebelumnya
 </p>
 
 ### Link Video of Running Program
-https://youtube.com/
+1. Keyboard Handling
+    https://youtu.be/l6K-qijLx94
+2. Mouse Handling
+    https://youtu.be/Mf5dCJI7puA
