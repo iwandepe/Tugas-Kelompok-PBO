@@ -211,8 +211,6 @@ public class Board extends JPanel implements ActionListener {
             }
         }
     }
-    
-    
 
     private class TAdapter extends KeyAdapter implements MouseListener, MouseMotionListener {
     	

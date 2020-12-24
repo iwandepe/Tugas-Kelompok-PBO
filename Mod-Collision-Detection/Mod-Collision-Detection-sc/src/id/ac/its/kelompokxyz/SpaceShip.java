@@ -1,11 +1,11 @@
 package id.ac.its.kelompokxyz;
 
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SpaceShip extends Sprite {
-	private final int SHIP_SPEED = 3;
 	
 	private int dx;
     private int dy;
@@ -24,8 +24,8 @@ public class SpaceShip extends Sprite {
     }
     
     public void move() {
-        x += dx*SHIP_SPEED;
-        y += dy*SHIP_SPEED;
+        x = dx;
+        y = dy;
 
         if (x < 1) {
             x = 1;
@@ -48,52 +48,27 @@ public class SpaceShip extends Sprite {
         return missiles;
     }
     
+    public void mouseMoved(MouseEvent e) {
+    	dx = e.getX();
+    	dy = e.getY();
+    }
+
+    public void fire() {
+        missiles.add(new Missile(x + width, y + height / 2));
+    }
+    
+    // click for fire    
+    public void mouseClicked(MouseEvent e) {
+    	fire();
+    }
+    
+    // space for fire
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_SPACE) {
             fire();
         }
-
-        if (key == KeyEvent.VK_LEFT) {
-            dx = -1;
-        }
-
-        if (key == KeyEvent.VK_RIGHT) {
-            dx = 1;
-        }
-
-        if (key == KeyEvent.VK_UP) {
-            dy = -1;
-        }
-
-        if (key == KeyEvent.VK_DOWN) {
-            dy = 1;
-        }
     }
-
-    public void fire() {
-        missiles.add(new Missile(x + width, y + height / 2));
-    }
-
-    public void keyReleased(KeyEvent e) {
-        int key = e.getKeyCode();
-
-        if (key == KeyEvent.VK_LEFT) {
-            dx = 0;
-        }
-
-        if (key == KeyEvent.VK_RIGHT) {
-            dx = 0;
-        }
-
-        if (key == KeyEvent.VK_UP) {
-            dy = 0;
-        }
-
-        if (key == KeyEvent.VK_DOWN) {
-            dy = 0;
-        }
-    }    
     
 }
