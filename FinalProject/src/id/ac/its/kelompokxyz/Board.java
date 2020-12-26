@@ -18,7 +18,8 @@ import java.awt.event.KeyEvent;
 
 public class Board extends JPanel {
 
-    private Timer timer;
+	private static final long serialVersionUID = 1L;
+	private Timer timer;
     private String message = "Game Over";
     private Ball ball;
     private Paddle paddle;
@@ -31,9 +32,9 @@ public class Board extends JPanel {
     }
 
     private void initBoard() {
-
+    	setFocusable(true);
+        requestFocusInWindow();
         addKeyListener(new TAdapter());
-        setFocusable(true);
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
 
         gameInit();
