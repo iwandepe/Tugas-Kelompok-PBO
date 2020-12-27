@@ -1,6 +1,8 @@
 package id.ac.its.kelompokxyz;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
+import id.ac.its.kelompokxyz.MainPanel;
 import javax.swing.Timer;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -25,19 +27,20 @@ public class Board extends JPanel {
     private Paddle paddle;
     private Brick[] bricks;
     private boolean inGame = true;
-
-    public Board() {
-
+    JFrame frame;
+    
+    public Board(JFrame frame) {
+    	this.frame = frame;
         initBoard();
     }
 
     private void initBoard() {
     	setFocusable(true);
-        requestFocusInWindow();
-        addKeyListener(new TAdapter());
-        setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
+    	requestFocusInWindow();
+    	addKeyListener(new TAdapter());
+    	setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
 
-        gameInit();
+    	gameInit();
     }
 
     private void gameInit() {
@@ -64,7 +67,7 @@ public class Board extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-        super.paintComponent(g);
+    	super.paintComponent(g);
 
         var g2d = (Graphics2D) g;
 
@@ -78,8 +81,8 @@ public class Board extends JPanel {
 
             drawObjects(g2d);
         } else {
-
             gameFinished(g2d);
+
         }
 
         Toolkit.getDefaultToolkit().sync();
@@ -113,6 +116,14 @@ public class Board extends JPanel {
         g2d.drawString(message,
                 (Commons.WIDTH - fontMetrics.stringWidth(message)) / 2,
                 Commons.WIDTH / 2);
+    
+//      try {
+//			Thread.sleep(3000);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+        MainPanel.changePanel(frame, new MainPanel(frame));
+        
     }
 
     private class TAdapter extends KeyAdapter {

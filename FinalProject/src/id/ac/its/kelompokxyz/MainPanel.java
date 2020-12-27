@@ -5,22 +5,53 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class MainPanel extends JPanel implements ActionListener{
+import coba2.MyButton;
+
+public class MainPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	JPanel menuPanel = new JPanel();
+	JFrame frame;
 	
 	JLabel hScore = new JLabel("High Score : 0");
 	JLabel coin = new JLabel("Coins : 0");
-	JButton bPlay = new JButton("PLAY");
-	JButton bDif = new JButton("DIFICULTY");
-	JButton bMap = new JButton("MAP");
-	JButton bExit = new JButton("EXIT");
-	 
-	public MainPanel() {
+	
+	MyButton bPlay = new MyButton("PLAY"){
+		private static final long serialVersionUID = 1L;
+		@Override
+		public void btnMouseClicked(MouseEvent evt) {
+			changePanel(frame, new Board(frame));
+		};
+	};
+	MyButton bDif = new MyButton("DIFICULTY"){
+		private static final long serialVersionUID = 1L;
+		@Override
+		public void btnMouseClicked(MouseEvent evt) {
+			// Function MAP / LEVEL
+		};
+	};
+	MyButton bCredit = new MyButton("CREDITS"){
+		private static final long serialVersionUID = 1L;
+		@Override
+		public void btnMouseClicked(MouseEvent evt) {
+			changePanel(frame, new Credits(frame));
+		};
+	};
+	MyButton bExit = new MyButton("EXIT") {
+		private static final long serialVersionUID = 1L;
+		@Override
+		public void btnMouseClicked(MouseEvent evt) {
+			System.exit(0);
+		};
+	};
+
+	public MainPanel(JFrame frame) {
+		this.frame = frame;
 		setFocusable(true);
         requestFocusInWindow();
         
@@ -42,32 +73,10 @@ public class MainPanel extends JPanel implements ActionListener{
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         JPanel buttons = new JPanel(new GridBagLayout());
-        bPlay.addActionListener(e -> {
-    		switchPanel(menuPanel, new Board());
-
-		});
-        bDif.addActionListener(e -> {
-        	// TEST SAVING DATA
-    		new CreateIO(21,"member");
-    		ReadIO r = new ReadIO();
-    		
-    		System.out.println(r.getName());
-    		System.out.println(r.getScore());
-    		
-
-		});
-        bMap.addActionListener(e -> {
-    		
-
-		});
-        bExit.addActionListener(e -> {
-    		System.exit(0);
-
-		});
         
         buttons.add(bPlay, gbc);
         buttons.add(bDif, gbc);
-        buttons.add(bMap, gbc);
+        buttons.add(bCredit, gbc);
         buttons.add(bExit, gbc);
 
         gbc.weighty = 1;
@@ -75,6 +84,14 @@ public class MainPanel extends JPanel implements ActionListener{
         
         add(menuPanel);
 
+	}
+	
+	public static void changePanel(JFrame frame, JPanel added) {
+		frame.setContentPane(added);
+		frame.invalidate();
+		frame.validate();
+		added.setFocusable(true);
+		added.requestFocusInWindow();
 	}
 	
     public void switchPanel(JPanel removed, JPanel added) {
@@ -85,11 +102,5 @@ public class MainPanel extends JPanel implements ActionListener{
 		added.setFocusable(true);
 		added.requestFocusInWindow();
     }
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

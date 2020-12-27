@@ -24,7 +24,8 @@ public class Breakout extends JFrame {
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
     	setTitle("BRICK");
     	setResizable(false);
-    	add(new MainPanel());
+    	setContentPane(new MainPanel((JFrame)this));
+//    	add(new MainPanel());
     	pack();  	
     	
     }
