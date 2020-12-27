@@ -56,6 +56,7 @@ public class MainPanel extends JPanel {
         requestFocusInWindow();
         
 		menuPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
+		menuPanel.setBackground(new java.awt.Color(93, 100, 111));
 		menuPanel.setLayout(new GridBagLayout());
 		menuPanel.setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
 		menuPanel.setFocusable(true);
