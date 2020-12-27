@@ -93,14 +93,5 @@ public class MainPanel extends JPanel {
 		added.setFocusable(true);
 		added.requestFocusInWindow();
 	}
-	
-    public void switchPanel(JPanel removed, JPanel added) {
-    	remove(removed);
-		revalidate();
-		repaint();
-		add(added);
-		added.setFocusable(true);
-		added.requestFocusInWindow();
-    }
 
 }
