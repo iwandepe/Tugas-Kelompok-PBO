@@ -52,8 +52,13 @@ public class Ball extends Sprite {
         }
 
         if (x == Commons.WIDTH - imageWidth) {
+<<<<<<< HEAD
 
 //            System.out.println(imageWidth);
+=======
+//        	penyebab print 5
+//          System.out.println(imageWidth);
+>>>>>>> 37cbd55be819fab939965a2be888e0aa03591ee3
             setXDir(-1);
         }
 

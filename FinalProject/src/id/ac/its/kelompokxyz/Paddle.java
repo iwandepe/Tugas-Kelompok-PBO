@@ -46,12 +46,12 @@ public class Paddle extends Sprite  {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-
+//        	System.out.println("kiri");
             dx = -1;
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-
+//        	System.out.println("kanan");
             dx = 1;
         }
     }
