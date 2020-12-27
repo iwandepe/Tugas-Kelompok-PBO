@@ -2,7 +2,6 @@ package id.ac.its.kelompokxyz;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import id.ac.its.kelompokxyz.MainPanel;
 import javax.swing.Timer;
 import java.awt.Color;
 import java.awt.Dimension;
