@@ -1,8 +1,8 @@
 package id.ac.its.kelompokxyz;
 
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-import javax.swing.text.html.HTMLDocument.Iterator;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -20,11 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Random;
-import java.lang.Object;
 
 public class Board extends JPanel {
-
-    private Timer timer;
+	private static final long serialVersionUID = 1L;
+	
+	private Timer timer;
     private String message = "Game Over";
     private List<Ball> balls;
     private Paddle paddle;
@@ -32,9 +32,10 @@ public class Board extends JPanel {
     private boolean inGame = true;
     int[] numsToGenerate = new int[]
     		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2};
-
-    public Board() {
-    	
+    
+    JFrame frame;
+    public Board(JFrame frame) {
+    	this.frame = frame;
         initBoard();
     }
 
@@ -133,6 +134,14 @@ public class Board extends JPanel {
         g2d.drawString(message,
                 (Commons.WIDTH - fontMetrics.stringWidth(message)) / 2,
                 Commons.WIDTH / 2);
+        
+//        try {
+//			Thread.sleep(3000);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+        MainPanel.changePanel(frame, new MainPanel(frame));
+        
     }
 
     private class TAdapter extends KeyAdapter {
