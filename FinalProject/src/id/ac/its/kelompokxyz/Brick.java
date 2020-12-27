@@ -4,37 +4,37 @@ import javax.swing.ImageIcon;
 
 public class Brick extends Sprite {
 
-    private boolean destroyed;
+    private int weight;
 
-    public Brick(int x, int y) {
+	public Brick(int x, int y, int w) {
         
-        initBrick(x, y);
+        initBrick(x, y, w);
     }
     
-    private void initBrick(int x, int y) {
+    private void initBrick(int x, int y, int w) {
         
         this.x = x;
         this.y = y;
-        
-        destroyed = false;
+        weight = w;
 
         loadImage();
         getImageDimensions();
     }
+
+	private void loadImage() {
+		var ii = new ImageIcon("src/resources/brick.png");
+		image = ii.getImage();
+    }
     
-    private void loadImage() {
-        
-        var ii = new ImageIcon("src/resources/brick.png");
-        image = ii.getImage();        
+    void setWeight(int w) {
+    	weight = w;
     }
-
-    boolean isDestroyed() {
-        
-        return destroyed;
+    
+    int getWeight() {
+    	return weight;
     }
-
-    void setDestroyed(boolean val) {
-        
-        destroyed = val;
+    
+    void decreaseWeight(int value) {
+    	weight -= value;
     }
 }

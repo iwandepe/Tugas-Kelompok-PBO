@@ -2,6 +2,7 @@ package id.ac.its.kelompokxyz;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import javax.swing.text.html.HTMLDocument.Iterator;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -15,18 +16,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Random;
+import java.lang.Object;
 
 public class Board extends JPanel {
 
     private Timer timer;
     private String message = "Game Over";
-    private Ball ball;
+    private List<Ball> balls;
     private Paddle paddle;
-    private Brick[] bricks;
+    private List<Brick> bricks;
     private boolean inGame = true;
+    int[] numsToGenerate = new int[]
+    		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2};
 
     public Board() {
-
+    	
         initBoard();
     }
 
@@ -40,25 +48,34 @@ public class Board extends JPanel {
     }
 
     private void gameInit() {
-
-        bricks = new Brick[Commons.N_OF_BRICKS];
-
-        ball = new Ball();
+    	
+        bricks = new ArrayList<Brick>();
+        balls = new ArrayList<Ball>();
         paddle = new Paddle();
-
-        int k = 0;
+        
+        for (int i = 0; i < 2; i++) {
+        	balls.add(new Ball(100));
+        }
 
         for (int i = 0; i < 5; i++) {
-
             for (int j = 0; j < 6; j++) {
-
-                bricks[k] = new Brick(j * 40 + 30, i * 10 + 50);
-                k++;
+            	
+            	if (i % 2 == 0) {
+            		bricks.add(new Brick(j * 40 + 30, i * 10 + 50, 100));
+            	}
+            	else {
+            		bricks.add(new Brick(j * 40 + 30, i * 10 + 50, 300));
+            	}
             }
         }
 
         timer = new Timer(Commons.PERIOD, new GameCycle());
         timer.start();
+    }
+    
+    public static int getRandom(int[] array) {
+        int random = new Random().nextInt(array.length);
+        return array[random];
     }
 
     @Override
@@ -85,20 +102,24 @@ public class Board extends JPanel {
     }
 
     private void drawObjects(Graphics2D g2d) {
-
-        g2d.drawImage(ball.getImage(), ball.getX(), ball.getY(),
-                ball.getImageWidth(), ball.getImageHeight(), this);
+    	
+    	for (Ball ball : balls) {
+    		g2d.drawImage(ball.getImage(), ball.getX(), ball.getY(),
+                    ball.getImageWidth(), ball.getImageHeight(), this);
+    	}
+    	
         g2d.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(),
                 paddle.getImageWidth(), paddle.getImageHeight(), this);
 
-        for (int i = 0; i < Commons.N_OF_BRICKS; i++) {
+        for (Brick brick: bricks){
 
-            if (!bricks[i].isDestroyed()) {
+//            if (!brick.isDestroyed()) {
 
-                g2d.drawImage(bricks[i].getImage(), bricks[i].getX(),
-                        bricks[i].getY(), bricks[i].getImageWidth(),
-                        bricks[i].getImageHeight(), this);
-            }
+            g2d.drawImage(brick.getImage(), brick.getX(),
+                    brick.getY(), brick.getImageWidth(),
+                    brick.getImageHeight(), this);
+            
+//            }
         }
     }
 
@@ -139,8 +160,10 @@ public class Board extends JPanel {
     }
 
     private void doGameCycle() {
-
-        ball.move();
+    	
+    	for (Ball ball: balls) {
+    		ball.move();
+    	}
         paddle.move();
         checkCollision();
         repaint();
@@ -153,102 +176,133 @@ public class Board extends JPanel {
     }
 
     private void checkCollision() {
-
-        if (ball.getRect().getMaxY() > Commons.BOTTOM_EDGE) {
-
-            stopGame();
+    	
+    	// Stop game if the balls is zero
+    	
+    	for (ListIterator<Ball> iter = balls.listIterator(); iter.hasNext(); ) {
+    		Ball ball = iter.next();
+    		
+    		if (ball.getRect().getMaxY() > Commons.BOTTOM_EDGE) {
+    			iter.remove();
+    		}
         }
-
-        for (int i = 0, j = 0; i < Commons.N_OF_BRICKS; i++) {
-
-            if (bricks[i].isDestroyed()) {
-
-                j++;
-            }
-
-            if (j == Commons.N_OF_BRICKS) {
-
-                message = "Victory";
-                stopGame();
-            }
+    	
+    	if(balls.isEmpty()) {
+    		stopGame();
+    	}
+        
+    	if(bricks.isEmpty()) {
+    		message = "Victory";
+    		stopGame();
+    	}
+        
+        for (Ball ball: balls) {
+        	
+	        if ((ball.getRect()).intersects(paddle.getRect())) {
+	
+	            int paddleLPos = (int) paddle.getRect().getMinX();
+	            int ballLPos = (int) ball.getRect().getMinX();
+	
+	            int first = paddleLPos + 8;
+	            int second = paddleLPos + 16;
+	            int third = paddleLPos + 24;
+	            int fourth = paddleLPos + 32;
+	
+	            if (ballLPos < first) {
+	
+	                ball.setXDir(-1);
+	                ball.setYDir(-1);
+	            }
+	
+	            if (ballLPos >= first && ballLPos < second) {
+	
+	                ball.setXDir(-1);
+	                ball.setYDir(-1 * ball.getYDir());
+	            }
+	
+	            if (ballLPos >= second && ballLPos < third) {
+	
+	                ball.setXDir(0);
+	                ball.setYDir(-1);
+	            }
+	
+	            if (ballLPos >= third && ballLPos < fourth) {
+	
+	                ball.setXDir(1);
+	                ball.setYDir(-1 * ball.getYDir());
+	            }
+	
+	            if (ballLPos > fourth) {
+	
+	                ball.setXDir(1);
+	                ball.setYDir(-1);
+	            }
+	        }
         }
+        
+        for (ListIterator<Brick> iter = bricks.listIterator(); iter.hasNext(); ) {
+        	Brick brick = iter.next();
+        	
+        	for (Ball ball: balls) {
+	            if ((ball.getRect()).intersects(brick.getRect())) {
+	
+					int ballLeft = (int) ball.getRect().getMinX();
+	                int ballHeight = (int) ball.getRect().getHeight();
+	                int ballWidth = (int) ball.getRect().getWidth();
+	                int ballTop = (int) ball.getRect().getMinY();
+	
+	                var pointRight = new Point(ballLeft + ballWidth + 1, ballTop);
+	                var pointLeft = new Point(ballLeft - 1, ballTop);
+	                var pointTop = new Point(ballLeft, ballTop - 1);
+	                var pointBottom = new Point(ballLeft, ballTop + ballHeight + 1);
 
-        if ((ball.getRect()).intersects(paddle.getRect())) {
-
-            int paddleLPos = (int) paddle.getRect().getMinX();
-            int ballLPos = (int) ball.getRect().getMinX();
-
-            int first = paddleLPos + 8;
-            int second = paddleLPos + 16;
-            int third = paddleLPos + 24;
-            int fourth = paddleLPos + 32;
-
-            if (ballLPos < first) {
-
-                ball.setXDir(-1);
-                ball.setYDir(-1);
-            }
-
-            if (ballLPos >= first && ballLPos < second) {
-
-                ball.setXDir(-1);
-                ball.setYDir(-1 * ball.getYDir());
-            }
-
-            if (ballLPos >= second && ballLPos < third) {
-
-                ball.setXDir(0);
-                ball.setYDir(-1);
-            }
-
-            if (ballLPos >= third && ballLPos < fourth) {
-
-                ball.setXDir(1);
-                ball.setYDir(-1 * ball.getYDir());
-            }
-
-            if (ballLPos > fourth) {
-
-                ball.setXDir(1);
-                ball.setYDir(-1);
-            }
-        }
-
-        for (int i = 0; i < Commons.N_OF_BRICKS; i++) {
-
-            if ((ball.getRect()).intersects(bricks[i].getRect())) {
-
-                int ballLeft = (int) ball.getRect().getMinX();
-                int ballHeight = (int) ball.getRect().getHeight();
-                int ballWidth = (int) ball.getRect().getWidth();
-                int ballTop = (int) ball.getRect().getMinY();
-
-                var pointRight = new Point(ballLeft + ballWidth + 1, ballTop);
-                var pointLeft = new Point(ballLeft - 1, ballTop);
-                var pointTop = new Point(ballLeft, ballTop - 1);
-                var pointBottom = new Point(ballLeft, ballTop + ballHeight + 1);
-
-                if (!bricks[i].isDestroyed()) {
-
-                    if (bricks[i].getRect().contains(pointRight)) {
+	
+                    if (brick.getRect().contains(pointRight)) {
 
                         ball.setXDir(-1);
-                    } else if (bricks[i].getRect().contains(pointLeft)) {
+                    } 
+                    else if (brick.getRect().contains(pointLeft)) {
 
                         ball.setXDir(1);
                     }
 
-                    if (bricks[i].getRect().contains(pointTop)) {
+                    if (brick.getRect().contains(pointTop)) {
 
                         ball.setYDir(1);
-                    } else if (bricks[i].getRect().contains(pointBottom)) {
+                    } 
+                    else if (brick.getRect().contains(pointBottom)) {
 
                         ball.setYDir(-1);
                     }
-
-                    bricks[i].setDestroyed(true);
-                }
-            }
+                    
+                    brick.decreaseWeight(ball.getWeight());
+                    
+                    if (brick.getWeight() <= 0) {
+                    	iter.remove();
+                    	
+                    	if (brick instanceof Treasure){
+                    		
+                    		// clone the ball
+                    		if (((Treasure) brick).getTreasureType() == 1) {
+                    			balls.add(new Ball(ball.getX()+5, ball.getY(), ball.getWeight()));
+	                    		balls.add(new Ball(ball.getX()-5, ball.getY(), ball.getWeight()));
+                    		}
+                    		else {
+                    			ball.loadBigBallImage();
+                    		}
+                    		break;
+                    	}
+                    	
+                    	int random = getRandom(numsToGenerate);
+                    	
+                    	if (random > 0) {
+                    		iter.add(new Treasure(brick.getX()+15, brick.getY(), 1, random));
+                    	}
+                    	
+                    	break;
+                    }
+	            }
+        	}
         }
     }
 }

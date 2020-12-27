@@ -6,27 +6,40 @@ public class Ball extends Sprite {
 
     private int xdir;
     private int ydir;
-
-    public Ball() {
-
-        initBall();
+    private int weight;
+    
+    public Ball(int w) {
+    	resetState();
+        initBall(w);
+    }
+    
+    public Ball(int x, int y, int w) {
+    	this.x = x;
+    	this.y = y;
+    	initBall(w);
     }
 
-    private void initBall() {
-        
+    private void initBall(int w) {
+    	
         xdir = 1;
         ydir = -1;
+        weight = w;
 
         loadImage();
         getImageDimensions();
-        resetState();
     }
 
     private void loadImage() {
 
-        var ii = new ImageIcon("src/resources/ball.png");
+        var ii = new ImageIcon("src/resources/redball.png");
         image = ii.getImage();
     }
+	
+	public void loadBigBallImage() {
+		var ii = new ImageIcon("src/resources/bigball.png");
+		image = ii.getImage();
+		getImageDimensions();
+	}
 
     void move() {
 
@@ -40,7 +53,7 @@ public class Ball extends Sprite {
 
         if (x == Commons.WIDTH - imageWidth) {
 
-            System.out.println(imageWidth);
+//            System.out.println(imageWidth);
             setXDir(-1);
         }
 
@@ -69,5 +82,17 @@ public class Ball extends Sprite {
     int getYDir() {
 
         return ydir;
+    }
+    
+    int getXDir() {
+    	return xdir;
+    }
+    
+    void setWeight(int w) {
+    	weight = w;
+    }
+    
+    int getWeight() {
+    	return weight;
     }
 }

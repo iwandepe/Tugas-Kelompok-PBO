@@ -4,7 +4,7 @@ import java.awt.Image;
 import java.awt.Rectangle;
 
 public class Sprite {
-
+	
     int x;
     int y;
     int imageWidth;
@@ -53,7 +53,7 @@ public class Sprite {
     }
 
     void getImageDimensions() {
-
+    	
         imageWidth = image.getWidth(null);
         imageHeight = image.getHeight(null);
     }

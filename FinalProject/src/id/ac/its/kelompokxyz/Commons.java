@@ -2,8 +2,8 @@ package id.ac.its.kelompokxyz;
 
 public interface Commons {
     
-    int WIDTH = 300;
-    int HEIGHT = 400;
+    int WIDTH = 1000;
+    int HEIGHT = 600;
     int BOTTOM_EDGE = 390;
     int N_OF_BRICKS = 30;
     int INIT_PADDLE_X = 200;

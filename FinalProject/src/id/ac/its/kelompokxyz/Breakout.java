@@ -6,7 +6,6 @@ import java.awt.EventQueue;
 public class Breakout extends JFrame {
 
     public Breakout() {
-        
         initUI();
     }
     
