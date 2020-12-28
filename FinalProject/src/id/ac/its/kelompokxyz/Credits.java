@@ -23,7 +23,7 @@ public class Credits extends JPanel {
 //		ImageIcon img = new ImageIcon("src/resources/cred.jpeg");
 		ImageIcon img = new ImageIcon("src/resources/credmin.png");
 		JLabel lbl = new JLabel(img);
-		MyButton menubtn = new MyButton("MENU"){
+		MyButton menubtn = new MyButton("MAIN MENU"){
 			private static final long serialVersionUID = 1L;
 			@Override
 			public void btnMouseClicked(MouseEvent evt) {

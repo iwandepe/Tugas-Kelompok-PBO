@@ -40,11 +40,11 @@ public class DifficultyPanel extends JPanel {
 			changePanel(frame, new Board(frame, 3));
 		};
 	};
-	MyButton bBack = new MyButton("EXIT") {
+	MyButton bBack = new MyButton("MAIN MENU") {
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
-			System.exit(0);
+			changePanel(frame, new MainPanel(frame));
 		};
 	};
 

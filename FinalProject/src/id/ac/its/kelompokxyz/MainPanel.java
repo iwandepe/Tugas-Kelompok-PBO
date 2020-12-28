@@ -69,7 +69,6 @@ public class MainPanel extends JPanel {
         menuPanel.add(new JLabel("BRICK BREAKER"), gbc);
         menuPanel.add(hScore, gbc);
         updateScore();
-        menuPanel.add(coin, gbc);
 
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.fill = GridBagConstraints.HORIZONTAL;
