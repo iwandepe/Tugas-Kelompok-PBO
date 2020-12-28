@@ -24,7 +24,9 @@ import java.util.Random;
 public class Board extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
+	JFrame frame;
 	private Timer timer;
+	private Timer timeSpend;
     private String message = "Game Over";
     private List<Ball> balls;
     private Paddle paddle;
@@ -33,7 +35,12 @@ public class Board extends JPanel {
     int[] numsToGenerate = new int[]
     		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2};
     
-    JFrame frame;
+    int timeStart = (int)(System.currentTimeMillis() /1000);
+    public int time;
+    
+    
+    int i =0;
+	
     public Board(JFrame frame) {
     	this.frame = frame;
         initBoard();
@@ -70,6 +77,8 @@ public class Board extends JPanel {
             }
         }
 
+        
+        
         timer = new Timer(Commons.PERIOD, new GameCycle());
         timer.start();
     }
@@ -92,7 +101,9 @@ public class Board extends JPanel {
                 RenderingHints.VALUE_RENDER_QUALITY);
 
         if (inGame) {
-
+            
+            
+//        	timeSpend.start();
             drawObjects(g2d);
         } else {
 
@@ -101,7 +112,11 @@ public class Board extends JPanel {
 
         Toolkit.getDefaultToolkit().sync();
     }
-
+    
+//    private void drawTime(Graphics2D g2d) {
+//    	g2d.drawString("00:00", Commons.WIDTH/2, 25);
+//    }
+    
     private void drawObjects(Graphics2D g2d) {
     	
     	for (Ball ball : balls) {
@@ -122,9 +137,24 @@ public class Board extends JPanel {
             
 //            }
         }
+        
+        time = (int) ((System.currentTimeMillis()/1000) % timeStart);
+        g2d.drawString("time: "+String.valueOf(time), Commons.WIDTH/2-10, 25);
+        
+//        timeSpend = new Timer(1000, new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				
+//				g2d.drawString("qqq"+String.valueOf(i), Commons.WIDTH/2, 25);
+//				i++;
+//			}
+//		});
+        
     }
 
     private void gameFinished(Graphics2D g2d) {
+    	
+    	new CreateIO(time, "Player 1");
 
         var font = new Font("Verdana", Font.BOLD, 18);
         FontMetrics fontMetrics = this.getFontMetrics(font);
@@ -134,6 +164,8 @@ public class Board extends JPanel {
         g2d.drawString(message,
                 (Commons.WIDTH - fontMetrics.stringWidth(message)) / 2,
                 Commons.WIDTH / 2);
+        
+        
         
 //        try {
 //			Thread.sleep(3000);
@@ -175,6 +207,7 @@ public class Board extends JPanel {
     	}
         paddle.move();
         checkCollision();
+        
         repaint();
     }
 

@@ -16,7 +16,7 @@ public class Breakout extends JFrame {
     	
     	setLayout(new BorderLayout(10,10));
     	    	
-    	setLocation(100,200);
+    	setLocation(10,10);
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
     	setTitle("BRICK");
     	setResizable(false);

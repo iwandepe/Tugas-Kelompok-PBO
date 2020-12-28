@@ -11,4 +11,5 @@ public interface Commons {
     int INIT_BALL_X = 230;
     int INIT_BALL_Y = 355;    
     int PERIOD = 10;
+    
 }

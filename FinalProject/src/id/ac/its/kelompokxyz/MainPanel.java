@@ -1,11 +1,9 @@
 package id.ac.its.kelompokxyz;
 
 import java.awt.Dimension;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.*;
@@ -18,7 +16,7 @@ public class MainPanel extends JPanel {
 	JPanel menuPanel = new JPanel();
 	JFrame frame;
 	
-	JLabel hScore = new JLabel("High Score : 0");
+	JLabel hScore = new JLabel("Best Time : 0");
 	JLabel coin = new JLabel("Coins : 0");
 	
 	MyButton bPlay = new MyButton("PLAY"){
@@ -28,11 +26,12 @@ public class MainPanel extends JPanel {
 			changePanel(frame, new Board(frame));
 		};
 	};
-	MyButton bDif = new MyButton("DIFICULTY"){
+	MyButton bDif = new MyButton("SCORE"){
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
 			// Function MAP / LEVEL
+			updateScore();
 		};
 	};
 	MyButton bCredit = new MyButton("CREDITS"){
@@ -68,6 +67,7 @@ public class MainPanel extends JPanel {
 
         menuPanel.add(new JLabel("BRICK BREAKER"), gbc);
         menuPanel.add(hScore, gbc);
+        updateScore();
         menuPanel.add(coin, gbc);
 
         gbc.anchor = GridBagConstraints.CENTER;
@@ -93,6 +93,12 @@ public class MainPanel extends JPanel {
 		frame.validate();
 		added.setFocusable(true);
 		added.requestFocusInWindow();
+	}
+	
+	public void updateScore() {
+//		new CreateIO(0, "plyr1");
+		ReadIO data = new ReadIO();
+		hScore.setText("Best Time : "+ data.getScore());
 	}
 
 }

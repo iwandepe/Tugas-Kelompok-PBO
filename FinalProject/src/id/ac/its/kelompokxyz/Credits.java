@@ -1,10 +1,16 @@
 package id.ac.its.kelompokxyz;
 
 import java.awt.GridBagConstraints;
+import java.awt.LayoutManager;
+import java.awt.event.MouseEvent;
 
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import coba2.MyButton;
 
 public class Credits extends JPanel {
 
@@ -14,19 +20,20 @@ public class Credits extends JPanel {
 	JLabel dev = new JLabel("<html>Mohammad Faderik I H<br>Iwan Dwi Prakoso<br>Dias Tri Kurniasari</html>");
 	JFrame frame;
 	public Credits(JFrame frame) {
-		this.frame = frame;
-		
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.gridwidth = GridBagConstraints.REMAINDER;
-        gbc.anchor = GridBagConstraints.NORTH;
-        
-        add(gameTitle, CENTER_ALIGNMENT);
-        
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
-        
-        add(desc, CENTER_ALIGNMENT);
-        add(dev, gbc);
+//		ImageIcon img = new ImageIcon("src/resources/cred.jpeg");
+		ImageIcon img = new ImageIcon("src/resources/credmin.png");
+		JLabel lbl = new JLabel(img);
+		MyButton menubtn = new MyButton("MENU"){
+			private static final long serialVersionUID = 1L;
+			@Override
+			public void btnMouseClicked(MouseEvent evt) {
+				MainPanel.changePanel(frame, new MainPanel(frame));
+			};
+		};
+		lbl.setAlignmentX(CENTER_ALIGNMENT);
+		setLayout((LayoutManager) new BoxLayout(this, BoxLayout.Y_AXIS));
+		add(lbl);
+		add(menubtn);
         
 	}
 }
