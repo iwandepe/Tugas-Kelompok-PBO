@@ -1,6 +1,5 @@
 package id.ac.its.kelompokxyz;
 
-import java.awt.GridBagConstraints;
 import java.awt.LayoutManager;
 import java.awt.event.MouseEvent;
 
