@@ -11,7 +11,7 @@ import javax.swing.border.EmptyBorder;
 
 import coba2.MyButton;
 
-public class MainPanel extends JPanel {
+public class DifficultyPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	JPanel menuPanel = new JPanel();
 	JFrame frame;
@@ -19,30 +19,28 @@ public class MainPanel extends JPanel {
 	JLabel hScore = new JLabel("Best Time : 0");
 	JLabel coin = new JLabel("Coins : 0");
 	
-	MyButton bPlay = new MyButton("PLAY"){
+	MyButton bEasy = new MyButton("EASY"){
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
-//			changePanel(frame, new Board(frame, 5));
-			changePanel(frame, new DifficultyPanel(frame));
+			changePanel(frame, new Board(frame, 10));
 		};
 	};
-	MyButton bDif = new MyButton("SCORE"){
+	MyButton bMedium = new MyButton("MEDIUM"){
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
-			// Function MAP / LEVEL
-			updateScore();
+			changePanel(frame, new Board(frame, 5));
 		};
 	};
-	MyButton bCredit = new MyButton("CREDITS"){
+	MyButton bHard = new MyButton("HARD"){
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
-			changePanel(frame, new Credits(frame));
+			changePanel(frame, new Board(frame, 3));
 		};
 	};
-	MyButton bExit = new MyButton("EXIT") {
+	MyButton bBack = new MyButton("EXIT") {
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
@@ -50,7 +48,7 @@ public class MainPanel extends JPanel {
 		};
 	};
 
-	public MainPanel(JFrame frame) {
+	public DifficultyPanel(JFrame frame) {
 		this.frame = frame;
 		setFocusable(true);
         requestFocusInWindow();
@@ -66,7 +64,7 @@ public class MainPanel extends JPanel {
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.anchor = GridBagConstraints.NORTH;
 
-        menuPanel.add(new JLabel("BRICK BREAKER"), gbc);
+        menuPanel.add(new JLabel("CHOOSE DIFFICULTY"), gbc);
         menuPanel.add(hScore, gbc);
         updateScore();
         menuPanel.add(coin, gbc);
@@ -76,10 +74,10 @@ public class MainPanel extends JPanel {
 
         JPanel buttons = new JPanel(new GridBagLayout());
         
-        buttons.add(bPlay, gbc);
-        buttons.add(bDif, gbc);
-        buttons.add(bCredit, gbc);
-        buttons.add(bExit, gbc);
+        buttons.add(bEasy, gbc);
+        buttons.add(bMedium, gbc);
+        buttons.add(bHard, gbc);
+        buttons.add(bBack, gbc);
 
         gbc.weighty = 1;
         menuPanel.add(buttons, gbc);

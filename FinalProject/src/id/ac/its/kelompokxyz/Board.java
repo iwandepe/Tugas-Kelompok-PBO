@@ -32,8 +32,9 @@ public class Board extends JPanel {
     private Paddle paddle;
     private List<Brick> bricks;
     private boolean inGame = true;
-    int[] numsToGenerate = new int[]
+    private int[] numsToGenerate = new int[]
     		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2};
+    private int period; 
     
     int timeStart = (int)(System.currentTimeMillis() /1000);
     public int time;
@@ -41,8 +42,9 @@ public class Board extends JPanel {
     
     int i =0;
 	
-    public Board(JFrame frame) {
+    public Board(JFrame frame, int period) {
     	this.frame = frame;
+    	this.period = period;
         initBoard();
     }
 
@@ -79,7 +81,7 @@ public class Board extends JPanel {
 
         
         
-        timer = new Timer(Commons.PERIOD, new GameCycle());
+        timer = new Timer(period, new GameCycle());
         timer.start();
     }
     
