@@ -64,7 +64,7 @@ public class Board extends JPanel {
         
         balls.add(new Ball(100, difficulty, 1));
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < Commons.ROW; i++) {
             for (int j = 0; j < 10; j++) {
             	
             	if (i % 2 == 0) {
