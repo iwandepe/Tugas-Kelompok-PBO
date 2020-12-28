@@ -18,7 +18,7 @@ public class Breakout extends JFrame {
     	    	
     	setLocation(10,10);
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
-    	setTitle("BRICK");
+    	setTitle("JaBrick Java Game");
     	setResizable(false);
     	setContentPane(new MainPanel((JFrame)this));
 //    	add(new MainPanel());

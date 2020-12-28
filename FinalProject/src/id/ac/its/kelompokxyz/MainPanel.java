@@ -9,8 +9,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import coba2.MyButton;
-
 public class MainPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	JPanel menuPanel = new JPanel();
@@ -27,11 +25,12 @@ public class MainPanel extends JPanel {
 			changePanel(frame, new DifficultyPanel(frame));
 		};
 	};
-	MyButton bDif = new MyButton("SCORE"){
+	MyButton bDif = new MyButton("RESET SCORE"){
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
 			// Function MAP / LEVEL
+			new CreateIO().reset();
 			updateScore();
 		};
 	};
@@ -65,8 +64,10 @@ public class MainPanel extends JPanel {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.anchor = GridBagConstraints.NORTH;
-
-        menuPanel.add(new JLabel("BRICK BREAKER"), gbc);
+        
+//        ImageIcon imgTitle = new ImageIcon("src/resources/title.png");
+//        menuPanel.add(new JLabel(imgTitle),gbc);
+        menuPanel.add(new JLabel("BRICK BREAKER"),gbc);
         menuPanel.add(hScore, gbc);
         updateScore();
 

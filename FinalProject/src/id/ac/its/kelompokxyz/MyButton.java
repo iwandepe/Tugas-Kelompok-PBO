@@ -1,4 +1,4 @@
-package coba2;
+package id.ac.its.kelompokxyz;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;
