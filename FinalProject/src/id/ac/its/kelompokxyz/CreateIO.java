@@ -7,11 +7,14 @@ import java.nio.file.Paths;
 
 public class CreateIO {
 	private static ObjectOutputStream output;
+	ReadIO old = new ReadIO();
 	
 	public CreateIO(int score, String name) {
-		openFile();
-		setRecords(score, name);
-		closeFile();
+		if(old.getScore() < score) {
+			openFile();
+			setRecords(score, name);
+			closeFile();
+		}
 	}
 	
 	public static void openFile() {
