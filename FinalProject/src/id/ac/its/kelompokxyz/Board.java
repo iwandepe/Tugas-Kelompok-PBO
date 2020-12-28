@@ -24,6 +24,7 @@ import java.util.Random;
 public class Board extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
+	Random ran = new Random();
 	JFrame frame;
 	private Timer timer;
     private String message = "Game Over";
@@ -66,9 +67,9 @@ public class Board extends JPanel {
 
         for (int i = 0; i < Commons.ROW; i++) {
             for (int j = 0; j < 10; j++) {
-            	
+//            	ran.nextInt(2)+1
             	if (i % 2 == 0) {
-            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 100, i%3+1));
+            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 100, ran.nextInt(2)+1));
             	}
             	else {
             		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 300, i%3+1));
