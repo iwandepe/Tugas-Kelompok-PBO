@@ -14,7 +14,7 @@ public class MainPanel extends JPanel {
 	JPanel menuPanel = new JPanel();
 	JFrame frame;
 	
-	JLabel hScore = new JLabel("Best Time : 0");
+	JLabel hScore = new JLabel("BEST SCORE : 0");
 	JLabel coin = new JLabel("Coins : 0");
 	
 	MyButton bPlay = new MyButton("PLAY"){
@@ -61,28 +61,37 @@ public class MainPanel extends JPanel {
 		menuPanel.setFocusable(true);
 		menuPanel.requestFocusInWindow();
 		
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridwidth = GridBagConstraints.REMAINDER;
-        gbc.anchor = GridBagConstraints.NORTH;
+        GridBagConstraints gbcTitle = new GridBagConstraints();
+        gbcTitle.gridwidth = GridBagConstraints.REMAINDER;
+        gbcTitle.anchor = GridBagConstraints.NORTH;
         
-//        ImageIcon imgTitle = new ImageIcon("src/resources/title.png");
-//        menuPanel.add(new JLabel(imgTitle),gbc);
-        menuPanel.add(new JLabel("BRICK BREAKER"),gbc);
-        menuPanel.add(hScore, gbc);
+        ImageIcon imgTitle = new ImageIcon("src/resources/title.png");
+        menuPanel.add(new JLabel(imgTitle),gbcTitle);
+        menuPanel.repaint();
+        
+//        JLabel lblTitle = new JLabel("BRICK BREAKER");
+//        lblTitle.setFont(new java.awt.Font("Century Gothic", 1, 20));
+//        lblTitle.setForeground(new java.awt.Color(28, 41, 50));
+//        menuPanel.add(lblTitle,gbcTitle);
+        
+        hScore.setFont(new java.awt.Font("Fixedsys Regular", 1, 15));
+        menuPanel.add(hScore, gbcTitle);
         updateScore();
-
-        gbc.anchor = GridBagConstraints.CENTER;
-        gbc.fill = GridBagConstraints.HORIZONTAL;
+        
+        GridBagConstraints gbcBtn = new GridBagConstraints();
+        gbcBtn.gridwidth = GridBagConstraints.REMAINDER;
+        gbcBtn.anchor = GridBagConstraints.CENTER;
+        gbcBtn.fill = GridBagConstraints.HORIZONTAL;
 
         JPanel buttons = new JPanel(new GridBagLayout());
         
-        buttons.add(bPlay, gbc);
-        buttons.add(bDif, gbc);
-        buttons.add(bCredit, gbc);
-        buttons.add(bExit, gbc);
+        buttons.add(bPlay, gbcBtn);
+        buttons.add(bDif, gbcBtn);
+        buttons.add(bCredit, gbcBtn);
+        buttons.add(bExit, gbcBtn);
 
-        gbc.weighty = 1;
-        menuPanel.add(buttons, gbc);
+        gbcBtn.weighty = 1;
+        menuPanel.add(buttons, gbcBtn);
         
         add(menuPanel);
 
@@ -99,7 +108,7 @@ public class MainPanel extends JPanel {
 	public void updateScore() {
 //		new CreateIO(0, "plyr1");
 		ReadIO data = new ReadIO();
-		hScore.setText("Best Time : "+ data.getScore());
+		hScore.setText("BEST SCORE : "+ data.getScore());
 	}
 
 }
