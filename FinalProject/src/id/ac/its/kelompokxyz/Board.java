@@ -33,8 +33,8 @@ public class Board extends JPanel {
     private List<Brick> bricks;
     private boolean inGame = true;
     private int[] numsToGenerate = new int[]
-    		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2};
-    private int period; 
+    		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,12};
+    private int difficulty; 
     
     int timeStart = (int)(System.currentTimeMillis() /1000);
     public int time;
@@ -42,9 +42,9 @@ public class Board extends JPanel {
     
     int i =0;
 	
-    public Board(JFrame frame, int period) {
+    public Board(JFrame frame, int difficulty) {
     	this.frame = frame;
-    	this.period = period;
+    	this.difficulty = difficulty;
         initBoard();
     }
 
@@ -61,27 +61,25 @@ public class Board extends JPanel {
     	
         bricks = new ArrayList<Brick>();
         balls = new ArrayList<Ball>();
-        paddle = new Paddle();
+        paddle = new Paddle(difficulty);
         
-        for (int i = 0; i < 2; i++) {
-        	balls.add(new Ball(100));
-        }
+        balls.add(new Ball(100, difficulty, 1));
 
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 10; j++) {
             	
             	if (i % 2 == 0) {
-            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 100));
+            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 100, i%3+1));
             	}
             	else {
-            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 300));
+            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 300, i%3+1));
             	}
             }
         }
 
         
         
-        timer = new Timer(period, new GameCycle());
+        timer = new Timer(Commons.PERIOD, new GameCycle());
         timer.start();
     }
     
@@ -323,24 +321,25 @@ public class Board extends JPanel {
                     
                     if (brick.getWeight() <= 0) {
                     	iter.remove();
-                    	
-                    	if (brick instanceof Treasure){
-                    		
-                    		// clone the ball
-                    		if (((Treasure) brick).getTreasureType() == 1) {
-                    			balls.add(new Ball(ball.getX()+5, ball.getY(), ball.getWeight()));
-	                    		balls.add(new Ball(ball.getX()-5, ball.getY(), ball.getWeight()));
-                    		}
-                    		else {
-                    			ball.loadBigBallImage();
-                    		}
+                		// clone the ball
+                		if ( brick.getBrickType() == 11) {
+                			balls.add(new Ball(ball.getX()+5, ball.getY(), 
+                					ball.getWeight(), difficulty, ball.getBallType()));
+                    		balls.add(new Ball(ball.getX()-5, ball.getY(), 
+                    				ball.getWeight(), difficulty, ball.getBallType()));
                     		break;
-                    	}
+                		}
+                		else if (brick.getBrickType() == 12){
+                			ball.setBallType(11);
+                			ball.setWeight(300);
+                			ball.loadImage();
+                			break;
+                		}
                     	
                     	int random = getRandom(numsToGenerate);
                     	
                     	if (random > 0) {
-                    		iter.add(new Treasure(brick.getX()+15, brick.getY(), 1, random));
+                    		iter.add(new Brick(brick.getX()+26, brick.getY(), 1, random));
                     	}
                     	
                     	break;

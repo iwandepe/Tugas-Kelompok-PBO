@@ -6,14 +6,16 @@ import javax.swing.ImageIcon;
 public class Paddle extends Sprite  {
 
     private int dx;
+    private int speed;
 
-    public Paddle() {
+    public Paddle(int s) {
         
-        initPaddle();        
+        initPaddle(s);        
     }
     
-    private void initPaddle() {
-
+    private void initPaddle(int s) {
+    	speed = s;
+    	
         loadImage();
         getImageDimensions();
 
@@ -28,7 +30,7 @@ public class Paddle extends Sprite  {
 
     void move() {
 
-        x += dx;
+        x += dx*speed;
 
         if (x <= 0) {
 

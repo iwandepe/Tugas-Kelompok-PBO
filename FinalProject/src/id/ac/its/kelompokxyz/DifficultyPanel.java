@@ -23,14 +23,14 @@ public class DifficultyPanel extends JPanel {
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
-			changePanel(frame, new Board(frame, 10));
+			changePanel(frame, new Board(frame, 1));
 		};
 	};
 	MyButton bMedium = new MyButton("MEDIUM"){
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
-			changePanel(frame, new Board(frame, 5));
+			changePanel(frame, new Board(frame, 2));
 		};
 	};
 	MyButton bHard = new MyButton("HARD"){
