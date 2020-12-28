@@ -1,4 +1,4 @@
-# JaBrick - Break The Brick | Java Simple GUI Game
+# JaBrick - Break The Brick [Java Simple GUI Game]
 
 <p align="center">
   <img src="breakout_game.png">
