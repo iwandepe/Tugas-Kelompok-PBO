@@ -26,7 +26,6 @@ public class Board extends JPanel {
 	
 	JFrame frame;
 	private Timer timer;
-	private Timer timeSpend;
     private String message = "Game Over";
     private List<Ball> balls;
     private Paddle paddle;

@@ -9,15 +9,13 @@ import java.awt.event.MouseEvent;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import coba2.MyButton;
-
 public class DifficultyPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	JPanel menuPanel = new JPanel();
 	JFrame frame;
 	
 	JLabel hScore = new JLabel("Best Time : 0");
-	JLabel coin = new JLabel("Coins : 0");
+//	JLabel coin = new JLabel("Coins : 0");
 	
 	MyButton bEasy = new MyButton("EASY"){
 		private static final long serialVersionUID = 1L;
@@ -40,11 +38,11 @@ public class DifficultyPanel extends JPanel {
 			changePanel(frame, new Board(frame, 3));
 		};
 	};
-	MyButton bBack = new MyButton("EXIT") {
+	MyButton bBack = new MyButton("MAIN MENU") {
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
-			System.exit(0);
+			changePanel(frame, new MainPanel(frame));
 		};
 	};
 
@@ -67,7 +65,6 @@ public class DifficultyPanel extends JPanel {
         menuPanel.add(new JLabel("CHOOSE DIFFICULTY"), gbc);
         menuPanel.add(hScore, gbc);
         updateScore();
-        menuPanel.add(coin, gbc);
 
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.fill = GridBagConstraints.HORIZONTAL;
