@@ -70,10 +70,10 @@ public class Board extends JPanel {
             for (int j = 0; j < 10; j++) {
             	
             	if (i % 2 == 0) {
-            		bricks.add(new Brick(j * 100 + 140, i * 25 + 50, 100));
+            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 100));
             	}
             	else {
-            		bricks.add(new Brick(j * 100 + 140, i * 25 + 50, 300));
+            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 300));
             	}
             }
         }
