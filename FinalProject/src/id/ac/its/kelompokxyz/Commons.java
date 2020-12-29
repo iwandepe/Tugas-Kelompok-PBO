@@ -1,7 +1,7 @@
 package id.ac.its.kelompokxyz;
 
 public interface Commons {
-    int ROW = 7;
+    int ROW = 13;
     int WIDTH = 800;
     int HEIGHT = 600;
     int BOTTOM_EDGE = 590;

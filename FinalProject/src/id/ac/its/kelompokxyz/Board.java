@@ -49,7 +49,7 @@ public class Board extends JPanel {
     }
 
     private void initBoard() {
-
+    	setBackground(new java.awt.Color(93, 100, 111));
         addKeyListener(new TAdapter());
         setFocusable(true);
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
