@@ -30,6 +30,9 @@ JaBrick adalah game GUI sederhana berbasis bahasa Java yang mengimplementasikan 
 
 ### Video Permainan
 
+### Referensi
+<a href="http://zetcode.com/javagames/breakout/" > ZeetCode Breakout Game</a>
+
 
 ### License
 Available under 2-Clause BSD License https://opensource.org/licenses/BSD-2-Clause
