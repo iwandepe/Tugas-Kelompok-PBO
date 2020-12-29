@@ -1,7 +1,7 @@
 # JaBrick - Break The Brick [Java Simple GUI Game]
 
 <p align="center">
-  <img width="400" src="mainMenu.png">
+  <img width="400" src="menu.png">
   <img width="400" src="inGame.png">
 </p>
 
