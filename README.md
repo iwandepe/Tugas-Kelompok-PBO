@@ -10,13 +10,13 @@
 3. Iwan Dwi Prakoso [05111940000229]
 
 ### Content
-- <a href="PBO-TM10-Project-1">PBO-TM10-Project-1</a> : 
+- <a href="PBO-TM10-Project-1">PBO-TM10-Project-1</a>
   ```
   - Group Task Week 10
   - Chapter 12.3 Simple GUI-Based Input/Output with JOptionPane 
   - Make GUI for counting area and round for some shape that receive input from user
   ```
-- <a href="PBO-TM10-Project-2">PBO-TM10-Project-2</a> : 
+- <a href="PBO-TM10-Project-2">PBO-TM10-Project-2</a>
   ```
   - Group Task Week 10
   - Chapter 12.5 Displaying Text and Images in a Window
