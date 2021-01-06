@@ -28,19 +28,21 @@ public class View extends JFrame{
 	private final DifficultyPanel difficultyPanel;
 	private final GamePanel gamePanel;
 	private final GameOverPanel gameOverPanel;
+	private final CreditPanel creditPanel;
     private JPanel content;
-    private final ViewListener viewListener = new ViewListener();
+    private final ViewKeyListener viewKeyListener = new ViewKeyListener();
+    private final ViewButtonListener viewButtonListener = new ViewButtonListener();
 
 	public View(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
-		menuPanel = new MenuPanel((JFrame)this);
+		menuPanel = new MenuPanel((JFrame)this, viewButtonListener);
+		creditPanel = new CreditPanel((JFrame)this, viewButtonListener);
+		difficultyPanel = new DifficultyPanel((JFrame)this, viewButtonListener);
 		gamePanel = new GamePanel(balls, bricks, paddle);
-		difficultyPanel = new DifficultyPanel((JFrame)this);
 		gameOverPanel = new GameOverPanel();
-		initUI(menuPanel);
-		System.out.println("VIEW");
+		showGameMenu();
 	}
 	
-	private void initUI(MenuPanel menuPanel) {
+	private void initUI() {
     	setLayout(new BorderLayout(10,10));
     	setLocation(10,10);
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -62,7 +64,27 @@ public class View extends JFrame{
     }
 	
 	public void updateView() {
-		
 		gamePanel.repaint();
+	}
+	
+	public void showDifficulty() {
+    	initUI();
+		setContentPane(difficultyPanel);
+		pack();
+		setVisible(true);
+	}
+	
+	public void showGameMenu() {
+		initUI();
+		setContentPane(menuPanel);
+		pack();
+		setVisible(true);
+	}
+	
+	public void showCredit() {
+		initUI();
+		setContentPane(creditPanel);
+		pack();
+		setVisible(true);
 	}
 }

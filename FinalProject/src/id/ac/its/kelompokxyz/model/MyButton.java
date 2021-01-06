@@ -1,4 +1,4 @@
-package id.ac.its.kelompokxyz.app;
+package id.ac.its.kelompokxyz.model;
 
 import java.awt.Color;
 import java.awt.event.MouseEvent;

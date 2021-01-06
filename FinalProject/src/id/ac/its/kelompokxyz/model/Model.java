@@ -57,6 +57,18 @@ public class Model {
         }
     }
     
+    public void showGameMenu() {
+    	view.showGameMenu();
+    }
+    
+    public void showDifficulty() {
+    	view.showDifficulty();
+    }
+    
+    public void showCredit() {
+    	view.showCredit();
+    }
+    
     public static int getRandom(int[] array) {
         int random = new Random().nextInt(array.length);
         return array[random];
