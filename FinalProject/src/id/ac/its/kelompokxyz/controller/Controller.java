@@ -42,19 +42,24 @@ public class Controller{
         	return;
         }
         
+        if (gameState == GameState.TO_GAME) {
+        	model.continueGame();
+        	timer.start();
+        	return;
+        }
+        
         if (gameState == GameState.CREDIT) {
         	model.showCredit();
         	return;
         }
         
         if (gameState == GameState.PLAYING) {
-            
             switch (this.keyCode) {
                 case KeyEvent.VK_LEFT:
-                    model.movePaddle(-1);
+                    model.setMovePaddle(-1);
                     break;
                 case KeyEvent.VK_RIGHT:
-                    model.movePaddle(1);
+                    model.setMovePaddle(1);
                     break;
                 default:
                     break;
@@ -67,7 +72,7 @@ public class Controller{
     }
      
     private static class GameCycle implements ActionListener {
-
+    	
         @Override
         public void actionPerformed(ActionEvent e) {
             doGameCycle();
@@ -75,11 +80,8 @@ public class Controller{
     }
 
     private static void doGameCycle() {
-    	
-    	for (Ball ball: model.getBalls()) {
-    		ball.move();
-    	}
-        model.getPaddle().move();
+    	model.moveBall();
+    	model.movePaddle();
         model.checkCollision();
     }
     
@@ -95,6 +97,10 @@ public class Controller{
     public void setChoosingDifficulty() {
     	gameState = GameState.DIFFICULTY;
     	System.out.println("Difficulty");
+    }
+    
+    public void setGoingToGame() {
+    	gameState = GameState.TO_GAME;
     }
     
     public void setDifficulty(int difficulty) {

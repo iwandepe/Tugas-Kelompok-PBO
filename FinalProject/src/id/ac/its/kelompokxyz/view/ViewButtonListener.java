@@ -52,25 +52,31 @@ public class ViewButtonListener extends ViewListener {
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
 			controller.setDifficulty(0);
+			controller.setGoingToGame();
 			controller.respondToInput();
 		};
 	};
+	
 	MyButton bMedium = new MyButton("MEDIUM"){
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
 			controller.setDifficulty(1);
+			controller.setGoingToGame();
 			controller.respondToInput();
 		};
 	};
+	
 	MyButton bHard = new MyButton("HARD"){
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
 			controller.setDifficulty(2);
+			controller.setGoingToGame();
 			controller.respondToInput();
 		};
 	};
+	
 	MyButton bBack = new MyButton("MAIN MENU") {
 		private static final long serialVersionUID = 1L;
 		@Override

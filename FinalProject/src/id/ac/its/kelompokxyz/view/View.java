@@ -37,6 +37,7 @@ public class View extends JFrame{
 		difficultyPanel = new DifficultyPanel((JFrame)this, viewButtonListener);
 		gamePanel = new GamePanel(balls, bricks, paddle);
 		gameOverPanel = new GameOverPanel();
+		initUI();
 		showGameMenu();
 	}
 	
@@ -46,30 +47,40 @@ public class View extends JFrame{
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
     	setTitle("JaBrick Java Game");
     	setResizable(false);
+    	setVisible(true);
     }
 	
-	public void updateView() {
+	public void updateView(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
+		gamePanel.updateGame(balls, bricks, paddle);
 		gamePanel.repaint();
 	}
 	
-	public void showDifficulty() {
-    	initUI();
-		setContentPane(difficultyPanel);
+	public void continueGame() {
+		viewKeyListener.setPlaying();
+		setContentPane(gamePanel);
+		invalidate();
+		validate();
 		pack();
-		setVisible(true);
+	}
+	
+	public void showDifficulty() {
+		setContentPane(difficultyPanel);
+		invalidate();
+		validate();
+		pack();
 	}
 	
 	public void showGameMenu() {
-		initUI();
 		setContentPane(menuPanel);
+		invalidate();
+		validate();
 		pack();
-		setVisible(true);
 	}
 	
 	public void showCredit() {
-		initUI();
 		setContentPane(creditPanel);
+		invalidate();
+		validate();
 		pack();
-		setVisible(true);
 	}
 }
