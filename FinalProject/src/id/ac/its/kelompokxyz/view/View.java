@@ -22,6 +22,7 @@ import id.ac.its.kelompokxyz.util.*;
 
 public class View extends JFrame{
 
+	private static final long serialVersionUID = 1L;
 	private final MenuPanel menuPanel;
     private JPanel content;
     private final ViewListener viewListener = new ViewListener();
@@ -29,6 +30,7 @@ public class View extends JFrame{
 	public View() {
 		menuPanel = new MenuPanel((JFrame)this);
 		initUI(menuPanel);
+		System.out.println("VIEW");
 	}
 	
 	private void initUI(MenuPanel menuPanel) {
@@ -40,6 +42,7 @@ public class View extends JFrame{
     	setResizable(false);
     	setContentPane(menuPanel);
     	pack();
+    	setVisible(true);
     }
     
     public void showMenu() {
