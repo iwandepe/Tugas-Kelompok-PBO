@@ -1,6 +1,7 @@
 package id.ac.its.kelompokxyz.view;
 
 import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Point;
@@ -24,18 +25,23 @@ public class View extends JFrame{
 
 	private static final long serialVersionUID = 1L;
 	private final MenuPanel menuPanel;
+	private final DifficultyPanel difficultyPanel;
+	private final GamePanel gamePanel;
+	private final GameOverPanel gameOverPanel;
     private JPanel content;
     private final ViewListener viewListener = new ViewListener();
 
-	public View() {
+	public View(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
 		menuPanel = new MenuPanel((JFrame)this);
+		gamePanel = new GamePanel(balls, bricks, paddle);
+		difficultyPanel = new DifficultyPanel((JFrame)this);
+		gameOverPanel = new GameOverPanel();
 		initUI(menuPanel);
 		System.out.println("VIEW");
 	}
 	
 	private void initUI(MenuPanel menuPanel) {
     	setLayout(new BorderLayout(10,10));
-    	    	
     	setLocation(10,10);
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
     	setTitle("JaBrick Java Game");
@@ -43,6 +49,7 @@ public class View extends JFrame{
     	setContentPane(menuPanel);
     	pack();
     	setVisible(true);
+
     }
     
     public void showMenu() {
@@ -51,6 +58,11 @@ public class View extends JFrame{
         content.removeAll();
         content.validate();
         content.repaint();
+
     }
 	
+	public void updateView() {
+		
+		gamePanel.repaint();
+	}
 }
