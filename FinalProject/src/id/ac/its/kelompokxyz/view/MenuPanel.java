@@ -31,7 +31,6 @@ public class MenuPanel extends JPanel{
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
-//			changePanel(frame, new Board(frame, 5));
 			changePanel(frame, new DifficultyPanel(frame));
 		};
 	};
@@ -78,11 +77,6 @@ public class MenuPanel extends JPanel{
         ImageIcon imgTitle = new ImageIcon("src/resources/title.png");
         menuPanel.add(new JLabel(imgTitle),gbcTitle);
         menuPanel.repaint();
-        
-//        JLabel lblTitle = new JLabel("BRICK BREAKER");
-//        lblTitle.setFont(new java.awt.Font("Century Gothic", 1, 20));
-//        lblTitle.setForeground(new java.awt.Color(28, 41, 50));
-//        menuPanel.add(lblTitle,gbcTitle);
 
         hScore.setFont(new java.awt.Font("Fixedsys Regular", 1, 15));
         menuPanel.add(hScore, gbcTitle);

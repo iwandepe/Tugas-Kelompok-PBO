@@ -26,17 +26,17 @@ public class Controller{
     public static void main(String[] args) {
     	timer = new Timer(Commons.PERIOD, new GameCycle());
         timer.start();
-        System.out.println("Here");
+//        System.out.println("Here");
     }
     
     public void respondToInput(KeyEvent key) {
         int keyCode = key.getKeyCode();
 
         if (gameState == GameState.GAME_MENU) {
-            model.showMenu();
+//            model.showMenu();
             return;
         }
-
+        
         if (gameState == GameState.PLAYING) {
             
             switch (key.getKeyCode()) {

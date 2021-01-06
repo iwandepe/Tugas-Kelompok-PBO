@@ -23,31 +23,33 @@ import id.ac.its.kelompokxyz.util.*;
 public class View extends JFrame{
 
 	private final MenuPanel menuPanel;
+	private final DifficultyPanel difficultyPanel;
+	private final GamePanel gamePanel;
+	private final GameOverPanel gameOverPanel;
     private JPanel content;
     private final ViewListener viewListener = new ViewListener();
 
-	public View() {
+	public View(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
 		menuPanel = new MenuPanel((JFrame)this);
+		gamePanel = new GamePanel(balls, bricks, paddle);
+		difficultyPanel = new DifficultyPanel((JFrame)this);
+		gameOverPanel = new GameOverPanel();
 		initUI(menuPanel);
 	}
 	
 	private void initUI(MenuPanel menuPanel) {
     	setLayout(new BorderLayout(10,10));
-    	    	
     	setLocation(10,10);
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
     	setTitle("JaBrick Java Game");
     	setResizable(false);
     	setContentPane(menuPanel);
     	pack();
-    }
-    
-    public void showMenu() {
-        System.out.println("MAIN MENU");
-        viewListener.setGameMenu();
-        content.removeAll();
-        content.validate();
-        content.repaint();
+    	setVisible(true);
     }
 	
+	public void updateView() {
+		
+		gamePanel.repaint();
+	}
 }

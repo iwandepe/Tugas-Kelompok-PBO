@@ -19,7 +19,7 @@ public class Breakout extends JFrame {
     	setTitle("JaBrick Java Game");
     	setResizable(false);
     	setContentPane(new MainPanel((JFrame)this));
-    	pack();  	
+    	pack();
     	
     }
     

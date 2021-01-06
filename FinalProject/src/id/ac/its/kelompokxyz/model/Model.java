@@ -22,7 +22,7 @@ public class Model {
     private List<Ball> balls;
     private List<Brick> bricks;
     private Paddle paddle;
-	private final View view;
+	private View view;
 	private int difficulty;
 	private int[] numsToGenerate = new int[]
     		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,12};
@@ -30,7 +30,6 @@ public class Model {
     public int time;
 	
 	public Model() {
-		view = new View();
 		modelInit();
 	}
 	
@@ -40,7 +39,8 @@ public class Model {
         paddle = new Paddle(difficulty);
         balls = new ArrayList<Ball>();
         balls.add(new Ball(100, difficulty, 1));
-
+        
+		view = new View(balls, bricks, paddle);
         initBrick();
     }
     
@@ -60,10 +60,6 @@ public class Model {
     public static int getRandom(int[] array) {
         int random = new Random().nextInt(array.length);
         return array[random];
-    }
-    
-    public void showMenu() {
-    	view.showMenu();
     }
     
     public void movePaddle(int dx) {
