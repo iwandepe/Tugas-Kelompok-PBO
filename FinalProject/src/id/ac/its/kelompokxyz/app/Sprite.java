@@ -1,4 +1,4 @@
-package id.ac.its.kelompokxyz;
+package id.ac.its.kelompokxyz.app;
 
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -46,7 +46,7 @@ public class Sprite {
         return image;
     }
 
-    Rectangle getRect() {
+    public Rectangle getRect() {
 
         return new Rectangle(x, y,
                 image.getWidth(null), image.getHeight(null));

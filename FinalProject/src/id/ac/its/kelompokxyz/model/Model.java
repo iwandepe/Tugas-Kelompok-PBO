@@ -1,17 +1,7 @@
-package id.ac.its.kelompokxyz;
+package id.ac.its.kelompokxyz.model;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.Timer;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.RenderingHints;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -20,54 +10,43 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Random;
+import javax.swing.JFrame;
+import javax.swing.Timer;
+import id.ac.its.kelompokxyz.model.Ball;
+import id.ac.its.kelompokxyz.util.Commons;
+import id.ac.its.kelompokxyz.view.View;
 
-public class Board extends JPanel {
-	private static final long serialVersionUID = 1L;
+public class Model {
 	
 	Random ran = new Random();
-	JFrame frame;
-	private Timer timer;
-    private String message = "Game Over";
     private List<Ball> balls;
-    private Paddle paddle;
     private List<Brick> bricks;
-    private boolean inGame = true;
-    private int[] numsToGenerate = new int[]
+    private Paddle paddle;
+	private final View view;
+	private int difficulty;
+	private int[] numsToGenerate = new int[]
     		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,12};
-    private int difficulty; 
-    
     int timeStart = (int)(System.currentTimeMillis() /1000);
     public int time;
-    
-    
-    int i =0;
 	
-    public Board(JFrame frame, int difficulty) {
-    	this.frame = frame;
-    	this.difficulty = difficulty;
-        initBoard();
-    }
+	public Model() {
+		view = new View();
+		modelInit();
+	}
+	
+    private void modelInit() {
 
-    private void initBoard() {
-
-        addKeyListener(new TAdapter());
-        setFocusable(true);
-        setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
-
-        gameInit();
-    }
-
-    private void gameInit() {
-    	
         bricks = new ArrayList<Brick>();
-        balls = new ArrayList<Ball>();
         paddle = new Paddle(difficulty);
-        
+        balls = new ArrayList<Ball>();
         balls.add(new Ball(100, difficulty, 1));
 
-        for (int i = 0; i < Commons.ROW; i++) {
+        initBrick();
+    }
+    
+    private void initBrick() {
+    	for (int i = 0; i < Commons.ROW; i++) {
             for (int j = 0; j < 10; j++) {
-//            	ran.nextInt(2)+1
             	if (i % 2 == 0) {
             		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 100, ran.nextInt(2)+1));
             	}
@@ -76,150 +55,22 @@ public class Board extends JPanel {
             	}
             }
         }
-
-        
-        
-        timer = new Timer(Commons.PERIOD, new GameCycle());
-        timer.start();
     }
     
     public static int getRandom(int[] array) {
         int random = new Random().nextInt(array.length);
         return array[random];
     }
-
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-
-        var g2d = (Graphics2D) g;
-
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-
-        g2d.setRenderingHint(RenderingHints.KEY_RENDERING,
-                RenderingHints.VALUE_RENDER_QUALITY);
-
-        if (inGame) {
-            
-            
-//        	timeSpend.start();
-            drawObjects(g2d);
-        } else {
-
-            gameFinished(g2d);
-        }
-
-        Toolkit.getDefaultToolkit().sync();
+    
+    public void showMenu() {
+    	view.showMenu();
     }
     
-//    private void drawTime(Graphics2D g2d) {
-//    	g2d.drawString("00:00", Commons.WIDTH/2, 25);
-//    }
-    
-    private void drawObjects(Graphics2D g2d) {
-    	
-    	for (Ball ball : balls) {
-    		g2d.drawImage(ball.getImage(), ball.getX(), ball.getY(),
-                    ball.getImageWidth(), ball.getImageHeight(), this);
-    	}
-    	
-        g2d.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(),
-                paddle.getImageWidth(), paddle.getImageHeight(), this);
-
-        for (Brick brick: bricks){
-
-//            if (!brick.isDestroyed()) {
-
-            g2d.drawImage(brick.getImage(), brick.getX(),
-                    brick.getY(), brick.getImageWidth(),
-                    brick.getImageHeight(), this);
-            
-//            }
-        }
-        
-        time = (int) ((System.currentTimeMillis()/1000) % timeStart);
-        g2d.drawString("time: "+String.valueOf(time), Commons.WIDTH/2-10, 25);
-        
-//        timeSpend = new Timer(1000, new ActionListener() {
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				
-//				g2d.drawString("qqq"+String.valueOf(i), Commons.WIDTH/2, 25);
-//				i++;
-//			}
-//		});
-        
+    public void movePaddle(int dx) {
+    	paddle.setDx(dx);
     }
-
-    private void gameFinished(Graphics2D g2d) {
-    	
-    	new CreateIO(time, "Player 1");
-
-        var font = new Font("Verdana", Font.BOLD, 18);
-        FontMetrics fontMetrics = this.getFontMetrics(font);
-
-        g2d.setColor(Color.BLACK);
-        g2d.setFont(font);
-        g2d.drawString(message,
-                (Commons.WIDTH - fontMetrics.stringWidth(message)) / 2,
-                Commons.WIDTH / 2);
-        
-        
-        
-//        try {
-//			Thread.sleep(3000);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-        MainPanel.changePanel(frame, new MainPanel(frame));
-        
-    }
-
-    private class TAdapter extends KeyAdapter {
-
-        @Override
-        public void keyReleased(KeyEvent e) {
-
-            paddle.keyReleased(e);
-        }
-
-        @Override
-        public void keyPressed(KeyEvent e) {
-
-            paddle.keyPressed(e);
-        }
-    }
-
-    private class GameCycle implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-            doGameCycle();
-        }
-    }
-
-    private void doGameCycle() {
-    	
-    	for (Ball ball: balls) {
-    		ball.move();
-    	}
-        paddle.move();
-        checkCollision();
-        
-        repaint();
-    }
-
-    private void stopGame() {
-
-        inGame = false;
-        timer.stop();
-    }
-
-    private void checkCollision() {
-    	
-    	// Stop game if the balls is zero
+	
+	public void checkCollision() {
     	
     	for (ListIterator<Ball> iter = balls.listIterator(); iter.hasNext(); ) {
     		Ball ball = iter.next();
@@ -228,15 +79,6 @@ public class Board extends JPanel {
     			iter.remove();
     		}
         }
-    	
-    	if(balls.isEmpty()) {
-    		stopGame();
-    	}
-        
-    	if(bricks.isEmpty()) {
-    		message = "Victory";
-    		stopGame();
-    	}
         
         for (Ball ball: balls) {
         	
@@ -348,4 +190,12 @@ public class Board extends JPanel {
         	}
         }
     }
+
+	public List<Ball> getBalls() {
+		return balls;
+	}
+
+	public Paddle getPaddle() {
+		return paddle;
+	}
 }

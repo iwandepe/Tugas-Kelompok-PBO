@@ -1,4 +1,4 @@
-package id.ac.its.kelompokxyz;
+package id.ac.its.kelompokxyz.app;
 
 import java.awt.Dimension;
 
@@ -21,7 +21,6 @@ public class MainPanel extends JPanel {
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
-//			changePanel(frame, new Board(frame, 5));
 			changePanel(frame, new DifficultyPanel(frame));
 		};
 	};

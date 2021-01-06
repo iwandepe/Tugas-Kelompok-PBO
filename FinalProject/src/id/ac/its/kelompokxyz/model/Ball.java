@@ -1,6 +1,7 @@
-package id.ac.its.kelompokxyz;
+package id.ac.its.kelompokxyz.model;
 
 import javax.swing.ImageIcon;
+import id.ac.its.kelompokxyz.util.*;
 
 public class Ball extends Sprite {
 
@@ -48,7 +49,7 @@ public class Ball extends Sprite {
     	getImageDimensions();
     }
 
-    void move() {
+    public void move() {
 
         x += xdir*speed;
         y += ydir*speed;
@@ -75,30 +76,30 @@ public class Ball extends Sprite {
         y = Commons.INIT_BALL_Y;
     }
 
-    void setXDir(int x) {
+    public void setXDir(int x) {
 
         xdir = x;
     }
 
-    void setYDir(int y) {
+    public void setYDir(int y) {
 
         ydir = y;
     }
 
-    int getYDir() {
+    public int getYDir() {
 
         return ydir;
     }
     
-    int getXDir() {
+    public int getXDir() {
     	return xdir;
     }
     
-    void setWeight(int w) {
+    public void setWeight(int w) {
     	weight = w;
     }
     
-    int getWeight() {
+    public int getWeight() {
     	return weight;
     }
 

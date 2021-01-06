@@ -1,4 +1,4 @@
-package id.ac.its.kelompokxyz;
+package id.ac.its.kelompokxyz.view;
 
 import java.awt.Dimension;
 
@@ -8,6 +8,12 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import id.ac.its.kelompokxyz.app.Board;
+import id.ac.its.kelompokxyz.app.MyButton;
+import id.ac.its.kelompokxyz.app.ReadIO;
+import id.ac.its.kelompokxyz.util.*;
+import id.ac.its.kelompokxyz.model.*;
 
 public class DifficultyPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -42,7 +48,7 @@ public class DifficultyPanel extends JPanel {
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
-			changePanel(frame, new MainPanel(frame));
+			changePanel(frame, new MenuPanel(frame));
 		};
 	};
 

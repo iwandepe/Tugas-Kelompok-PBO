@@ -1,9 +1,11 @@
-package id.ac.its.kelompokxyz;
+package id.ac.its.kelompokxyz.model;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+
+import id.ac.its.kelompokxyz.app.ReadIO;
 
 public class CreateIO {
 	private static ObjectOutputStream output;

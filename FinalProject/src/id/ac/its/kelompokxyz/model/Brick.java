@@ -1,4 +1,4 @@
-package id.ac.its.kelompokxyz;
+package id.ac.its.kelompokxyz.model;
 
 import javax.swing.ImageIcon;
 
@@ -47,11 +47,11 @@ public class Brick extends Sprite {
     	weight = w;
     }
     
-    int getWeight() {
+    public int getWeight() {
     	return weight;
     }
     
-    void decreaseWeight(int value) {
+    public void decreaseWeight(int value) {
     	weight -= value;
     }
 

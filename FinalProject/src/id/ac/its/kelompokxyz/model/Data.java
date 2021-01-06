@@ -1,4 +1,4 @@
-package id.ac.its.kelompokxyz;
+package id.ac.its.kelompokxyz.model;
 
 import java.io.Serializable;
 

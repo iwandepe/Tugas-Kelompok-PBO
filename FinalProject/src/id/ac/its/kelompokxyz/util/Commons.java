@@ -1,4 +1,4 @@
-package id.ac.its.kelompokxyz;
+package id.ac.its.kelompokxyz.util;
 
 public interface Commons {
     int ROW = 15;

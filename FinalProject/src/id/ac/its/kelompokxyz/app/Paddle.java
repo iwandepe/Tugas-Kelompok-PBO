@@ -1,4 +1,4 @@
-package id.ac.its.kelompokxyz;
+package id.ac.its.kelompokxyz.app;
 
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;

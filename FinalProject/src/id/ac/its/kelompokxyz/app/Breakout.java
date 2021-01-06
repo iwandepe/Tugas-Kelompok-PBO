@@ -1,7 +1,6 @@
-package id.ac.its.kelompokxyz;
+package id.ac.its.kelompokxyz.app;
 
 import javax.swing.JFrame;
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -15,13 +14,11 @@ public class Breakout extends JFrame {
     private void initUI() {
     	
     	setLayout(new BorderLayout(10,10));
-    	    	
     	setLocation(10,10);
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
     	setTitle("JaBrick Java Game");
     	setResizable(false);
     	setContentPane(new MainPanel((JFrame)this));
-//    	add(new MainPanel());
     	pack();  	
     	
     }
