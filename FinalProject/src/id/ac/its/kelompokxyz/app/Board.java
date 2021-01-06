@@ -26,21 +26,17 @@ public class Board extends JPanel {
 	
 	Random ran = new Random();
 	JFrame frame;
-	private Timer timer;
     private String message = "Game Over";
     private List<Ball> balls;
     private Paddle paddle;
     private List<Brick> bricks;
     private boolean inGame = true;
-    private int[] numsToGenerate = new int[]
-    		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,12};
+    private int[] numsToGenerate = new int[] {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,12};
     private int difficulty; 
     
-    int timeStart = (int)(System.currentTimeMillis() /1000);
+    private Timer timer;
+	int timeStart = (int)(System.currentTimeMillis() /1000);
     public int time;
-    
-    
-    int i =0;
 	
     public Board(JFrame frame, int difficulty) {
     	this.frame = frame;
@@ -69,7 +65,7 @@ public class Board extends JPanel {
             for (int j = 0; j < 10; j++) {
 //            	ran.nextInt(2)+1
             	if (i % 2 == 0) {
-            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 100, ran.nextInt(2)+1));
+            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 100, i%3+1));
             	}
             	else {
             		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 300, i%3+1));
@@ -171,6 +167,7 @@ public class Board extends JPanel {
 //			e.printStackTrace();
 //		}
         MainPanel.changePanel(frame, new MainPanel(frame));
+        
         
     }
 

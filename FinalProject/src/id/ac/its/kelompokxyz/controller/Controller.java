@@ -18,6 +18,7 @@ import id.ac.its.kelompokxyz.model.Brick;
 import id.ac.its.kelompokxyz.model.Model;
 
 public class Controller{
+
 	private static final long serialVersionUID = 1L;
 	private static int TICKS_PER_SECOND;
     private static Timer timer;

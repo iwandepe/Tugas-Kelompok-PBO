@@ -1,6 +1,7 @@
 package id.ac.its.kelompokxyz.view;
 
 import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Point;
@@ -22,6 +23,7 @@ import id.ac.its.kelompokxyz.util.*;
 
 public class View extends JFrame{
 
+	private static final long serialVersionUID = 1L;
 	private final MenuPanel menuPanel;
 	private final DifficultyPanel difficultyPanel;
 	private final GamePanel gamePanel;
@@ -32,9 +34,9 @@ public class View extends JFrame{
     private final ViewButtonListener viewButtonListener = new ViewButtonListener();
 
 	public View(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
-		menuPanel = new MenuPanel((JFrame)this, viewButtonListener);
-		creditPanel = new CreditPanel((JFrame)this, viewButtonListener);
-		difficultyPanel = new DifficultyPanel((JFrame)this, viewButtonListener);
+		menuPanel = new MenuPanel(viewButtonListener);
+		creditPanel = new CreditPanel(viewButtonListener);
+		difficultyPanel = new DifficultyPanel(viewButtonListener);
 		gamePanel = new GamePanel(balls, bricks, paddle);
 		gameOverPanel = new GameOverPanel();
 		initUI();
@@ -47,7 +49,17 @@ public class View extends JFrame{
     	setDefaultCloseOperation(EXIT_ON_CLOSE);
     	setTitle("JaBrick Java Game");
     	setResizable(false);
+    	setContentPane(menuPanel);
+    	pack();
     	setVisible(true);
+
+    }
+    
+    public void showMenu() {
+        System.out.println("MAIN MENU");
+        content.removeAll();
+        content.validate();
+        content.repaint();
     }
 	
 	public void updateView(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
