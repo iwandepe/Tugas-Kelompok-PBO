@@ -19,27 +19,37 @@ import id.ac.its.kelompokxyz.model.Model;
 
 public class Controller{
 	private static final long serialVersionUID = 1L;
+	private static int TICKS_PER_SECOND;
     private static Timer timer;
     private static Model model = new Model();
 	private GameState gameState;
+	int keyCode;
     
     public static void main(String[] args) {
-    	timer = new Timer(Commons.PERIOD, new GameCycle());
+    	timer = new Timer(TICKS_PER_SECOND, new GameCycle());
         timer.start();
-//        System.out.println("Here");
     }
     
-    public void respondToInput(KeyEvent key) {
-        int keyCode = key.getKeyCode();
+    public void respondToInput() {
 
         if (gameState == GameState.GAME_MENU) {
-//            model.showMenu();
+        	model.showGameMenu();
             return;
+        }
+        
+        if (gameState == GameState.DIFFICULTY) {
+        	model.showDifficulty();
+        	return;
+        }
+        
+        if (gameState == GameState.CREDIT) {
+        	model.showCredit();
+        	return;
         }
         
         if (gameState == GameState.PLAYING) {
             
-            switch (key.getKeyCode()) {
+            switch (this.keyCode) {
                 case KeyEvent.VK_LEFT:
                     model.movePaddle(-1);
                     break;
@@ -50,6 +60,10 @@ public class Controller{
                     break;
             }
         }
+    }
+    
+    public void setKeyCode(KeyEvent key) {
+    	keyCode = key.getKeyCode();
     }
      
     private static class GameCycle implements ActionListener {
@@ -71,9 +85,39 @@ public class Controller{
     
     public void setGameMenu(){
     	gameState = GameState.GAME_MENU;
+    	System.out.println("Menu");
     }
 
     public void setPlaying() {
         gameState = GameState.PLAYING;
+    }
+    
+    public void setChoosingDifficulty() {
+    	gameState = GameState.DIFFICULTY;
+    	System.out.println("Difficulty");
+    }
+    
+    public void setDifficulty(int difficulty) {
+    	switch (difficulty) {
+    	case 0:
+            TICKS_PER_SECOND = 1000 / 8;
+            timer = new Timer(TICKS_PER_SECOND, new GameCycle());
+            break;
+        case 1:
+            TICKS_PER_SECOND = 1000 / 15;
+            timer = new Timer(TICKS_PER_SECOND, new GameCycle());
+            break;
+        case 2:
+            TICKS_PER_SECOND = 1000 / 20;
+            timer = new Timer(TICKS_PER_SECOND, new GameCycle());
+            break;
+        default:
+            break;
+    	}
+    }
+    
+    public void setCredit() {
+    	gameState = GameState.CREDIT;
+    	System.out.println("Credit");
     }
 }

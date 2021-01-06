@@ -7,10 +7,9 @@ package id.ac.its.kelompokxyz.util;
 
 public enum GameState {
 	PLAYING,
-    NEW_GAME,
+    CREDIT,
     GAME_MENU,
     GAME_OVER,
     PAUSED,
     DIFFICULTY,
-    CONTROLS;
 }

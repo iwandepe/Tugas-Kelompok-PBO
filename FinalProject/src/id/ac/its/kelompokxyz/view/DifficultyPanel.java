@@ -22,37 +22,8 @@ public class DifficultyPanel extends JPanel {
 	
 	JLabel hScore = new JLabel("Best Time : 0");
 //	JLabel coin = new JLabel("Coins : 0");
-	
-	MyButton bEasy = new MyButton("EASY"){
-		private static final long serialVersionUID = 1L;
-		@Override
-		public void btnMouseClicked(MouseEvent evt) {
-			changePanel(frame, new Board(frame, 1));
-		};
-	};
-	MyButton bMedium = new MyButton("MEDIUM"){
-		private static final long serialVersionUID = 1L;
-		@Override
-		public void btnMouseClicked(MouseEvent evt) {
-			changePanel(frame, new Board(frame, 2));
-		};
-	};
-	MyButton bHard = new MyButton("HARD"){
-		private static final long serialVersionUID = 1L;
-		@Override
-		public void btnMouseClicked(MouseEvent evt) {
-			changePanel(frame, new Board(frame, 3));
-		};
-	};
-	MyButton bBack = new MyButton("MAIN MENU") {
-		private static final long serialVersionUID = 1L;
-		@Override
-		public void btnMouseClicked(MouseEvent evt) {
-			changePanel(frame, new MenuPanel(frame));
-		};
-	};
 
-	public DifficultyPanel(JFrame frame) {
+	public DifficultyPanel(JFrame frame, ViewButtonListener viewButtonListener) {
 		this.frame = frame;
 		setFocusable(true);
         requestFocusInWindow();
@@ -70,17 +41,17 @@ public class DifficultyPanel extends JPanel {
 
         menuPanel.add(new JLabel("CHOOSE DIFFICULTY"), gbc);
         menuPanel.add(hScore, gbc);
-        updateScore();
+//        updateScore();
 
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         JPanel buttons = new JPanel(new GridBagLayout());
         
-        buttons.add(bEasy, gbc);
-        buttons.add(bMedium, gbc);
-        buttons.add(bHard, gbc);
-        buttons.add(bBack, gbc);
+        buttons.add(viewButtonListener.getbEasy(), gbc);
+        buttons.add(viewButtonListener.getbMedium(), gbc);
+        buttons.add(viewButtonListener.getbHard(), gbc);
+        buttons.add(viewButtonListener.getbBack(), gbc);
 
         gbc.weighty = 1;
         menuPanel.add(buttons, gbc);
@@ -89,18 +60,10 @@ public class DifficultyPanel extends JPanel {
 
 	}
 	
-	public static void changePanel(JFrame frame, JPanel added) {
-		frame.setContentPane(added);
-		frame.invalidate();
-		frame.validate();
-		added.setFocusable(true);
-		added.requestFocusInWindow();
-	}
-	
-	public void updateScore() {
-//		new CreateIO(0, "plyr1");
-		ReadIO data = new ReadIO();
-		hScore.setText("Best Time : "+ data.getScore());
-	}
+//	public void updateScore() {
+////		new CreateIO(0, "plyr1");
+//		ReadIO data = new ReadIO();
+//		hScore.setText("Best Time : "+ data.getScore());
+//	}
 
 }

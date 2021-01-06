@@ -4,61 +4,28 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.MouseEvent;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
 import id.ac.its.kelompokxyz.app.Commons;
 import id.ac.its.kelompokxyz.app.CreateIO;
 import id.ac.its.kelompokxyz.app.Credits;
 import id.ac.its.kelompokxyz.app.DifficultyPanel;
 import id.ac.its.kelompokxyz.app.MyButton;
 import id.ac.its.kelompokxyz.app.ReadIO;
+import id.ac.its.kelompokxyz.view.ViewButtonListener;
 
 public class MenuPanel extends JPanel{
 
 	private static final long serialVersionUID = 1L;
 	JPanel menuPanel = new JPanel();
 	JFrame frame;
-	
 	JLabel hScore = new JLabel("BEST SCORE : 0");
 	JLabel coin = new JLabel("Coins : 0");
-	
-	MyButton bPlay = new MyButton("PLAY"){
-		private static final long serialVersionUID = 1L;
-		@Override
-		public void btnMouseClicked(MouseEvent evt) {
-			changePanel(frame, new DifficultyPanel(frame));
-		};
-	};
-	MyButton bDif = new MyButton("RESET SCORE"){
-		private static final long serialVersionUID = 1L;
-		@Override
-		public void btnMouseClicked(MouseEvent evt) {
-			// Function MAP / LEVEL
-			new CreateIO().reset();
-//			updateScore();
-		};
-	};
-	MyButton bCredit = new MyButton("CREDITS"){
-		private static final long serialVersionUID = 1L;
-		@Override
-		public void btnMouseClicked(MouseEvent evt) {
-			changePanel(frame, new Credits(frame));
-		};
-	};
-	MyButton bExit = new MyButton("EXIT") {
-		private static final long serialVersionUID = 1L;
-		@Override
-		public void btnMouseClicked(MouseEvent evt) {
-			System.exit(0);
-		};
-	};
 
-	public MenuPanel(JFrame frame) {
+	public MenuPanel(JFrame frame, ViewButtonListener viewButtonListener) {
 		this.frame = frame;
 		setFocusable(true);
         requestFocusInWindow();
@@ -89,16 +56,16 @@ public class MenuPanel extends JPanel{
 
         JPanel buttons = new JPanel(new GridBagLayout());
 
-        buttons.add(bPlay, gbcBtn);
-        buttons.add(bDif, gbcBtn);
-        buttons.add(bCredit, gbcBtn);
-        buttons.add(bExit, gbcBtn);
+        buttons.add(viewButtonListener.getbPlay(), gbcBtn);
+        buttons.add(viewButtonListener.getbDif(), gbcBtn);
+        buttons.add(viewButtonListener.getbCredit(), gbcBtn);
+        buttons.add(viewButtonListener.getbExit(), gbcBtn);
 
         gbcBtn.weighty = 1;
         menuPanel.add(buttons, gbcBtn);
         
         add(menuPanel);
-
+        System.out.println("Here!");
 	}
 	
 	public static void changePanel(JFrame frame, JPanel added) {

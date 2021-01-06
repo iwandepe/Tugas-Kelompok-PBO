@@ -33,6 +33,7 @@ public class MainPanel extends JPanel {
 			updateScore();
 		};
 	};
+	
 	MyButton bCredit = new MyButton("CREDITS"){
 		private static final long serialVersionUID = 1L;
 		@Override
