@@ -69,12 +69,26 @@ public class Model {
     	view.showCredit();
     }
     
+    public void continueGame() {
+    	view.continueGame();
+    }
+    
     public static int getRandom(int[] array) {
         int random = new Random().nextInt(array.length);
         return array[random];
     }
     
-    public void movePaddle(int dx) {
+    public void movePaddle() {
+    	paddle.move();
+    }
+    
+    public void moveBall() {
+    	for (Ball ball: balls) {
+    		ball.move();
+    	}
+    }
+    
+    public void setMovePaddle(int dx) {
     	paddle.setDx(dx);
     }
 	

@@ -28,6 +28,12 @@ public class GamePanel extends JPanel{
 		this.paddle = paddle;
 	}
 	
+	public void updateGame(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
+		this.balls = balls;
+		this.bricks = bricks;
+		this.paddle = paddle;
+	}
+	
 	@Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

@@ -17,7 +17,7 @@ public class MenuPanel extends JPanel{
 	JLabel hScore = new JLabel("BEST SCORE : 0");
 	JLabel coin = new JLabel("Coins : 0");
 
-	public MenuPanel( ViewButtonListener viewButtonListener) {
+	public MenuPanel(ViewButtonListener viewButtonListener) {
 		setFocusable(true);
         requestFocusInWindow();
         setBorder(new EmptyBorder(10, 10, 10, 10));
