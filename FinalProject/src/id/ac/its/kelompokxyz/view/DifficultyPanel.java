@@ -11,7 +11,7 @@ import id.ac.its.kelompokxyz.util.*;
 public class DifficultyPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
-	JLabel hScore = new JLabel("Best Time : 0");
+	JLabel hScore = new JLabel("Best Score : 0");
 
 	public DifficultyPanel(ViewListener viewListener) {
 		setFocusable(true);

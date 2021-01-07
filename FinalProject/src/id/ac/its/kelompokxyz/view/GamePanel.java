@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 //import id.ac.its.kelompokxyz.app.Board.TAdapter;
 import id.ac.its.kelompokxyz.model.Ball;
 import id.ac.its.kelompokxyz.model.Brick;
+import id.ac.its.kelompokxyz.model.Model;
 import id.ac.its.kelompokxyz.model.Paddle;
 import id.ac.its.kelompokxyz.util.Commons;
 
@@ -22,7 +23,8 @@ public class GamePanel extends JPanel{
     private List<Brick> bricks;
     private Paddle paddle;
     int timeStart = (int)(System.currentTimeMillis() /1000);
-    public int time;
+    Model model;
+    public int score;
 	
 	public GamePanel(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
         setFocusable(true);
@@ -34,7 +36,8 @@ public class GamePanel extends JPanel{
 		
 	}
 	
-	public void updateGame(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
+	public void updateGame(List<Ball> balls, List<Brick> bricks, Paddle paddle, int score) {
+		this.score = score;
 		this.balls = balls;
 		this.bricks = bricks;
 		this.paddle = paddle;
@@ -75,8 +78,7 @@ public class GamePanel extends JPanel{
             
         }
         
-        time = (int) ((System.currentTimeMillis()/1000) % timeStart);
-        g2d.drawString("time: "+String.valueOf(time), Commons.WIDTH/2-10, 25);
+        g2d.drawString("score: "+String.valueOf(score), Commons.WIDTH/2-10, 25);
         
     }
 }

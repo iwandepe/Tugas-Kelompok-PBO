@@ -1,6 +1,8 @@
 package id.ac.its.kelompokxyz.model;
 
 import java.io.IOException;
+
+
 import java.io.ObjectInputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -31,7 +33,7 @@ public class ReadIO extends Data {
 			Data record = (Data) input.readObject();
 			this.setName(record.getName());
 			this.setScore(record.getScore());
-//			System.out.printf("%s - %d",record.getName(), record.getScore());
+			System.out.printf("%s - %d%n",record.getName(), record.getScore());
 
 		} catch (ClassNotFoundException classNotFoundException) {
 			System.err.println("Invalid object type. Terminating.");
