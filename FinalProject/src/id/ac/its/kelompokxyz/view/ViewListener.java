@@ -26,6 +26,7 @@ public class ViewListener implements KeyListener{
 
 	@Override
 	public void keyTyped(KeyEvent e) {
+		
 	}
 
 	@Override

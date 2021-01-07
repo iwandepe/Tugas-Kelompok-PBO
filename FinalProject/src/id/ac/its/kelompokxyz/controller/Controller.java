@@ -35,7 +35,6 @@ public class Controller{
         timer.setInitialDelay(0);
     }
     
-
     private static class GameCycle implements ActionListener {
     	@Override
     	public void actionPerformed(ActionEvent e) {
@@ -84,6 +83,7 @@ public class Controller{
     
     public void setGameOver() {
     	timer.stop();
+    	gameState = GameState.GAME_OVER;
     }
     
     public void setKeyCode(KeyEvent key) {
