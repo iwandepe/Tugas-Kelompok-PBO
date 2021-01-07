@@ -66,7 +66,6 @@ public class GamePanel extends JPanel{
     	
         g2d.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(),
                 paddle.getImageWidth(), paddle.getImageHeight(), this);
-        System.out.println(paddle.getX());
         
         for (Brick brick: bricks){
 
