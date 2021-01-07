@@ -1,6 +1,8 @@
 package id.ac.its.kelompokxyz.view;
 
 import java.awt.Color;
+
+
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -9,7 +11,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import id.ac.its.kelompokxyz.app.Commons;
+import id.ac.its.kelompokxyz.util.Commons;
+import id.ac.its.kelompokxyz.model.CreateIO;
+import id.ac.its.kelompokxyz.model.Data;
+import id.ac.its.kelompokxyz.model.ReadIO;
 
 public class MenuPanel extends JPanel{
 
@@ -37,7 +42,7 @@ public class MenuPanel extends JPanel{
 
         hScore.setFont(new Font("Fixedsys Regular", 1, 15));
         add(hScore, gbcTitle);
-//        updateScore();
+        updateScore();
         
         GridBagConstraints gbcBtn = new GridBagConstraints();
         gbcBtn.gridwidth = GridBagConstraints.REMAINDER;
@@ -57,10 +62,11 @@ public class MenuPanel extends JPanel{
         System.out.println("Here!");
 	}
 	
-//	public void updateScore() {
-////		new CreateIO(0, "plyr1");
-//		ReadIO data = new ReadIO();
-//		hScore.setText("BEST SCORE : "+ data.getScore());
-//	}
+	public void updateScore() {
+//		new CreateIO(0, "plyr1");
+		ReadIO data = new ReadIO();
+		hScore.setText("BEST SCORE : "+ data.getScore());
+		System.out.println("updatescore : 0");
+	}
 	
 }

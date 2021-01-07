@@ -126,4 +126,8 @@ public class Controller{
     	gameState = GameState.CREDIT;
     	System.out.println("Credit");
     }
+    
+    public void updateScore() {
+    	model.view.updateScore();
+    }
 }

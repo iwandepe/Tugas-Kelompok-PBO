@@ -32,13 +32,16 @@ public class Model {
     private List<Ball> balls;
     private List<Brick> bricks;
     private Paddle paddle;
-	private View view;
+	public View view;
 	private Clip gameMusic, gameOverSound, eatAppleSound;
 	private int[] numsToGenerate = new int[]
     		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,12};
-    int timeStart = (int)(System.currentTimeMillis() /1000);
-    private int time;
     private int gameSpeed; 
+        
+    int score=0;
+	public void resetScore() {
+		this.score = 0;
+	}
 	
 	public Model() {
 		modelInit();
@@ -132,12 +135,15 @@ public class Model {
         balls = new ArrayList<Ball>();
         balls.add(new Ball(100, 1, 1));
         initBrick();
+    	view.updateView(balls, bricks, paddle, score);
 //        playMusic();
-    	view.updateView(balls, bricks, paddle);
     	view.continueGame();
     }
     
     public void gameOver() {
+    	new CreateIO(score, "plyr");
+    	resetScore();
+    	
     	view.showGameOver();
     }
     
@@ -162,7 +168,7 @@ public class Model {
     		ball.move();
     	}
     	checkCollision();
-    	view.updateView(balls, bricks, paddle);
+    	view.updateView(balls, bricks, paddle, score);
     }
     
     public void setMovePaddle(int dx) {
@@ -261,6 +267,7 @@ public class Model {
         	
         	for (Ball ball: balls) {
 	            if ((ball.getRect()).intersects(brick.getRect())) {
+	            	score++;
 	
 					int ballLeft = (int) ball.getRect().getMinX();
 	                int ballHeight = (int) ball.getRect().getHeight();

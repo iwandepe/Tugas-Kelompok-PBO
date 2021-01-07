@@ -13,7 +13,6 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import id.ac.its.kelompokxyz.app.MainPanel;
 import id.ac.its.kelompokxyz.controller.*;
 import id.ac.its.kelompokxyz.model.*;
 import id.ac.its.kelompokxyz.util.*;
@@ -69,8 +68,8 @@ public class View{
 	 * while game state is PLAYING
 	 */
 	
-	public void updateView(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
-		gamePanel.updateGame(balls, bricks, paddle);
+	public void updateView(List<Ball> balls, List<Brick> bricks, Paddle paddle, int score) {
+		gamePanel.updateGame(balls, bricks, paddle, score);
 		gamePanel.repaint();
 	}
 	
@@ -103,6 +102,11 @@ public class View{
 		frame.invalidate();
 		frame.validate();
 		frame.pack();
+		updateScore();
+	}
+	
+	public void updateScore() {
+		menuPanel.updateScore();
 	}
 	
 	public void showCredit() {

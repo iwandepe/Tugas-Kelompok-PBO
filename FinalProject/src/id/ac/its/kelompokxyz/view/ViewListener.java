@@ -5,6 +5,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 
 import id.ac.its.kelompokxyz.controller.Controller;
+import id.ac.its.kelompokxyz.model.CreateIO;
 import id.ac.its.kelompokxyz.model.MyButton;
 
 public class ViewListener implements KeyListener{
@@ -18,7 +19,7 @@ public class ViewListener implements KeyListener{
     
     @Override
     public void keyPressed(KeyEvent key) {
-        System.out.println(key.toString());
+//        System.out.println(key.toString());
 		controller.setKeyCode(key);
         controller.respondToInput();
     }
@@ -59,8 +60,8 @@ public class ViewListener implements KeyListener{
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
 			// Function MAP / LEVEL
-//			new CreateIO().reset();
-//			updateScore();
+			new CreateIO().reset();
+			controller.updateScore();
 		};
 	};
 	
