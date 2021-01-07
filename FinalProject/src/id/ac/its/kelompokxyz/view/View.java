@@ -27,13 +27,12 @@ public class View{
 	private final CreditPanel creditPanel;
 	private JFrame frame;
     private JPanel content;
-    private final ViewKeyListener viewKeyListener = new ViewKeyListener();
-    private final ViewButtonListener viewButtonListener = new ViewButtonListener();
+    private final ViewListener viewListener = new ViewListener();
 
 	public View(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
-		menuPanel = new MenuPanel(viewButtonListener);
-		creditPanel = new CreditPanel(viewButtonListener);
-		difficultyPanel = new DifficultyPanel(viewButtonListener);
+		menuPanel = new MenuPanel(viewListener);
+		creditPanel = new CreditPanel(viewListener);
+		difficultyPanel = new DifficultyPanel(viewListener);
 		gamePanel = new GamePanel(balls, bricks, paddle);
 		gameOverPanel = new GameOverPanel();
 		initUI();
@@ -41,12 +40,10 @@ public class View{
 	
 	private void initUI() {
 		frame = new JFrame("JaBrick Java Game");
+		frame.addKeyListener(viewListener);
+		frame.setFocusable(true);
 		
 		content = new JPanel();
-		gamePanel.addKeyListener(viewKeyListener);
-//		content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
-//        content.setBackground(Color.black);
-//		frame.add(content);
     	frame.setLayout(new BorderLayout(10,10));
     	frame.setLocation(10,10);
     	frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
@@ -55,34 +52,26 @@ public class View{
     	showGameMenu();
     	frame.setVisible(true);
     }
-    
-//    public void showMenu() {
-//        System.out.println("MAIN MENU");
-//        content.removeAll();
-//        content.validate();
-//        content.repaint();
-//    }
-	
 
 	public void updateView(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
 		gamePanel.updateGame(balls, bricks, paddle);
 		gamePanel.repaint();
-		System.out.println("Repaint");
 	}
 	
 	public void continueGame() {
-		
+
 		System.out.println("Continue game");
-		viewKeyListener.setPlaying();
+		viewListener.setPlaying();
+		content.removeAll();
 		content.add(gamePanel);
-		gamePanel.requestFocusInWindow();
+		gamePanel.setFocusable(true);
+		content.validate();
 		content.repaint();
 		
 		frame.setContentPane(content);
 		frame.invalidate();
 		frame.validate();
 		frame.pack();
-		
 	}
 	
 	public void showDifficulty() {

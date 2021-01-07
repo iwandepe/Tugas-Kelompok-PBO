@@ -12,14 +12,14 @@ public class CreditPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	
-	public CreditPanel(ViewButtonListener viewButtonListener) {
+	public CreditPanel(ViewListener viewListener) {
 		setBorder(new EmptyBorder(10, 10, 10, 10));
 		ImageIcon img = new ImageIcon("src/resources/credmin.png");
 		JLabel lbl = new JLabel(img);
 		lbl.setAlignmentX(CENTER_ALIGNMENT);
 		setLayout((LayoutManager) new BoxLayout(this, BoxLayout.Y_AXIS));
 		add(lbl);
-		add(viewButtonListener.getMenubtn());
+		add(viewListener.getMenubtn());
         
 	}
 }

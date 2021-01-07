@@ -25,7 +25,6 @@ public class GamePanel extends JPanel{
     public int time;
 	
 	public GamePanel(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
-//		addKeyListener(new TAdapter());
         setFocusable(true);
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
 		
@@ -44,7 +43,6 @@ public class GamePanel extends JPanel{
 	@Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        System.out.println("paintComponent");
 
         var g2d = (Graphics2D) g;
 
@@ -62,14 +60,14 @@ public class GamePanel extends JPanel{
     private void drawObjects(Graphics2D g2d) {
     	
     	for (Ball ball : balls) {
-    		System.out.println(ball.getX());
     		g2d.drawImage(ball.getImage(), ball.getX(), ball.getY(),
                     ball.getImageWidth(), ball.getImageHeight(), this);
     	}
     	
         g2d.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(),
                 paddle.getImageWidth(), paddle.getImageHeight(), this);
-
+        System.out.println(paddle.getX());
+        
         for (Brick brick: bricks){
 
             g2d.drawImage(brick.getImage(), brick.getX(),
