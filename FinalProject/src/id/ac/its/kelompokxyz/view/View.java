@@ -18,6 +18,11 @@ import id.ac.its.kelompokxyz.controller.*;
 import id.ac.its.kelompokxyz.model.*;
 import id.ac.its.kelompokxyz.util.*;
 
+/**
+ * Main View --- create frame and control all panel in game
+ * 
+ */
+
 public class View{
 
 	private final MenuPanel menuPanel;
@@ -28,7 +33,13 @@ public class View{
 	private JFrame frame;
     private JPanel content;
     private final ViewListener viewListener = new ViewListener();
-
+    
+    /**
+     * Initialize all panel
+     * and create frame 
+     * 
+     */
+    
 	public View(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
 		menuPanel = new MenuPanel(viewListener);
 		creditPanel = new CreditPanel(viewListener);
@@ -52,7 +63,12 @@ public class View{
     	showGameMenu();
     	frame.setVisible(true);
     }
-
+	
+	/**
+	 * Update view in every game cycle
+	 * while game state is PLAYING
+	 */
+	
 	public void updateView(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
 		gamePanel.updateGame(balls, bricks, paddle);
 		gamePanel.repaint();

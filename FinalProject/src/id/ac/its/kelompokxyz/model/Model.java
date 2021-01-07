@@ -15,9 +15,13 @@ import id.ac.its.kelompokxyz.util.Commons;
 import id.ac.its.kelompokxyz.view.View;
 import id.ac.its.kelompokxyz.view.ViewListener;
 
+/**
+ * Main Model  --- organize all data object
+ *
+ */
+
 public class Model {
 	
-	Random ran = new Random();
     private List<Ball> balls;
     private List<Brick> bricks;
     private Paddle paddle;
@@ -25,28 +29,23 @@ public class Model {
 	private int[] numsToGenerate = new int[]
     		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,12};
     int timeStart = (int)(System.currentTimeMillis() /1000);
-    public int time;
+    private int time;
+    private int gameSpeed; 
 	
 	public Model() {
 		modelInit();
 	}
 	
     private void modelInit() {
-    	
-        bricks = new ArrayList<Brick>();
-        paddle = new Paddle(1);
-        balls = new ArrayList<Ball>();
-        balls.add(new Ball(100, 1, 1));
         
 		view = new View(balls, bricks, paddle);
-        initBrick();
     }
     
     private void initBrick() {
     	for (int i = 0; i < Commons.ROW; i++) {
             for (int j = 0; j < 10; j++) {
             	if (i % 2 == 0) {
-            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 100, ran.nextInt(2)+1));
+            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 100, i%3+1));
             	}
             	else {
             		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 300, i%3+1));
@@ -68,6 +67,12 @@ public class Model {
     }
     
     public void continueGame() {
+    	
+        bricks = new ArrayList<Brick>();
+        paddle = new Paddle(1);
+        balls = new ArrayList<Ball>();
+        balls.add(new Ball(100, 1, 1));
+        initBrick();
     	view.updateView(balls, bricks, paddle);
     	view.continueGame();
     }
@@ -223,6 +228,10 @@ public class Model {
         	}
         }
     }
+	
+	public void setGameSpeed(int gameSpeed) {
+		this.gameSpeed = gameSpeed;
+	}
 
 	public List<Ball> getBalls() {
 		return balls;

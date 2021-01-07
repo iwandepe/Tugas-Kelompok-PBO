@@ -17,24 +17,30 @@ import id.ac.its.kelompokxyz.model.Ball;
 import id.ac.its.kelompokxyz.model.Brick;
 import id.ac.its.kelompokxyz.model.Model;
 
+/**
+ * Main Controller --- to control game cycle, game state, and determine program respond to input
+ *  
+ */
+
 public class Controller{
 
 	private static final long serialVersionUID = 1L;
-	private static int TICKS_PER_SECOND;
     private static Timer timer;
     private static Model model = new Model();
-	private GameState gameState;
-	int keyCode;
+	private static GameState gameState;
+	int keyCodeInput;
     
     public static void main(String[] args) {
-    	timer = new Timer(TICKS_PER_SECOND, new GameCycle());
+    	timer = new Timer(Commons.PERIOD, new GameCycle());
         timer.setInitialDelay(0);
     }
     
-    private void stopGame() {
 
-//        inGame = false;
-        timer.stop();
+    private static class GameCycle implements ActionListener {
+    	@Override
+    	public void actionPerformed(ActionEvent e) {
+    		model.doGameCycle();
+    	}
     }
     
     public void respondToInput() {
@@ -61,7 +67,7 @@ public class Controller{
         }
         
         if (gameState == GameState.PLAYING) {
-            switch (this.keyCode) {
+            switch (this.keyCodeInput) {
                 case KeyEvent.VK_LEFT:
                     model.setMovePaddle(-1);
                     System.out.println("kiri");
@@ -77,21 +83,11 @@ public class Controller{
     }
     
     public void setKeyCode(KeyEvent key) {
-    	keyCode = key.getKeyCode();
-    	System.out.println("receive input");
-    }
-     
-    private static class GameCycle implements ActionListener {
-    	
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            model.doGameCycle();
-        }
+    	keyCodeInput = key.getKeyCode();
     }
     
     public void setGameMenu(){
     	gameState = GameState.GAME_MENU;
-    	System.out.println("Menu");
     }
 
     public void setPlaying() {
@@ -100,7 +96,6 @@ public class Controller{
     
     public void setChoosingDifficulty() {
     	gameState = GameState.DIFFICULTY;
-    	System.out.println("Difficulty");
     }
     
     public void setGoingToGame() {
@@ -110,16 +105,13 @@ public class Controller{
     public void setDifficulty(int difficulty) {
     	switch (difficulty) {
     	case 0:
-            TICKS_PER_SECOND = 7;
-            timer = new Timer(TICKS_PER_SECOND, new GameCycle());
+            model.setGameSpeed(1);
             break;
         case 1:
-            TICKS_PER_SECOND = 7;
-            timer = new Timer(TICKS_PER_SECOND, new GameCycle());
+        	model.setGameSpeed(2);
             break;
         case 2:
-            TICKS_PER_SECOND = 7;
-            timer = new Timer(TICKS_PER_SECOND, new GameCycle());
+        	model.setGameSpeed(3);
             break;
         default:
             break;

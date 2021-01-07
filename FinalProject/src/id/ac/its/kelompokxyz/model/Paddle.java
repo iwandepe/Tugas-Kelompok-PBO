@@ -9,18 +9,12 @@ public class Paddle extends Sprite  {
     private int dx;
     private int speed;
 
-    public Paddle(int s) {
-        
-        initPaddle(s);        
-    }
-    
-    private void initPaddle(int s) {
-    	speed = s;
+    public Paddle(int gameSpeed) {
+    	speed = gameSpeed*3;
     	
         loadImage();
         getImageDimensions();
-
-        resetState();
+        resetState();    
     }
     
     private void loadImage() {

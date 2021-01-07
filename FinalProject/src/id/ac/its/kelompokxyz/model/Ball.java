@@ -11,23 +11,23 @@ public class Ball extends Sprite {
     private int speed;
     private int ballType;
     
-    public Ball(int w, int s, int ballType) {
+    public Ball(int w, int gameSpeed, int ballType) {
     	resetState();
-        initBall(w,s, ballType);
+        initBall(w, gameSpeed, ballType);
     }
     
-    public Ball(int x, int y, int w, int s, int ballType) {
+    public Ball(int x, int y, int w, int gameSpeed, int ballType) {
     	this.x = x;
     	this.y = y;
-    	initBall(w,s,ballType);
+    	initBall(w, gameSpeed,ballType);
     }
 
-    private void initBall(int w, int s, int ballType) {
+    private void initBall(int w, int gameSpeed, int ballType) {
     	
         xdir = 1;
         ydir = -1;
         weight = w;
-        speed = s;
+        speed = gameSpeed*3;
     	this.ballType = ballType;
 
         loadImage();
@@ -60,7 +60,6 @@ public class Ball extends Sprite {
         }
 
         if (x >= Commons.WIDTH - imageWidth) {
-//            System.out.println(imageWidth);
             setXDir(-1);
         }
 
