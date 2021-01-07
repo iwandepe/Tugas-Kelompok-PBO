@@ -13,7 +13,7 @@ public class DifficultyPanel extends JPanel {
 	
 	JLabel hScore = new JLabel("Best Time : 0");
 
-	public DifficultyPanel(ViewButtonListener viewButtonListener) {
+	public DifficultyPanel(ViewListener viewListener) {
 		setFocusable(true);
         requestFocusInWindow();
         
@@ -37,10 +37,10 @@ public class DifficultyPanel extends JPanel {
 
         JPanel buttons = new JPanel(new GridBagLayout());
         
-        buttons.add(viewButtonListener.getbEasy(), gbc);
-        buttons.add(viewButtonListener.getbMedium(), gbc);
-        buttons.add(viewButtonListener.getbHard(), gbc);
-        buttons.add(viewButtonListener.getbBack(), gbc);
+        buttons.add(viewListener.getbEasy(), gbc);
+        buttons.add(viewListener.getbMedium(), gbc);
+        buttons.add(viewListener.getbHard(), gbc);
+        buttons.add(viewListener.getbBack(), gbc);
 
         gbc.weighty = 1;
         add(buttons, gbc);

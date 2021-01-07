@@ -17,7 +17,7 @@ public class MenuPanel extends JPanel{
 	JLabel hScore = new JLabel("BEST SCORE : 0");
 	JLabel coin = new JLabel("Coins : 0");
 
-	public MenuPanel(ViewButtonListener viewButtonListener) {
+	public MenuPanel(ViewListener viewListener) {
 		setFocusable(true);
         requestFocusInWindow();
         setBorder(new EmptyBorder(10, 10, 10, 10));
@@ -46,10 +46,10 @@ public class MenuPanel extends JPanel{
 
         JPanel buttons = new JPanel(new GridBagLayout());
 
-        buttons.add(viewButtonListener.getbPlay(), gbcBtn);
-        buttons.add(viewButtonListener.getbDif(), gbcBtn);
-        buttons.add(viewButtonListener.getbCredit(), gbcBtn);
-        buttons.add(viewButtonListener.getbExit(), gbcBtn);
+        buttons.add(viewListener.getbPlay(), gbcBtn);
+        buttons.add(viewListener.getbDif(), gbcBtn);
+        buttons.add(viewListener.getbCredit(), gbcBtn);
+        buttons.add(viewListener.getbExit(), gbcBtn);
 
         gbcBtn.weighty = 1;
         add(buttons, gbcBtn);
