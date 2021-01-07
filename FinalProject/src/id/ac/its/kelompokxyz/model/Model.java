@@ -6,10 +6,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Random;
+
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.Timer;
 import id.ac.its.kelompokxyz.util.Commons;
 import id.ac.its.kelompokxyz.view.View;
@@ -26,6 +34,7 @@ public class Model {
     private List<Brick> bricks;
     private Paddle paddle;
 	private View view;
+	private Clip gameMusic, gameOverSound, eatAppleSound;
 	private int[] numsToGenerate = new int[]
     		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,12};
     int timeStart = (int)(System.currentTimeMillis() /1000);
@@ -34,11 +43,36 @@ public class Model {
 	
 	public Model() {
 		modelInit();
+		initSounds();
 	}
 	
     private void modelInit() {
         
 		view = new View(balls, bricks, paddle);
+    }
+    
+    private void initSounds() {
+        try {
+        	String address = "id/ac/its/kelompokxyz/sound/gameOver.wav";
+        	URL url = this.getClass().getClassLoader().getResource(address);
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(url);
+            gameOverSound = AudioSystem.getClip();
+            gameOverSound.open(audioIn);
+            
+            address = "id/ac/its/kelompokxyz/sound/eatApple.wav";
+            url = this.getClass().getClassLoader().getResource(address);
+            audioIn = AudioSystem.getAudioInputStream(url);
+            eatAppleSound = AudioSystem.getClip();
+            eatAppleSound.open(audioIn);
+            
+            address = "id/ac/its/kelompokxyz/sound/gameMusic.wav";
+            url = this.getClass().getClassLoader().getResource(address);
+            audioIn = AudioSystem.getAudioInputStream(url);
+            gameMusic = AudioSystem.getClip();
+            gameMusic.open(audioIn);
+        } 
+        catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+        }
     }
     
     private void initBrick() {
@@ -73,6 +107,7 @@ public class Model {
         balls = new ArrayList<Ball>();
         balls.add(new Ball(100, 1, 1));
         initBrick();
+        playMusic();
     	view.updateView(balls, bricks, paddle);
     	view.continueGame();
     }
@@ -80,6 +115,16 @@ public class Model {
     public void gameOver() {
     	view.showGameOver();
     	
+    }
+    
+    private void playMusic() {
+    	gameMusic.setMicrosecondPosition(0);
+        gameMusic.loop(100);
+        gameMusic.start();
+    }
+    
+    private void stopMusic() {
+    	gameMusic.stop();
     }
     
     public static int getRandom(int[] array) {
@@ -111,6 +156,7 @@ public class Model {
         }
     	
     	if(balls.isEmpty()) {
+    		stopMusic();
     		gameOver();
     	}
         
