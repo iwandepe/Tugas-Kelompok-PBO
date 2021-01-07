@@ -12,9 +12,15 @@ import java.util.ListIterator;
 import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.Timer;
-import id.ac.its.kelompokxyz.model.Ball;
 import id.ac.its.kelompokxyz.util.Commons;
 import id.ac.its.kelompokxyz.view.View;
+
+/**
+ * move snake dan continue game
+ * 
+ * @author LENOVO
+ *
+ */
 
 public class Model {
 	
@@ -23,7 +29,6 @@ public class Model {
     private List<Brick> bricks;
     private Paddle paddle;
 	private View view;
-	private int difficulty;
 	private int[] numsToGenerate = new int[]
     		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,12};
     int timeStart = (int)(System.currentTimeMillis() /1000);
@@ -36,9 +41,9 @@ public class Model {
     private void modelInit() {
 
         bricks = new ArrayList<Brick>();
-        paddle = new Paddle(difficulty);
+        paddle = new Paddle(1);
         balls = new ArrayList<Ball>();
-        balls.add(new Ball(100, difficulty, 1));
+        balls.add(new Ball(100, 1, 1));
         
 		view = new View(balls, bricks, paddle);
         initBrick();
@@ -70,6 +75,7 @@ public class Model {
     }
     
     public void continueGame() {
+    	view.updateView(balls, bricks, paddle);
     	view.continueGame();
     }
     
@@ -77,15 +83,14 @@ public class Model {
         int random = new Random().nextInt(array.length);
         return array[random];
     }
-    
-    public void movePaddle() {
-    	paddle.move();
-    }
-    
-    public void moveBall() {
-    	for (Ball ball: balls) {
+
+    public void doGameCycle() {
+        paddle.move();
+    	for (Ball ball: balls ) {
     		ball.move();
     	}
+    	checkCollision();
+    	view.updateView(balls, bricks, paddle);
     }
     
     public void setMovePaddle(int dx) {
@@ -188,9 +193,9 @@ public class Model {
                 		// clone the ball
                 		if ( brick.getBrickType() == 11) {
                 			balls.add(new Ball(ball.getX()+5, ball.getY(), 
-                					ball.getWeight(), difficulty, ball.getBallType()));
+                					ball.getWeight(), 1, ball.getBallType()));
                     		balls.add(new Ball(ball.getX()-5, ball.getY(), 
-                    				ball.getWeight(), difficulty, ball.getBallType()));
+                    				ball.getWeight(), 1, ball.getBallType()));
                     		break;
                 		}
                 		else if (brick.getBrickType() == 12){
