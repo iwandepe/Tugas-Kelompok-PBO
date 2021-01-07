@@ -71,14 +71,28 @@ public class View{
 	}
 	
 	public void continueGame() {
+//		frame.setContentPane(gamePanel);
+//		frame.invalidate();
+//		frame.validate();
+//		frame.pack();
+		
 		System.out.println("Continue game");
 		viewKeyListener.setPlaying();
-		content = (JPanel) frame.getContentPane();
+//		content = (JPanel) frame.getContentPane();
 		content.removeAll();
 		content.add(gamePanel);
-		content.setFocusable(true);
+		gamePanel.setFocusable(true);
+//		content.setFocusable(true);
 		content.validate();
 		content.repaint();
+		
+		frame.setContentPane(content);
+		frame.invalidate();
+		frame.validate();
+		frame.pack();
+		
+		
+		
 	}
 	
 	public void showDifficulty() {

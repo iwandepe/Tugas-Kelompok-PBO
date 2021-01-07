@@ -10,17 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Random;
-import javax.swing.JFrame;
 import javax.swing.Timer;
 import id.ac.its.kelompokxyz.util.Commons;
 import id.ac.its.kelompokxyz.view.View;
-
-/**
- * move snake dan continue game
- * 
- * @author LENOVO
- *
- */
 
 public class Model {
 	
@@ -39,7 +31,7 @@ public class Model {
 	}
 	
     private void modelInit() {
-
+    	
         bricks = new ArrayList<Brick>();
         paddle = new Paddle(1);
         balls = new ArrayList<Ball>();
@@ -61,7 +53,7 @@ public class Model {
             }
         }
     }
-    
+
     public void showGameMenu() {
     	view.showGameMenu();
     }

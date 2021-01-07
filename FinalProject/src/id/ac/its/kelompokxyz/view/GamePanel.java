@@ -1,5 +1,6 @@
 package id.ac.its.kelompokxyz.view;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -8,6 +9,8 @@ import java.util.List;
 import java.util.Timer;
 
 import javax.swing.JPanel;
+
+//import id.ac.its.kelompokxyz.app.Board.TAdapter;
 import id.ac.its.kelompokxyz.model.Ball;
 import id.ac.its.kelompokxyz.model.Brick;
 import id.ac.its.kelompokxyz.model.Paddle;
@@ -18,11 +21,14 @@ public class GamePanel extends JPanel{
     private List<Ball> balls;
     private List<Brick> bricks;
     private Paddle paddle;
-    private Timer timer;
     int timeStart = (int)(System.currentTimeMillis() /1000);
     public int time;
 	
 	public GamePanel(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
+//		addKeyListener(new TAdapter());
+        setFocusable(true);
+        setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
+		
 		this.balls = balls;
 		this.bricks = bricks;
 		this.paddle = paddle;
