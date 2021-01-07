@@ -82,6 +82,10 @@ public class Controller{
         }
     }
     
+    public void setGameOver() {
+    	timer.stop();
+    }
+    
     public void setKeyCode(KeyEvent key) {
     	keyCodeInput = key.getKeyCode();
     }

@@ -91,6 +91,7 @@ public class View{
 	}
 	
 	public void showDifficulty() {
+		System.out.println("Difficulty");
 		frame.setContentPane(difficultyPanel);
 		frame.invalidate();
 		frame.validate();
@@ -105,6 +106,7 @@ public class View{
 	}
 	
 	public void showCredit() {
+		System.out.println("Credit");
 		frame.setContentPane(creditPanel);
 		frame.invalidate();
 		frame.validate();
@@ -112,6 +114,8 @@ public class View{
 	}
 	
 	public void showGameOver() {
+		System.out.println("GameOver");
+		viewListener.setGameOver();
 		frame.setContentPane(gameOverPanel);
 		frame.invalidate();
 		frame.validate();
