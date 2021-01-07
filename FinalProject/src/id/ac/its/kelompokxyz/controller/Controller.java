@@ -28,7 +28,7 @@ public class Controller{
     
     public static void main(String[] args) {
     	timer = new Timer(TICKS_PER_SECOND, new GameCycle());
-        timer.start();
+        timer.setInitialDelay(0);
     }
     
     public void respondToInput() {
@@ -76,14 +76,8 @@ public class Controller{
     	
         @Override
         public void actionPerformed(ActionEvent e) {
-            doGameCycle();
+            model.doGameCycle();
         }
-    }
-
-    private static void doGameCycle() {
-    	model.moveBall();
-    	model.movePaddle();
-        model.checkCollision();
     }
     
     public void setGameMenu(){
@@ -107,15 +101,15 @@ public class Controller{
     public void setDifficulty(int difficulty) {
     	switch (difficulty) {
     	case 0:
-            TICKS_PER_SECOND = 1000 / 8;
+            TICKS_PER_SECOND = 7;
             timer = new Timer(TICKS_PER_SECOND, new GameCycle());
             break;
         case 1:
-            TICKS_PER_SECOND = 1000 / 15;
+            TICKS_PER_SECOND = 7;
             timer = new Timer(TICKS_PER_SECOND, new GameCycle());
             break;
         case 2:
-            TICKS_PER_SECOND = 1000 / 20;
+            TICKS_PER_SECOND = 7;
             timer = new Timer(TICKS_PER_SECOND, new GameCycle());
             break;
         default:

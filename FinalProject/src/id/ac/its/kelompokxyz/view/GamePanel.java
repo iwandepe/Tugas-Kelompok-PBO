@@ -26,6 +26,7 @@ public class GamePanel extends JPanel{
 		this.balls = balls;
 		this.bricks = bricks;
 		this.paddle = paddle;
+		
 	}
 	
 	public void updateGame(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
@@ -37,6 +38,7 @@ public class GamePanel extends JPanel{
 	@Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        System.out.println("paintComponent");
 
         var g2d = (Graphics2D) g;
 
@@ -54,6 +56,7 @@ public class GamePanel extends JPanel{
     private void drawObjects(Graphics2D g2d) {
     	
     	for (Ball ball : balls) {
+    		System.out.println(ball.getX());
     		g2d.drawImage(ball.getImage(), ball.getX(), ball.getY(),
                     ball.getImageWidth(), ball.getImageHeight(), this);
     	}
