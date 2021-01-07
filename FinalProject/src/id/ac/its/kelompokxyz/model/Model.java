@@ -13,6 +13,7 @@ import java.util.Random;
 import javax.swing.Timer;
 import id.ac.its.kelompokxyz.util.Commons;
 import id.ac.its.kelompokxyz.view.View;
+import id.ac.its.kelompokxyz.view.ViewListener;
 
 public class Model {
 	
@@ -71,6 +72,11 @@ public class Model {
     	view.continueGame();
     }
     
+    public void gameOver() {
+    	view.showGameOver();
+    	
+    }
+    
     public static int getRandom(int[] array) {
         int random = new Random().nextInt(array.length);
         return array[random];
@@ -98,6 +104,14 @@ public class Model {
     			iter.remove();
     		}
         }
+    	
+    	if(balls.isEmpty()) {
+    		gameOver();
+    	}
+        
+    	if(bricks.isEmpty()) {
+    		gameOver();
+    	}
         
         for (Ball ball: balls) {
         	

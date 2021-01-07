@@ -123,6 +123,15 @@ public class ViewListener implements KeyListener{
 			controller.respondToInput();
 		};
 	};
+	
+	MyButton menuOver = new MyButton("MAIN MENU"){
+		private static final long serialVersionUID = 1L;
+		@Override
+		public void btnMouseClicked(MouseEvent evt) {
+			controller.setGameMenu();
+			controller.respondToInput();
+		};
+	};
 
 	public MyButton getbPlay() {
 		return bPlay;
@@ -157,5 +166,9 @@ public class ViewListener implements KeyListener{
 
 	public MyButton getMenubtn() {
 		return menubtn;
+	}
+	
+	public MyButton getMenuOver() {
+		return menuOver;
 	}
 }

@@ -31,6 +31,12 @@ public class Controller{
         timer.setInitialDelay(0);
     }
     
+    private void stopGame() {
+
+//        inGame = false;
+        timer.stop();
+    }
+    
     public void respondToInput() {
 
         if (gameState == GameState.GAME_MENU) {

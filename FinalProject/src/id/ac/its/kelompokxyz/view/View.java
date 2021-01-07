@@ -34,7 +34,7 @@ public class View{
 		creditPanel = new CreditPanel(viewListener);
 		difficultyPanel = new DifficultyPanel(viewListener);
 		gamePanel = new GamePanel(balls, bricks, paddle);
-		gameOverPanel = new GameOverPanel();
+		gameOverPanel = new GameOverPanel(viewListener);
 		initUI();
 	}
 	
@@ -90,6 +90,13 @@ public class View{
 	
 	public void showCredit() {
 		frame.setContentPane(creditPanel);
+		frame.invalidate();
+		frame.validate();
+		frame.pack();
+	}
+	
+	public void showGameOver() {
+		frame.setContentPane(gameOverPanel);
 		frame.invalidate();
 		frame.validate();
 		frame.pack();
