@@ -13,6 +13,7 @@ public class CreateIO {
 	public CreateIO() {
 		
 	}
+	
 	public CreateIO(int score, String name) {
 		if(old.getScore() < score) {
 			openFile();
@@ -20,11 +21,13 @@ public class CreateIO {
 			closeFile();
 		}
 	}
+	
 	public void reset() {
 		openFile();
 		setRecords(0, "plyrnull");
 		closeFile();
 	}
+	
 	public static void openFile() {
 		try {
 			output = new ObjectOutputStream(
