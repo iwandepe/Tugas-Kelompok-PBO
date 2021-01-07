@@ -111,15 +111,15 @@ public class Model {
         balls.add(new Ball(100, 1, 1));
         initBrick();
     	view.updateView(balls, bricks, paddle, score);
-        playMusic();
+//        playMusic();
     	view.continueGame();
     }
     
-    public void gameOver() {
+    public void gameOver(boolean isWin) {
     	new CreateIO(score, "plyr");
     	resetScore();
     	
-    	view.showGameOver();
+    	view.showGameOver(isWin);
     	
     }
     
@@ -163,11 +163,11 @@ public class Model {
     	
     	if(balls.isEmpty()) {
     		stopMusic();
-    		gameOver();
+    		gameOver(false);
     	}
         
     	if(bricks.isEmpty()) {
-    		gameOver();
+    		gameOver(true);
     	}
         
         for (Ball ball: balls) {

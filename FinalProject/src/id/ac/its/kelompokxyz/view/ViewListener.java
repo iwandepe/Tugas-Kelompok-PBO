@@ -82,6 +82,14 @@ public class ViewListener implements KeyListener{
 		};
 	};
 	
+	MyButton getbExitbyOver = new MyButton("EXIT") {
+		private static final long serialVersionUID = 1L;
+		@Override
+		public void btnMouseClicked(MouseEvent evt) {
+			System.exit(0);
+		};
+	};
+	
 	MyButton bEasy = new MyButton("EASY"){
 		private static final long serialVersionUID = 1L;
 		@Override
@@ -130,7 +138,16 @@ public class ViewListener implements KeyListener{
 		};
 	};
 	
-	MyButton menuOver = new MyButton("MAIN MENU"){
+	MyButton menuOverWin = new MyButton("MAIN MENU"){
+		private static final long serialVersionUID = 1L;
+		@Override
+		public void btnMouseClicked(MouseEvent evt) {
+			controller.setGameMenu();
+			controller.respondToInput();
+		};
+	};
+	
+	MyButton menuOverLose = new MyButton("MAIN MENU"){
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
@@ -154,6 +171,11 @@ public class ViewListener implements KeyListener{
 	public MyButton getbExit() {
 		return bExit;
 	}
+	
+	public MyButton getbExitbyOver() {
+		return getbExitbyOver;
+	}
+	
 	public MyButton getbEasy() {
 		return bEasy;
 	}
@@ -174,7 +196,11 @@ public class ViewListener implements KeyListener{
 		return menubtn;
 	}
 	
-	public MyButton getMenuOver() {
-		return menuOver;
+	public MyButton getMenuOverwin() {
+		return menuOverWin;
+	}
+	
+	public MyButton getMenuOverlose() {
+		return menuOverLose;
 	}
 }

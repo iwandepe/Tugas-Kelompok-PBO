@@ -14,9 +14,9 @@ import id.ac.its.kelompokxyz.util.Commons;
 public class GameOverPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	JLabel hScore = new JLabel("Best Time : 0");
-	JLabel gOver = new JLabel("Game Over");
+	JLabel label;
 	
-	public GameOverPanel(ViewListener viewListener) {
+	public GameOverPanel(ViewListener viewListener, String msg, boolean isWin) {
 		setFocusable(true);
         requestFocusInWindow();
         
@@ -30,8 +30,9 @@ public class GameOverPanel extends JPanel{
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.anchor = GridBagConstraints.NORTH;
-
-        add(new JLabel("CHOOSE DIFFICULTY"), gbc);
+        
+        label = new JLabel(msg);
+        add(label, gbc);
         add(hScore, gbc);
 //        updateScore();
 
@@ -39,10 +40,20 @@ public class GameOverPanel extends JPanel{
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         JPanel buttons = new JPanel(new GridBagLayout());
-
-        buttons.add(viewListener.getMenuOver(), gbc);
+        
+        if(isWin)
+        	buttons.add(viewListener.getMenuOverwin(), gbc);
+        else {
+        	buttons.add(viewListener.getMenuOverlose(), gbc);
+        	buttons.add(viewListener.getbExitbyOver(), gbc);
+        }
 
         gbc.weighty = 1;
         add(buttons, gbc);
+	}
+	
+	public void updateScore(int score) {
+		hScore.setText("BEST SCORE : " + score);
+		System.out.println("updatescore : 0");
 	}
 }

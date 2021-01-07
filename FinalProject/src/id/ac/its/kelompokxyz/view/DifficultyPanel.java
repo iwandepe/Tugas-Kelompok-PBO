@@ -47,10 +47,9 @@ public class DifficultyPanel extends JPanel {
 
 	}
 	
-//	public void updateScore() {
-////		new CreateIO(0, "plyr1");
-//		ReadIO data = new ReadIO();
-//		hScore.setText("Best Time : "+ data.getScore());
-//	}
+	public void updateScore(int score) {
+		hScore.setText("BEST SCORE : " + score);
+		System.out.println("updatescore : 0");
+	}
 
 }

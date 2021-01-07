@@ -42,7 +42,7 @@ public class MenuPanel extends JPanel{
 
         hScore.setFont(new Font("Fixedsys Regular", 1, 15));
         add(hScore, gbcTitle);
-        updateScore();
+//        updateScore();
         
         GridBagConstraints gbcBtn = new GridBagConstraints();
         gbcBtn.gridwidth = GridBagConstraints.REMAINDER;
@@ -62,10 +62,8 @@ public class MenuPanel extends JPanel{
         System.out.println("Here!");
 	}
 	
-	public void updateScore() {
-//		new CreateIO(0, "plyr1");
-		ReadIO data = new ReadIO();
-		hScore.setText("BEST SCORE : "+ data.getScore());
+	public void updateScore(int score) {
+		hScore.setText("BEST SCORE : " + score);
 		System.out.println("updatescore : 0");
 	}
 	

@@ -28,6 +28,7 @@ public class View{
 	private final DifficultyPanel difficultyPanel;
 	private final GamePanel gamePanel;
 	private final GameOverPanel gameOverPanel;
+	private final GameOverPanel winPanel;
 	private final CreditPanel creditPanel;
 	private JFrame frame;
     private JPanel content;
@@ -44,7 +45,8 @@ public class View{
 		creditPanel = new CreditPanel(viewListener);
 		difficultyPanel = new DifficultyPanel(viewListener);
 		gamePanel = new GamePanel(balls, bricks, paddle);
-		gameOverPanel = new GameOverPanel(viewListener);
+		gameOverPanel = new GameOverPanel(viewListener, "GAME OVER. TRY AGAIN?", false);
+		winPanel = new GameOverPanel(viewListener, "YOU WIN !", true);
 		initUI();
 	}
 	
@@ -106,7 +108,10 @@ public class View{
 	}
 	
 	public void updateScore() {
-		menuPanel.updateScore();
+		ReadIO data = new ReadIO();
+		menuPanel.updateScore(data.getScore());
+		difficultyPanel.updateScore(data.getScore());
+		gameOverPanel.updateScore(data.getScore());
 	}
 	
 	public void showCredit() {
@@ -117,12 +122,16 @@ public class View{
 		frame.pack();
 	}
 	
-	public void showGameOver() {
+	public void showGameOver(boolean isWin) {
 		System.out.println("GameOver");
 		viewListener.setGameOver();
-		frame.setContentPane(gameOverPanel);
+		if(isWin)
+			frame.setContentPane(winPanel);
+		else
+			frame.setContentPane(gameOverPanel);
 		frame.invalidate();
 		frame.validate();
 		frame.pack();
+		updateScore();
 	}
 }

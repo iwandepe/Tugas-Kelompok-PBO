@@ -25,6 +25,10 @@ public class GamePanel extends JPanel{
     int timeStart = (int)(System.currentTimeMillis() /1000);
     Model model;
     public int score;
+    
+    public int getScore() {
+    	return score;
+    }
 	
 	public GamePanel(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
         setFocusable(true);
