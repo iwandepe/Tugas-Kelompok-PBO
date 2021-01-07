@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Random;
-
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -79,16 +78,42 @@ public class Model {
     }
     
     private void initBrick() {
-    	for (int i = 0; i < Commons.ROW; i++) {
-            for (int j = 0; j < 10; j++) {
-            	if (i % 2 == 0) {
-            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 100, i%3+1));
-            	}
-            	else {
-            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 300, i%3+1));
-            	}
-            }
-        }
+//    	for (int i = 0; i < Commons.ROW; i++) {
+//            for (int j = 0; j < 10; j++) {
+//            	if (i % 2 == 0) {
+//            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 100, i%3+1));
+//            	}
+//            	else {
+//            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 300, i%3+1));
+//            	}
+//            }
+//        }
+    	
+    	int[][] type1 = new int[][] {{1,3},{2,2},{2,4},{3,1},{3,5},{4,2},{4,4},{5,3}};
+    	int[][] type2 = new int[][] {{2,3},{3,2},{3,4},{4,3}};
+    	
+    	for (int i = 0; i < 8; i++) {
+    		bricks.add(new Brick(type1[i][0] * 70 + 50, type1[i][1] * 18 + 75, 100, 1));
+    	}
+    	
+    	for (int i = 0; i < 4; i++) {
+    		bricks.add(new Brick(type2[i][0] * 70 + 50, type2[i][1] * 18 + 75, 100, 3));
+    	}
+    	
+    	bricks.add(new Brick(3 * 70 + 50, 3 * 18 + 75, 100, 2));
+    	
+//    	int[][] type1 = new int[][] {{1,3},{1,5},{3,1},{3,7},{5,1},{5,7},{7,3},{7,5}};
+//    	int[][] type2 = new int[][] {{2,2},{2,3},{2,4},{2,5},{2,6},{3,2},{3,6},{4,2},
+//    		{4,4},{4,6},{5,2},{5,6},{6,2},{6,3},{6,4},{6,5},{6,6}};
+//    		
+//		for (int i = 0; i < 8; i++) {
+//    		bricks.add(new Brick(type1[i][0] * 70 + 50, type1[i][1] * 18 + 75, 100, 1));
+//    	}
+//    	
+//    	for (int i = 0; i < 17; i++) {
+//    		bricks.add(new Brick(type2[i][0] * 70 + 50, type2[i][1] * 18 + 75, 100, 3));
+//    	}
+    	
     }
 
     public void showGameMenu() {
@@ -118,9 +143,8 @@ public class Model {
     public void gameOver(boolean isWin) {
     	new CreateIO(score, "plyr");
     	resetScore();
-    	
+
     	view.showGameOver(isWin);
-    	
     }
     
     private void playMusic() {
@@ -151,6 +175,22 @@ public class Model {
     	paddle.setDx(dx);
     }
 	
+	public void setGameSpeed(int gameSpeed) {
+		this.gameSpeed = gameSpeed;
+	}
+
+	public List<Ball> getBalls() {
+		return balls;
+	}
+
+	public Paddle getPaddle() {
+		return paddle;
+	}
+	
+	/**
+	 * Check ball collision with another object or boundaries
+	 */
+	
 	public void checkCollision() {
     	
     	for (ListIterator<Ball> iter = balls.listIterator(); iter.hasNext(); ) {
@@ -169,6 +209,10 @@ public class Model {
     	if(bricks.isEmpty()) {
     		gameOver(true);
     	}
+    	
+    	/**
+    	 * Check collicion for ball and paddle
+    	 */
         
         for (Ball ball: balls) {
         	
@@ -213,6 +257,10 @@ public class Model {
 	            }
 	        }
         }
+        
+        /**
+         * Check if ball hit the brick
+         */
         
         for (ListIterator<Brick> iter = bricks.listIterator(); iter.hasNext(); ) {
         	Brick brick = iter.next();
@@ -281,16 +329,4 @@ public class Model {
         	}
         }
     }
-	
-	public void setGameSpeed(int gameSpeed) {
-		this.gameSpeed = gameSpeed;
-	}
-
-	public List<Ball> getBalls() {
-		return balls;
-	}
-
-	public Paddle getPaddle() {
-		return paddle;
-	}
 }
