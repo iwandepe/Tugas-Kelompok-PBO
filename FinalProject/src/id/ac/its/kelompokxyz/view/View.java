@@ -41,9 +41,9 @@ public class View{
 	
 	private void initUI() {
 		frame = new JFrame("JaBrick Java Game");
-		frame.addKeyListener(viewKeyListener);
 		
 		content = new JPanel();
+		gamePanel.addKeyListener(viewKeyListener);
 //		content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
 //        content.setBackground(Color.black);
 //		frame.add(content);
@@ -71,27 +71,17 @@ public class View{
 	}
 	
 	public void continueGame() {
-//		frame.setContentPane(gamePanel);
-//		frame.invalidate();
-//		frame.validate();
-//		frame.pack();
 		
 		System.out.println("Continue game");
 		viewKeyListener.setPlaying();
-//		content = (JPanel) frame.getContentPane();
-		content.removeAll();
 		content.add(gamePanel);
-		gamePanel.setFocusable(true);
-//		content.setFocusable(true);
-		content.validate();
+		gamePanel.requestFocusInWindow();
 		content.repaint();
 		
 		frame.setContentPane(content);
 		frame.invalidate();
 		frame.validate();
 		frame.pack();
-		
-		
 		
 	}
 	

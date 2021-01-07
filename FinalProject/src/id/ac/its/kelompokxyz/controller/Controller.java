@@ -58,9 +58,11 @@ public class Controller{
             switch (this.keyCode) {
                 case KeyEvent.VK_LEFT:
                     model.setMovePaddle(-1);
+                    System.out.println("kiri");
                     break;
                 case KeyEvent.VK_RIGHT:
                     model.setMovePaddle(1);
+                    System.out.println("kanan");
                     break;
                 default:
                     break;
@@ -70,6 +72,7 @@ public class Controller{
     
     public void setKeyCode(KeyEvent key) {
     	keyCode = key.getKeyCode();
+    	System.out.println("receive input");
     }
      
     private static class GameCycle implements ActionListener {
