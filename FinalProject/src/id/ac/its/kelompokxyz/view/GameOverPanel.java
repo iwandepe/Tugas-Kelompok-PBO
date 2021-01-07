@@ -17,6 +17,9 @@ public class GameOverPanel extends JPanel{
 	JLabel gOver = new JLabel("Game Over");
 	
 	public GameOverPanel(ViewListener viewListener) {
+		setFocusable(true);
+        requestFocusInWindow();
+        
 		setBorder(new EmptyBorder(10, 10, 10, 10));
 		setBackground(new Color(93, 100, 111));
 		setLayout(new GridBagLayout());
@@ -28,7 +31,7 @@ public class GameOverPanel extends JPanel{
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.anchor = GridBagConstraints.NORTH;
 
-        add(gOver, gbc);
+        add(new JLabel("CHOOSE DIFFICULTY"), gbc);
         add(hScore, gbc);
 //        updateScore();
 

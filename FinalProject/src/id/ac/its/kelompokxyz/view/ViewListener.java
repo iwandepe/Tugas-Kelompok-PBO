@@ -40,6 +40,10 @@ public class ViewListener implements KeyListener{
         controller.setGameMenu();
     }
 	
+    public void setGameOver() {
+    	controller.setGameOver();
+    }
+    
 	MyButton bPlay = new MyButton("PLAY"){
 		private static final long serialVersionUID = 1L;
 		@Override
