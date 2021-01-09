@@ -10,7 +10,7 @@ public class Paddle extends Sprite  {
     private int speed;
 
     public Paddle(int gameSpeed) {
-    	speed = gameSpeed*3;
+    	speed = gameSpeed;
     	
         loadImage();
         getImageDimensions();

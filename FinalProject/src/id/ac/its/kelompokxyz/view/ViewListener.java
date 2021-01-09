@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 
 import id.ac.its.kelompokxyz.controller.Controller;
 import id.ac.its.kelompokxyz.model.CreateIO;
+import id.ac.its.kelompokxyz.model.ImageButton;
 import id.ac.its.kelompokxyz.model.MyButton;
 
 public class ViewListener implements KeyListener{
@@ -19,9 +20,9 @@ public class ViewListener implements KeyListener{
     
     @Override
     public void keyPressed(KeyEvent key) {
-//        System.out.println(key.toString());
-		controller.setKeyCode(key);
-        controller.respondToInput();
+//		controller.setKeyCode(key);
+//        controller.respondToInput();
+    	controller.keyPressed(key);
     }
 
 	@Override
@@ -30,8 +31,10 @@ public class ViewListener implements KeyListener{
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e) {
-		
+	public void keyReleased(KeyEvent key) {
+//		controller.setKeyCode(key);
+//        controller.respondToInput();
+		controller.keyReleased(key);
 	}
     
     public void setPlaying() {
@@ -46,11 +49,59 @@ public class ViewListener implements KeyListener{
     	controller.setGameOver();
     }
     
+	// ========================================================================
+    ImageButton map1 = new ImageButton("DESERT"){
+		private static final long serialVersionUID = 1L;
+		@Override
+		public void btnMouseClicked(MouseEvent evt) {
+			controller.setCurrentMap(1);
+			controller.setChoosingDifficulty();
+			controller.respondToInput();
+		};
+	};
+    ImageButton map2 = new ImageButton("TOWN"){
+		private static final long serialVersionUID = 1L;
+		@Override
+		public void btnMouseClicked(MouseEvent evt) {
+			controller.setCurrentMap(2);
+			controller.setChoosingDifficulty();
+			controller.respondToInput();
+		};
+	};
+    ImageButton map3 = new ImageButton("FOREST"){
+		private static final long serialVersionUID = 1L;
+		@Override
+		public void btnMouseClicked(MouseEvent evt) {
+			controller.setCurrentMap(3);
+			controller.setChoosingDifficulty();
+			controller.respondToInput();
+		};
+	};
+
+	public ImageButton getMap1() {
+		return map1;
+	}
+	public ImageButton getMap2() {
+		return map2;
+	}
+	public ImageButton getMap3() {
+		return map3;
+	}
+	
+	// ========================================================================
+	MyButton bExit = new MyButton("EXIT") {
+		private static final long serialVersionUID = 1L;
+		@Override
+		public void btnMouseClicked(MouseEvent evt) {
+			System.exit(0);
+		};
+	};
+	
 	MyButton bPlay = new MyButton("PLAY"){
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
-			controller.setChoosingDifficulty();
+			controller.setPickMap();
 			controller.respondToInput();
 		};
 	};
@@ -74,7 +125,9 @@ public class ViewListener implements KeyListener{
 		};
 	};
 	
-	MyButton bExit = new MyButton("EXIT") {
+
+	
+	MyButton getbExitbyOver = new MyButton("EXIT") {
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
@@ -130,7 +183,16 @@ public class ViewListener implements KeyListener{
 		};
 	};
 	
-	MyButton menuOver = new MyButton("MAIN MENU"){
+	MyButton menuOverWin = new MyButton("MAIN MENU"){
+		private static final long serialVersionUID = 1L;
+		@Override
+		public void btnMouseClicked(MouseEvent evt) {
+			controller.setGameMenu();
+			controller.respondToInput();
+		};
+	};
+	
+	MyButton menuOverLose = new MyButton("MAIN MENU"){
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
@@ -154,6 +216,11 @@ public class ViewListener implements KeyListener{
 	public MyButton getbExit() {
 		return bExit;
 	}
+	
+	public MyButton getbExitbyOver() {
+		return getbExitbyOver;
+	}
+	
 	public MyButton getbEasy() {
 		return bEasy;
 	}
@@ -174,7 +241,11 @@ public class ViewListener implements KeyListener{
 		return menubtn;
 	}
 	
-	public MyButton getMenuOver() {
-		return menuOver;
+	public MyButton getMenuOverwin() {
+		return menuOverWin;
+	}
+	
+	public MyButton getMenuOverlose() {
+		return menuOverLose;
 	}
 }

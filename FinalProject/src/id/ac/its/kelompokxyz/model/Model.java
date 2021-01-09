@@ -1,11 +1,6 @@
 package id.ac.its.kelompokxyz.model;
 
-import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -17,10 +12,8 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.Timer;
 import id.ac.its.kelompokxyz.util.Commons;
 import id.ac.its.kelompokxyz.view.View;
-import id.ac.its.kelompokxyz.view.ViewListener;
 
 /** 
  * Main Model  --- organize all data object
@@ -38,11 +31,15 @@ public class Model {
 	private int[] numsToGenerate = new int[]
     		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,12};
     private int gameSpeed;
-    private int brickStructure = 0;
+    private int mapCode = 1;
         
     int score=0;
 	public void resetScore() {
 		this.score = 0;
+	}
+	
+	public void setMapCode(int mapCode) {
+		this.mapCode = mapCode;
 	}
 	
 	public Model() {
@@ -89,9 +86,9 @@ public class Model {
     
     private void initBrick() {
     	
-    	int[][] brickStructure1,brickStructure2, brickStructure3;
+    	int[][] mapCoordinate1,mapCoordinate2, mapCoordinate3;
     	
-    	switch(brickStructure) {
+    	switch(mapCode) {
     		case 0:
 		    	for (int i = 0; i < 4; i++) {
 		            for (int j = 0; j < 10; j++) {
@@ -107,31 +104,31 @@ public class Model {
 		    	
     		case 1:
     	
-		    	brickStructure1 = new int[][] {{1,3},{2,2},{2,4},{3,1},{3,5},{4,2},{4,4},{5,3}};
-		    	brickStructure2 = new int[][] {{2,3},{3,2},{3,4},{4,3}};
+    			mapCoordinate1 = new int[][] {{1,3},{2,2},{2,4},{3,1},{3,5},{4,2},{4,4},{5,3}};
+    			mapCoordinate2 = new int[][] {{2,3},{3,2},{3,4},{4,3}};
 		    	
 		    	for (int i = 0; i < 8; i++) {
-		    		bricks.add(new Brick(brickStructure1[i][0] * 70 + 50, brickStructure1[i][1] * 18 + 75, 100, 1));
+		    		bricks.add(new Brick(mapCoordinate1[i][0] * 70 + 50, mapCoordinate1[i][1] * 18 + 75, 100, 1));
 		    	}
 		    	
 		    	for (int i = 0; i < 4; i++) {
-		    		bricks.add(new Brick(brickStructure2[i][0] * 70 + 50, brickStructure2[i][1] * 18 + 75, 100, 3));
+		    		bricks.add(new Brick(mapCoordinate2[i][0] * 70 + 50, mapCoordinate2[i][1] * 18 + 75, 100, 3));
 		    	}
 		    	
 		    	bricks.add(new Brick(3 * 70 + 50, 3 * 18 + 75, 100, 2));
 		    	break;
 		    	
     		case 2:
-		    	brickStructure1 = new int[][] {{1,3},{1,5},{3,1},{3,7},{5,1},{5,7},{7,3},{7,5}};
-		    	brickStructure2 = new int[][] {{2,2},{2,3},{2,4},{2,5},{2,6},{3,2},{3,6},{4,2},
+    			mapCoordinate1 = new int[][] {{1,3},{1,5},{3,1},{3,7},{5,1},{5,7},{7,3},{7,5}};
+		    	mapCoordinate2 = new int[][] {{2,2},{2,3},{2,4},{2,5},{2,6},{3,2},{3,6},{4,2},
 		    		{4,4},{4,6},{5,2},{5,6},{6,2},{6,3},{6,4},{6,5},{6,6}};
 		    		
 				for (int i = 0; i < 8; i++) {
-		    		bricks.add(new Brick(brickStructure1[i][0] * 70 + 50, brickStructure1[i][1] * 18 + 75, 100, 1));
+		    		bricks.add(new Brick(mapCoordinate1[i][0] * 70 + 50, mapCoordinate1[i][1] * 18 + 75, 100, 1));
 		    	}
 		    	
 		    	for (int i = 0; i < 17; i++) {
-		    		bricks.add(new Brick(brickStructure2[i][0] * 70 + 50, brickStructure2[i][1] * 18 + 75, 100, 3));
+		    		bricks.add(new Brick(mapCoordinate2[i][0] * 70 + 50, mapCoordinate2[i][1] * 18 + 75, 100, 3));
 		    	}
 		    	break;
 		    default:
@@ -152,6 +149,10 @@ public class Model {
     	view.showCredit();
     }
     
+    public void showMap() {
+    	view.showMap();
+    }
+    
     public void continueGame() {
     	
         bricks 	= new ArrayList<Brick>();
@@ -163,15 +164,15 @@ public class Model {
         initBrick();
         
     	view.updateView(balls, bricks, paddle, score);
-//        playMusic();
+        playMusic();
     	view.continueGame();
     }
     
-    public void gameOver() {
+    public void gameOver(boolean isWin) {
     	new CreateIO(score, "plyr");
     	resetScore();
-    	
-    	view.showGameOver();
+
+    	view.showGameOver(isWin);
     }
     
     private void playMusic() {
@@ -230,11 +231,11 @@ public class Model {
     	
     	if(balls.isEmpty()) {
     		stopMusic();
-    		gameOver();
+    		gameOver(false);
     	}
         
     	if(bricks.isEmpty()) {
-    		gameOver();
+    		gameOver(true);
     	}
     	
     	/**
@@ -338,9 +339,9 @@ public class Model {
                 		// clone the ball
                 		if ( brick.getBrickType() == 11) {
                 			balls.add(new Ball(ball.getX()+5, ball.getY(), 
-                					ball.getWeight(), 1, ball.getBallType()));
+                					ball.getWeight(), gameSpeed, ball.getBallType()));
                     		balls.add(new Ball(ball.getX()-5, ball.getY(), 
-                    				ball.getWeight(), 1, ball.getBallType()));
+                    				ball.getWeight(), gameSpeed, ball.getBallType()));
                     		break;
                 		}
                 		else if (brick.getBrickType() == 12){

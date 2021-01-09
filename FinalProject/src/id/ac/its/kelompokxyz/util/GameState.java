@@ -13,4 +13,5 @@ public enum GameState {
     GAME_OVER,
     PAUSED,
     DIFFICULTY,
+    MAP,
 }
