@@ -26,7 +26,7 @@ public class ImageButton extends JPanel {
         initComponents();
         
         try {                
-            image = ImageIO.read(new File("src/resources/map.png"));
+            image = ImageIO.read(new File("src/resources/"+ name.toLowerCase() +".png"));
          } catch (IOException ex) {
               System.out.println("Error opening image");
          }
@@ -64,7 +64,7 @@ public class ImageButton extends JPanel {
         });
 
         label.setFont(new java.awt.Font("Century Gothic", 1, 20));
-        label.setForeground(Color.black);
+        label.setForeground(new Color(99, 99, 99));
         label.setText(name);
         label.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -101,14 +101,14 @@ public class ImageButton extends JPanel {
     private void btnMouseEntered(java.awt.event.MouseEvent evt) {
         this.setBackground(new Color(28, 41, 50));
         this.setForeground(new Color(97, 204, 148));
-        label.setForeground(Color.red);
+        label.setForeground(Color.white);
         this.setBorder(BorderFactory.createBevelBorder(1, new Color(97, 204, 148), new Color(97, 204, 148), new Color(97, 204, 148), new Color(97, 204, 148)));
 
     }
 
     private void btnMouseExited(java.awt.event.MouseEvent evt) {
         this.setBackground(new Color(41, 54, 63));
-        label.setForeground(Color.BLACK);
+        label.setForeground(new Color(99, 99, 99));
         this.setBorder(BorderFactory.createBevelBorder(1, Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE));
 
     }

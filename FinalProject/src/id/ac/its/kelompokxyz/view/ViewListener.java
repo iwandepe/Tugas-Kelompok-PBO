@@ -48,9 +48,9 @@ public class ViewListener implements KeyListener{
     }
     
 	// ========================================================================
-    ImageButton map1 = new ImageButton("MAP 1");
-    ImageButton map2 = new ImageButton("MAP 2");
-    ImageButton map3 = new ImageButton("MAP 3");
+    ImageButton map1 = new ImageButton("DESERT");
+    ImageButton map2 = new ImageButton("TOWN");
+    ImageButton map3 = new ImageButton("FOREST");
   
 	// EXIT BUTTON FOR TRIAL MAP
 	MyButton bExit = new MyButton("MAP") {
