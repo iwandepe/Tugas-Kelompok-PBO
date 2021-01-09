@@ -18,7 +18,6 @@ import id.ac.its.kelompokxyz.view.View;
 /** 
  * Main Model  --- organize all data object
  * 
- * 
  */
 
 public class Model {
@@ -32,7 +31,7 @@ public class Model {
 	private int[] numsToGenerate = new int[]
     		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,12};
     private int gameSpeed;
-    private int mapCode = 1;
+    private int mapCode;
         
     int score=0;
 	public void resetScore() {
@@ -86,50 +85,49 @@ public class Model {
      */
     
     private void initBrick() {
-    	
-    	int[][] mapCoordinate1,mapCoordinate2, mapCoordinate3;
+    	int[][] mapCoordinate1,mapCoordinate2;
     	
     	switch(mapCode) {
     		case 1:
 		    	for (int i = 0; i < 4; i++) {
-		            for (int j = 0; j < 10; j++) {
+		            for (int j = 0; j < 7; j++) {
 		            	if (i % 2 == 0) {
-		            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 100, i%3+1));
+		            		bricks.add(new Brick(j * 100 + 50, i * 30 + 75, 100, i%3+1));
 		            	}
 		            	else {
-		            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 300, i%3+1));
+		            		bricks.add(new Brick(j * 100 + 50, i * 30 + 75, 300, i%3+1));
 		            	}
 		            }
 		        }
 		    	break;
-
+		    	
     		case 2:
     	
     			mapCoordinate1 = new int[][] {{1,3},{2,2},{2,4},{3,1},{3,5},{4,2},{4,4},{5,3}};
     			mapCoordinate2 = new int[][] {{2,3},{3,2},{3,4},{4,3}};
 		    	
 		    	for (int i = 0; i < 8; i++) {
-		    		bricks.add(new Brick(mapCoordinate1[i][0] * 70 + 50, mapCoordinate1[i][1] * 18 + 75, 100, 1));
+		    		bricks.add(new Brick(mapCoordinate1[i][0] * 100 + 50, mapCoordinate1[i][1] * 30 + 75, 100, 1));
 		    	}
 		    	
 		    	for (int i = 0; i < 4; i++) {
-		    		bricks.add(new Brick(mapCoordinate2[i][0] * 70 + 50, mapCoordinate2[i][1] * 18 + 75, 100, 3));
+		    		bricks.add(new Brick(mapCoordinate2[i][0] * 100 + 50, mapCoordinate2[i][1] * 30 + 75, 100, 3));
 		    	}
 		    	
-		    	bricks.add(new Brick(3 * 70 + 50, 3 * 18 + 75, 100, 2));
+		    	bricks.add(new Brick(3 * 100 + 50, 3 * 30 + 75, 100, 2));
 		    	break;
 		    	
     		case 3:
-    			mapCoordinate1 = new int[][] {{1,3},{1,5},{3,1},{3,7},{5,1},{5,7},{7,3},{7,5}};
-		    	mapCoordinate2 = new int[][] {{2,2},{2,3},{2,4},{2,5},{2,6},{3,2},{3,6},{4,2},
-		    		{4,4},{4,6},{5,2},{5,6},{6,2},{6,3},{6,4},{6,5},{6,6}};
+    			mapCoordinate1 = new int[][] {{0,3},{0,5},{2,1},{2,7},{4,1},{4,7},{6,3},{6,5}};
+		    	mapCoordinate2 = new int[][] {{1,2},{1,3},{1,4},{1,5},{1,6},{2,2},{2,6},{3,2},
+		    		{3,4},{3,6},{4,2},{4,6},{5,2},{5,3},{5,4},{5,5},{5,6}};
 		    		
 				for (int i = 0; i < 8; i++) {
-		    		bricks.add(new Brick(mapCoordinate1[i][0] * 70 + 50, mapCoordinate1[i][1] * 18 + 75, 100, 1));
+		    		bricks.add(new Brick(mapCoordinate1[i][0] * 100 + 50, mapCoordinate1[i][1] * 30 + 75, 100, 1));
 		    	}
 		    	
 		    	for (int i = 0; i < 17; i++) {
-		    		bricks.add(new Brick(mapCoordinate2[i][0] * 70 + 50, mapCoordinate2[i][1] * 18 + 75, 100, 3));
+		    		bricks.add(new Brick(mapCoordinate2[i][0] * 100 + 50, mapCoordinate2[i][1] * 30 + 75, 100, 3));
 		    	}
 		    	break;
 		    default:
@@ -159,9 +157,9 @@ public class Model {
         bricks 	= new ArrayList<Brick>();
         balls 	= new ArrayList<Ball>();
         prizes 	= new ArrayList<Prize>();
-        paddle 	= new Paddle(1);
+        paddle 	= new Paddle(3);
         
-        balls.add(new Ball(100, 1, 1));
+        balls.add(new Ball(100, gameSpeed, 1));
         initBrick();
         
     	view.updateView(balls, bricks, paddle, score);
