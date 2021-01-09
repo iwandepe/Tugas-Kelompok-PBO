@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 
 import id.ac.its.kelompokxyz.controller.Controller;
 import id.ac.its.kelompokxyz.model.CreateIO;
+import id.ac.its.kelompokxyz.model.ImageButton;
 import id.ac.its.kelompokxyz.model.MyButton;
 
 public class ViewListener implements KeyListener{
@@ -46,6 +47,34 @@ public class ViewListener implements KeyListener{
     	controller.setGameOver();
     }
     
+	// ========================================================================
+    ImageButton map1 = new ImageButton("MAP 1");
+    ImageButton map2 = new ImageButton("MAP 2");
+    ImageButton map3 = new ImageButton("MAP 3");
+  
+	// EXIT BUTTON FOR TRIAL MAP
+	MyButton bExit = new MyButton("MAP") {
+		private static final long serialVersionUID = 1L;
+		@Override
+		public void btnMouseClicked(MouseEvent evt) {
+//			System.exit(0);
+			controller.setPickMap();
+			controller.respondToInput();
+		};
+	};
+	
+	public ImageButton getMap1() {
+		return map1;
+	}
+	public ImageButton getMap2() {
+		return map2;
+	}
+	public ImageButton getMap3() {
+		return map3;
+	}
+	
+	// ========================================================================
+    
 	MyButton bPlay = new MyButton("PLAY"){
 		private static final long serialVersionUID = 1L;
 		@Override
@@ -74,13 +103,7 @@ public class ViewListener implements KeyListener{
 		};
 	};
 	
-	MyButton bExit = new MyButton("EXIT") {
-		private static final long serialVersionUID = 1L;
-		@Override
-		public void btnMouseClicked(MouseEvent evt) {
-			System.exit(0);
-		};
-	};
+
 	
 	MyButton getbExitbyOver = new MyButton("EXIT") {
 		private static final long serialVersionUID = 1L;

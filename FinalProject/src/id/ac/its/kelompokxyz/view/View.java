@@ -30,6 +30,7 @@ public class View{
 	private final GameOverPanel gameOverPanel;
 	private final GameOverPanel winPanel;
 	private final CreditPanel creditPanel;
+	private final MapPanel mapPanel;
 	private JFrame frame;
     private JPanel content;
     private final ViewListener viewListener = new ViewListener();
@@ -41,6 +42,7 @@ public class View{
      */
     
 	public View(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
+		mapPanel = new MapPanel(viewListener);
 		menuPanel = new MenuPanel(viewListener);
 		creditPanel = new CreditPanel(viewListener);
 		difficultyPanel = new DifficultyPanel(viewListener);
@@ -133,5 +135,13 @@ public class View{
 		frame.validate();
 		frame.pack();
 		updateScore();
+	}
+	
+	public void showMap() {
+		System.out.println("Map");
+		frame.setContentPane(mapPanel);
+		frame.invalidate();
+		frame.validate();
+		frame.pack();
 	}
 }

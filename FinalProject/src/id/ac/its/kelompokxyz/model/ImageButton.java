@@ -1,28 +1,50 @@
 package id.ac.its.kelompokxyz.model;
 
 import java.awt.Color;
+import java.awt.Graphics;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
-public class MyButton extends JPanel {
+import id.ac.its.kelompokxyz.util.Commons;
+
+public class ImageButton extends JPanel {
 	private static final long serialVersionUID = 1L;
 	JLabel label;
 	String name = "";
-    public MyButton(String name) {
-    	this.name = name;
+	private BufferedImage image;
+	
+	public ImageButton(String name) {
+		this.name = name;
         initComponents();
+        
+        try {                
+            image = ImageIO.read(new File("src/resources/map.png"));
+         } catch (IOException ex) {
+              System.out.println("Error opening image");
+         }
+	}
+	
+	@Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(image, 0, 0, this); // see javadoc for more info on the parameters            
     }
-    
-    private void initComponents() {
-        label = new javax.swing.JLabel();
-
-        this.setBackground(new java.awt.Color(41, 54, 63));
-        this.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+	
+	private void initComponents() {
+        label = new JLabel();
+        
+        
+        setBorder(new EmptyBorder(30, 30, 30, 30));
         this.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        this.setPreferredSize(new java.awt.Dimension(150, 46));
+        this.setPreferredSize(new java.awt.Dimension(Commons.WIDTH/4, Commons.HEIGHT/2));
         this.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnMouseClicked(evt);
@@ -41,12 +63,12 @@ public class MyButton extends JPanel {
             }
         });
 
-        label.setFont(new java.awt.Font("Century Gothic", 1, 14));
-        label.setForeground(new java.awt.Color(255, 255, 255));
+        label.setFont(new java.awt.Font("Century Gothic", 1, 20));
+        label.setForeground(Color.black);
         label.setText(name);
         label.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                labelMouseEntered(evt);
+                btnMouseEntered(evt);
             }
             public void mouseClicked(MouseEvent evt) {
             	btnMouseClicked(evt);
@@ -79,18 +101,14 @@ public class MyButton extends JPanel {
     private void btnMouseEntered(java.awt.event.MouseEvent evt) {
         this.setBackground(new Color(28, 41, 50));
         this.setForeground(new Color(97, 204, 148));
-        label.setForeground(new Color(97, 204, 148));
+        label.setForeground(Color.red);
         this.setBorder(BorderFactory.createBevelBorder(1, new Color(97, 204, 148), new Color(97, 204, 148), new Color(97, 204, 148), new Color(97, 204, 148)));
 
     }
 
-    private void labelMouseEntered(java.awt.event.MouseEvent evt) {
-    	btnMouseEntered(evt);
-    }
-
     private void btnMouseExited(java.awt.event.MouseEvent evt) {
         this.setBackground(new Color(41, 54, 63));
-        label.setForeground(Color.WHITE);
+        label.setForeground(Color.BLACK);
         this.setBorder(BorderFactory.createBevelBorder(1, Color.WHITE, Color.WHITE, Color.WHITE, Color.WHITE));
 
     }
@@ -106,6 +124,4 @@ public class MyButton extends JPanel {
     public void btnMouseClicked(java.awt.event.MouseEvent evt) {
     	
     }
-
 }
-

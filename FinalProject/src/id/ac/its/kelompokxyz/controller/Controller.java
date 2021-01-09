@@ -65,6 +65,11 @@ public class Controller{
         	return;
         }
         
+        if (gameState == GameState.MAP) {
+        	model.showMap();
+        	return;
+        }
+        
         if (gameState == GameState.PLAYING) {
             switch (this.keyCodeInput) {
                 case KeyEvent.VK_LEFT:
@@ -104,6 +109,10 @@ public class Controller{
     
     public void setGoingToGame() {
     	gameState = GameState.TO_GAME;
+    }
+    
+    public void setPickMap() {
+    	gameState = GameState.MAP;
     }
     
     public void setDifficulty(int difficulty) {

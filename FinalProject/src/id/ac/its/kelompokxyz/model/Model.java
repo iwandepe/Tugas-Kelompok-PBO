@@ -128,6 +128,10 @@ public class Model {
     	view.showCredit();
     }
     
+    public void showMap() {
+    	view.showMap();
+    }
+    
     public void continueGame() {
     	
         bricks = new ArrayList<Brick>();
