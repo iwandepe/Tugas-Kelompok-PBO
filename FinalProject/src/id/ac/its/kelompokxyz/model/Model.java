@@ -1,4 +1,3 @@
-//coba konflik iwan
 package id.ac.its.kelompokxyz.model;
 
 import java.awt.Point;
