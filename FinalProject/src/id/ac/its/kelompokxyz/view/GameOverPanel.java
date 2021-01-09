@@ -2,6 +2,7 @@ package id.ac.its.kelompokxyz.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -32,9 +33,10 @@ public class GameOverPanel extends JPanel{
         gbc.anchor = GridBagConstraints.NORTH;
         
         label = new JLabel(msg);
+        label.setFont(new Font("Century Gothic", 1, 20));
+        
         add(label, gbc);
         add(hScore, gbc);
-//        updateScore();
 
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.fill = GridBagConstraints.HORIZONTAL;
@@ -47,7 +49,7 @@ public class GameOverPanel extends JPanel{
         	buttons.add(viewListener.getMenuOverlose(), gbc);
         	buttons.add(viewListener.getbExitbyOver(), gbc);
         }
-
+        buttons.setBackground(new Color(93, 100, 111));
         gbc.weighty = 1;
         add(buttons, gbc);
 	}

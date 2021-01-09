@@ -1,21 +1,11 @@
 package id.ac.its.kelompokxyz.view;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Image;
-import java.awt.Point;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Deque;
 import java.util.List;
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import id.ac.its.kelompokxyz.controller.*;
+import javax.swing.WindowConstants;
 import id.ac.its.kelompokxyz.model.*;
-import id.ac.its.kelompokxyz.util.*;
 
 /**
  * Main View --- create frame and control all panel in game
@@ -60,7 +50,7 @@ public class View{
 		content = new JPanel();
     	frame.setLayout(new BorderLayout(10,10));
     	frame.setLocation(10,10);
-    	frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+    	frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     	frame.setResizable(false);
     	frame.pack();
     	showGameMenu();

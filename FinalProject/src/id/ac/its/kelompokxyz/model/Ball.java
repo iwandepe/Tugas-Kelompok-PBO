@@ -27,7 +27,7 @@ public class Ball extends Sprite {
         xdir = 1;
         ydir = -1;
         weight = w;
-        speed = gameSpeed*3;
+        speed = gameSpeed;
     	this.ballType = ballType;
 
         loadImage();

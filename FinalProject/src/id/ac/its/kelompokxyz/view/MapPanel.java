@@ -30,7 +30,7 @@ public class MapPanel extends JPanel {
 
         gbc.anchor = GridBagConstraints.CENTER;
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.insets = new Insets(10,10,10,10);
+        gbc.insets = new Insets(0,10,0,10);
         
         JPanel buttons = new JPanel(new GridBagLayout());
         buttons.setBackground(new Color(93, 100, 111));;

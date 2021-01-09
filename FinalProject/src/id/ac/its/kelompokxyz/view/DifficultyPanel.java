@@ -2,6 +2,7 @@ package id.ac.its.kelompokxyz.view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import javax.swing.*;
@@ -27,8 +28,11 @@ public class DifficultyPanel extends JPanel {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.anchor = GridBagConstraints.NORTH;
-
-        add(new JLabel("CHOOSE DIFFICULTY"), gbc);
+        
+        JLabel label = new JLabel("CHOOSE DIFFICULTY");
+        add(label, gbc);
+        label.setFont(new Font("Century Gothic", 1, 20));
+        
         add(hScore, gbc);
 //        updateScore();
 
@@ -41,7 +45,8 @@ public class DifficultyPanel extends JPanel {
         buttons.add(viewListener.getbMedium(), gbc);
         buttons.add(viewListener.getbHard(), gbc);
         buttons.add(viewListener.getbBack(), gbc);
-
+        
+        buttons.setBackground(new Color(93, 100, 111));
         gbc.weighty = 1;
         add(buttons, gbc);
 

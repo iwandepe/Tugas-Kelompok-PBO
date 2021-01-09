@@ -20,9 +20,9 @@ public class ViewListener implements KeyListener{
     
     @Override
     public void keyPressed(KeyEvent key) {
-//        System.out.println(key.toString());
-		controller.setKeyCode(key);
-        controller.respondToInput();
+//		controller.setKeyCode(key);
+//        controller.respondToInput();
+    	controller.keyPressed(key);
     }
 
 	@Override
@@ -31,8 +31,10 @@ public class ViewListener implements KeyListener{
 	}
 
 	@Override
-	public void keyReleased(KeyEvent e) {
-		
+	public void keyReleased(KeyEvent key) {
+//		controller.setKeyCode(key);
+//        controller.respondToInput();
+		controller.keyReleased(key);
 	}
     
     public void setPlaying() {
@@ -48,21 +50,34 @@ public class ViewListener implements KeyListener{
     }
     
 	// ========================================================================
-    ImageButton map1 = new ImageButton("DESERT");
-    ImageButton map2 = new ImageButton("TOWN");
-    ImageButton map3 = new ImageButton("FOREST");
-  
-	// EXIT BUTTON FOR TRIAL MAP
-	MyButton bExit = new MyButton("MAP") {
+    ImageButton map1 = new ImageButton("DESERT"){
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
-//			System.exit(0);
-			controller.setPickMap();
+			controller.setCurrentMap(1);
+			controller.setChoosingDifficulty();
 			controller.respondToInput();
 		};
 	};
-	
+    ImageButton map2 = new ImageButton("TOWN"){
+		private static final long serialVersionUID = 1L;
+		@Override
+		public void btnMouseClicked(MouseEvent evt) {
+			controller.setCurrentMap(2);
+			controller.setChoosingDifficulty();
+			controller.respondToInput();
+		};
+	};
+    ImageButton map3 = new ImageButton("FOREST"){
+		private static final long serialVersionUID = 1L;
+		@Override
+		public void btnMouseClicked(MouseEvent evt) {
+			controller.setCurrentMap(3);
+			controller.setChoosingDifficulty();
+			controller.respondToInput();
+		};
+	};
+
 	public ImageButton getMap1() {
 		return map1;
 	}
@@ -74,12 +89,19 @@ public class ViewListener implements KeyListener{
 	}
 	
 	// ========================================================================
-    
+	MyButton bExit = new MyButton("EXIT") {
+		private static final long serialVersionUID = 1L;
+		@Override
+		public void btnMouseClicked(MouseEvent evt) {
+			System.exit(0);
+		};
+	};
+	
 	MyButton bPlay = new MyButton("PLAY"){
 		private static final long serialVersionUID = 1L;
 		@Override
 		public void btnMouseClicked(MouseEvent evt) {
-			controller.setChoosingDifficulty();
+			controller.setPickMap();
 			controller.respondToInput();
 		};
 	};

@@ -1,20 +1,11 @@
 package id.ac.its.kelompokxyz.controller;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.util.List;
-import javax.swing.JFrame;
 import javax.swing.Timer;
-import id.ac.its.kelompokxyz.view.View;
 import id.ac.its.kelompokxyz.util.Commons;
 import id.ac.its.kelompokxyz.util.GameState;
-import id.ac.its.kelompokxyz.controller.*;
-import id.ac.its.kelompokxyz.model.Paddle;
-import id.ac.its.kelompokxyz.model.Ball;
-import id.ac.its.kelompokxyz.model.Brick;
 import id.ac.its.kelompokxyz.model.Model;
 
 /**
@@ -24,8 +15,7 @@ import id.ac.its.kelompokxyz.model.Model;
 
 public class Controller{
 
-	private static final long serialVersionUID = 1L;
-    private static Timer timer;
+	private static Timer timer;
     private static Model model = new Model();
 	private static GameState gameState;
 	int keyCodeInput;
@@ -70,20 +60,52 @@ public class Controller{
         	return;
         }
         
-        if (gameState == GameState.PLAYING) {
-            switch (this.keyCodeInput) {
-                case KeyEvent.VK_LEFT:
-                    model.setMovePaddle(-1);
-                    System.out.println("kiri");
-                    break;
-                case KeyEvent.VK_RIGHT:
-                    model.setMovePaddle(1);
-                    System.out.println("kanan");
-                    break;
-                default:
-                    break;
-            }
-        }
+//        if (gameState == GameState.PLAYING) {
+//            switch (this.keyCodeInput) {
+//                case KeyEvent.VK_LEFT:
+//                    model.setMovePaddle(-1);
+//                    System.out.println("kiri");
+//                    break;
+//                case KeyEvent.VK_RIGHT:
+//                    model.setMovePaddle(1);
+//                    System.out.println("kanan");
+//                    break;
+//                default:
+//                    break;
+//            }
+//        }
+    }
+    
+    public void keyPressed(KeyEvent e) {
+    	if (gameState == GameState.PLAYING) {
+	        int key = e.getKeyCode();
+	
+	        if (key == KeyEvent.VK_LEFT) {
+	        	model.setMovePaddle(-1);
+	            System.out.println("kiri");
+	        }
+	
+	        if (key == KeyEvent.VK_RIGHT) {
+	            model.setMovePaddle(1);
+	            System.out.println("kanan");
+	        }
+    	}
+    }
+    
+    public void keyReleased(KeyEvent e) {
+    	if (gameState == GameState.PLAYING) {
+	        int key = e.getKeyCode();
+	
+	        if (key == KeyEvent.VK_LEFT) {
+	        	model.setMovePaddle(0);
+	        	System.out.println("realesed");
+	        }
+	
+	        if (key == KeyEvent.VK_RIGHT) {
+	        	model.setMovePaddle(0);
+	        	System.out.println("realesed");
+	        }
+    	}
     }
     
     public void setGameOver() {
@@ -129,6 +151,10 @@ public class Controller{
         default:
             break;
     	}
+    }
+    
+    public void setCurrentMap(int mapCode) {
+    	model.setMapCode(mapCode);
     }
     
     public void setCredit() {
