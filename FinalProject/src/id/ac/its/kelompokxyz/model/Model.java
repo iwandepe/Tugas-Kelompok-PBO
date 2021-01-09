@@ -22,21 +22,23 @@ import id.ac.its.kelompokxyz.util.Commons;
 import id.ac.its.kelompokxyz.view.View;
 import id.ac.its.kelompokxyz.view.ViewListener;
 
-/**
+/** 
  * Main Model  --- organize all data object
- *
+ * 
  */
 
 public class Model {
 	
     private List<Ball> balls;
     private List<Brick> bricks;
+    private List<Prize> prizes;
     private Paddle paddle;
 	public View view;
 	private Clip gameMusic, gameOverSound, eatAppleSound;
 	private int[] numsToGenerate = new int[]
     		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,12};
-    private int gameSpeed; 
+    private int gameSpeed;
+    private int brickStructure = 0;
         
     int score=0;
 	public void resetScore() {
@@ -52,6 +54,10 @@ public class Model {
         
 		view = new View(balls, bricks, paddle);
     }
+    
+    /**
+     * Initialize sound effect of game
+     */
     
     private void initSounds() {
         try {
@@ -77,42 +83,60 @@ public class Model {
         }
     }
     
+    /**
+     * Initialize brick with various structure
+     */
+    
     private void initBrick() {
-//    	for (int i = 0; i < Commons.ROW; i++) {
-//            for (int j = 0; j < 10; j++) {
-//            	if (i % 2 == 0) {
-//            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 100, i%3+1));
-//            	}
-//            	else {
-//            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 300, i%3+1));
-//            	}
-//            }
-//        }
     	
-    	int[][] type1 = new int[][] {{1,3},{2,2},{2,4},{3,1},{3,5},{4,2},{4,4},{5,3}};
-    	int[][] type2 = new int[][] {{2,3},{3,2},{3,4},{4,3}};
+    	int[][] brickStructure1,brickStructure2, brickStructure3;
     	
-    	for (int i = 0; i < 8; i++) {
-    		bricks.add(new Brick(type1[i][0] * 70 + 50, type1[i][1] * 18 + 75, 100, 1));
+    	switch(brickStructure) {
+    		case 0:
+		    	for (int i = 0; i < 4; i++) {
+		            for (int j = 0; j < 10; j++) {
+		            	if (i % 2 == 0) {
+		            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 100, i%3+1));
+		            	}
+		            	else {
+		            		bricks.add(new Brick(j * 70 + 50, i * 18 + 75, 300, i%3+1));
+		            	}
+		            }
+		        }
+		    	break;
+		    	
+    		case 1:
+    	
+		    	brickStructure1 = new int[][] {{1,3},{2,2},{2,4},{3,1},{3,5},{4,2},{4,4},{5,3}};
+		    	brickStructure2 = new int[][] {{2,3},{3,2},{3,4},{4,3}};
+		    	
+		    	for (int i = 0; i < 8; i++) {
+		    		bricks.add(new Brick(brickStructure1[i][0] * 70 + 50, brickStructure1[i][1] * 18 + 75, 100, 1));
+		    	}
+		    	
+		    	for (int i = 0; i < 4; i++) {
+		    		bricks.add(new Brick(brickStructure2[i][0] * 70 + 50, brickStructure2[i][1] * 18 + 75, 100, 3));
+		    	}
+		    	
+		    	bricks.add(new Brick(3 * 70 + 50, 3 * 18 + 75, 100, 2));
+		    	break;
+		    	
+    		case 2:
+		    	brickStructure1 = new int[][] {{1,3},{1,5},{3,1},{3,7},{5,1},{5,7},{7,3},{7,5}};
+		    	brickStructure2 = new int[][] {{2,2},{2,3},{2,4},{2,5},{2,6},{3,2},{3,6},{4,2},
+		    		{4,4},{4,6},{5,2},{5,6},{6,2},{6,3},{6,4},{6,5},{6,6}};
+		    		
+				for (int i = 0; i < 8; i++) {
+		    		bricks.add(new Brick(brickStructure1[i][0] * 70 + 50, brickStructure1[i][1] * 18 + 75, 100, 1));
+		    	}
+		    	
+		    	for (int i = 0; i < 17; i++) {
+		    		bricks.add(new Brick(brickStructure2[i][0] * 70 + 50, brickStructure2[i][1] * 18 + 75, 100, 3));
+		    	}
+		    	break;
+		    default:
+		    	break;
     	}
-    	
-    	for (int i = 0; i < 4; i++) {
-    		bricks.add(new Brick(type2[i][0] * 70 + 50, type2[i][1] * 18 + 75, 100, 3));
-    	}
-    	
-    	bricks.add(new Brick(3 * 70 + 50, 3 * 18 + 75, 100, 2));
-    	
-//    	int[][] type1 = new int[][] {{1,3},{1,5},{3,1},{3,7},{5,1},{5,7},{7,3},{7,5}};
-//    	int[][] type2 = new int[][] {{2,2},{2,3},{2,4},{2,5},{2,6},{3,2},{3,6},{4,2},
-//    		{4,4},{4,6},{5,2},{5,6},{6,2},{6,3},{6,4},{6,5},{6,6}};
-//    		
-//		for (int i = 0; i < 8; i++) {
-//    		bricks.add(new Brick(type1[i][0] * 70 + 50, type1[i][1] * 18 + 75, 100, 1));
-//    	}
-//    	
-//    	for (int i = 0; i < 17; i++) {
-//    		bricks.add(new Brick(type2[i][0] * 70 + 50, type2[i][1] * 18 + 75, 100, 3));
-//    	}
     	
     }
 
@@ -130,11 +154,14 @@ public class Model {
     
     public void continueGame() {
     	
-        bricks = new ArrayList<Brick>();
-        paddle = new Paddle(1);
-        balls = new ArrayList<Ball>();
+        bricks 	= new ArrayList<Brick>();
+        balls 	= new ArrayList<Ball>();
+        prizes 	= new ArrayList<Prize>();
+        paddle 	= new Paddle(1);
+        
         balls.add(new Ball(100, 1, 1));
         initBrick();
+        
     	view.updateView(balls, bricks, paddle, score);
 //        playMusic();
     	view.continueGame();
@@ -212,6 +239,7 @@ public class Model {
     	
     	/**
     	 * Check collicion for ball and paddle
+    	 * if there is collision then change direction of ball
     	 */
         
         for (Ball ball: balls) {
@@ -260,6 +288,7 @@ public class Model {
         
         /**
          * Check if ball hit the brick
+         * if there is collision then brick weight is decrease
          */
         
         for (ListIterator<Brick> iter = bricks.listIterator(); iter.hasNext(); ) {
@@ -300,7 +329,11 @@ public class Model {
                     
                     brick.decreaseWeight(ball.getWeight());
                     
-                    if (brick.getWeight() <= 0) {
+                    /**
+                     * Check if the brick has destroyed or not
+                     */
+                    
+                    if (brick.getWeight() <= 0) { 
                     	iter.remove();
                 		// clone the ball
                 		if ( brick.getBrickType() == 11) {
