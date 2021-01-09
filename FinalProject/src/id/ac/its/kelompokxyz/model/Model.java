@@ -1,11 +1,6 @@
 package id.ac.its.kelompokxyz.model;
 
-import java.awt.Dimension;
 import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -17,10 +12,8 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.Timer;
 import id.ac.its.kelompokxyz.util.Commons;
 import id.ac.its.kelompokxyz.view.View;
-import id.ac.its.kelompokxyz.view.ViewListener;
 
 /**
  * Main Model  --- organize all data object
@@ -148,7 +141,7 @@ public class Model {
         balls.add(new Ball(100, gameSpeed, 1));
         initBrick();
     	view.updateView(balls, bricks, paddle, score);
-//        playMusic();
+        playMusic();
     	view.continueGame();
     }
     

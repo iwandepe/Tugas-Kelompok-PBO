@@ -1,8 +1,6 @@
 package id.ac.its.kelompokxyz.view;
 
 import java.awt.Color;
-
-
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -12,9 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import id.ac.its.kelompokxyz.util.Commons;
-import id.ac.its.kelompokxyz.model.CreateIO;
-import id.ac.its.kelompokxyz.model.Data;
-import id.ac.its.kelompokxyz.model.ReadIO;
 
 public class MenuPanel extends JPanel{
 

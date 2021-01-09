@@ -1,16 +1,13 @@
 package id.ac.its.kelompokxyz.view;
 
 import java.awt.Dimension;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Toolkit;
 import java.util.List;
-import java.util.Timer;
-
 import javax.swing.JPanel;
-
-//import id.ac.its.kelompokxyz.app.Board.TAdapter;
 import id.ac.its.kelompokxyz.model.Ball;
 import id.ac.its.kelompokxyz.model.Brick;
 import id.ac.its.kelompokxyz.model.Model;
@@ -18,8 +15,9 @@ import id.ac.its.kelompokxyz.model.Paddle;
 import id.ac.its.kelompokxyz.util.Commons;
 
 public class GamePanel extends JPanel{
-
-    private List<Ball> balls;
+	private static final long serialVersionUID = 1L;
+	
+	private List<Ball> balls;
     private List<Brick> bricks;
     private Paddle paddle;
     int timeStart = (int)(System.currentTimeMillis() /1000);

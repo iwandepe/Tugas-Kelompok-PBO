@@ -59,21 +59,7 @@ public class Controller{
         	model.showMap();
         	return;
         }
-        
-//        if (gameState == GameState.PLAYING) {
-//            switch (this.keyCodeInput) {
-//                case KeyEvent.VK_LEFT:
-//                    model.setMovePaddle(-1);
-//                    System.out.println("kiri");
-//                    break;
-//                case KeyEvent.VK_RIGHT:
-//                    model.setMovePaddle(1);
-//                    System.out.println("kanan");
-//                    break;
-//                default:
-//                    break;
-//            }
-//        }
+
     }
     
     public void keyPressed(KeyEvent e) {
