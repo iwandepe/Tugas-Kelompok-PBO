@@ -18,6 +18,7 @@ import id.ac.its.kelompokxyz.view.View;
 /** 
  * Main Model  --- organize all data object
  * 
+ * 
  */
 
 public class Model {
