@@ -37,8 +37,8 @@ public class View{
 		creditPanel = new CreditPanel(viewListener);
 		difficultyPanel = new DifficultyPanel(viewListener);
 		gamePanel = new GamePanel(balls, bricks, paddle);
-		gameOverPanel = new GameOverPanel(viewListener, "GAME OVER. TRY AGAIN?", false);
-		winPanel = new GameOverPanel(viewListener, "YOU WIN !", true);
+		gameOverPanel = new GameOverPanel(viewListener, "YOU LOST, TRY AGAIN!", false);
+		winPanel = new GameOverPanel(viewListener, "CONGRATS, YOU WIN !", true);
 		initUI();
 	}
 	
