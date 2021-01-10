@@ -1,6 +1,8 @@
 # JaBrick - Break The Brick [Java Simple GUI Game] as Final Project of PBO Class 2020
 
-<img src="Screenshot/gameTitle.png" width="700">
+<p align="center">
+  <img src="gameTitle.png" width="700">
+</p>
 
 ## Judul : JaBrick - Break The Brick
 ## Jenis : Permainan 
@@ -16,16 +18,17 @@ Nama : Iwan Dwi Prakoso (05111940000229) <br>
 username : iwandepe
 
 ## Deskripsi Aplikasi
-Dalam rangka berahirnya proses pembelajaran matakuliah Pemrograman Berorientasi Objek Semester 3 ini, sebagai tugas ahir atau Final Project, kami kelompok xyz dari Kelas PBO-E merealisasikannya dalam bentuk Game JaBrick ini. JaBrick adalah game GUI sederhana berbasis bahasa Java yang mengimplementasikan Pemrograman Berbasis Objek atau OOP. Game ini dibuat dengan ide referensi dari ZeetCode yang dimodifikasi sedemikian sehingga lebih interaktif dan menarik. Inti dari game ini yakni disediakan beberapa balok, satu bola, dan satu pedal, dimana pemain diharuskan bertahan selama mungkin dan menghancurkan seluruh balok balok yang tersedia dengan bola yang dapat dipantulkan pada pedal, sehingga menghindari bola keluar area permainan yang akan membuat pemain kalah. Pemain dapat memenangkan permainaan jika balok yang tersedia telah habis dihancurkan.
+Dalam rangka berahirnya proses pembelajaran matakuliah Pemrograman Berorientasi Objek Semester 3 ini, sebagai tugas ahir atau Final Project, kami <a href="https://github.com/iwandepe/Tugas-Kelompok-PBO/">Kelompok XYZ</a> dari Kelas PBO-E merealisasikannya dalam bentuk Game JaBrick ini. JaBrick adalah game GUI sederhana berbasis bahasa Java yang mengimplementasikan Pemrograman Berbasis Objek atau OOP. Game ini dibuat dengan ide referensi dari ZeetCode yang dimodifikasi sedemikian sehingga lebih interaktif dan menarik. Inti dari game ini yakni disediakan beberapa balok, satu bola, dan satu pedal, dimana pemain diharuskan bertahan selama mungkin dan menghancurkan seluruh balok balok yang tersedia dengan bola yang dapat dipantulkan pada pedal, sehingga menghindari bola keluar area permainan yang akan membuat pemain kalah. Pemain dapat memenangkan permainaan jika balok yang tersedia telah habis dihancurkan.
 
 ## Class Diagram 
-<img src="ClassDiagram/classDiagram.png" width="1200">
+<img src="classDiagram.png" width="1200">
 
 ## Struktur Program
 Penjelasan masing-masing kelas yang digunakan dibagi menjadi beberapa package sebagai berikut :
 
 ### --> Controller
 [`Controller.java`](src/id/ac/its/kelompokxyz/controller/Controller.java)
+Kelas ini merupakan kelas inti dari program dimana fungsi main berada. Kelas ini berfungsi mengatur seluruh jalannya program dengan menjalankan program yang ada pada kelas model dan mengatur panel yang harus ditampilkan pada game sesuai game status. Selain itu, key listener pada saat permainan diatur dalam kelas ini.
 
 ### Model
 
@@ -41,13 +44,19 @@ Penjelasan masing-masing kelas yang digunakan dibagi menjadi beberapa package se
 ## Fitur Permainan
 Berikut ini merupakan beberapa objek atau komponen permainan yang ada dalam proyek ini :
 
-### Padle
+### Paddle
+Paddel merupakan objek game yang digunakan untuk mencegah bola keluar dari area permainan. Paddle dapat dikendalikan oleh pemain menggunakan keyboard arah kanan dan kiri. Pemain harus menggerakkan Paddle sesuai posisi bola untuk memantulaknnya kembali keatas, sehingga bola tidak keluar area permainan
 
 ### Brick
+Brick merupakan objek game yang harus dihancurkan oleh pemain menggunakan bola yang dipantul-pantulkan menggunakan Paddle. Pemain harus menghancurkan seluruh Brick untuk memenangkan permainan.
 
 ### Ball
 
-### Splash Screen
+### Sound
+Sound disini merupakan unsur tambahan dalam permainan sehingga game lebih menarik dan interaktif.
+
+# High Score
+High Score merupakan fitur dalam game yang menyimpan skor pemain berdasar jumlah Brick yang berhasil dihancurkan pada tiap permainan. High Score disimpan dalam bentuk objek class Data dalam file [`client.ser`]. High Score ditampilkan pada MenuPanel dan GameOverPanel ketika pemain selesai bermain. Pemain juga dapat mereset score kembali menjadi nol jika mengingikan hal tersebut dengan mengklik tombol RESET SCORE.
 
 ### Menu Panel
 
@@ -62,6 +71,6 @@ Berikut ini merupakan beberapa objek atau komponen permainan yang ada dalam proy
 ### Game Over Panel
 
 ## Referensi
-<a href="http://zetcode.com/javagames/breakout/">ZeetCode</a> : Struktur mekanik permainan 
-<a href="https://github.com/jbberinger/Snake">Jbbreinger</a> : Struktur kode dan arsitektur program MVC
-<a href="https://github.com/iwandepe/Tugas-Kelompok-PBO">Jbbreinger</a> : Dokumentasi lainnya dari Oracle dan penugasan harian.
+<a href="http://zetcode.com/javagames/breakout/">ZeetCode</a> : Struktur mekanik permainan <br>
+<a href="https://github.com/jbberinger/Snake">Jbbreinger</a> : Struktur kode dan arsitektur program MVC <br>
+<a href="https://github.com/iwandepe/Tugas-Kelompok-PBO">Jbbreinger</a> : Dokumentasi lainnya dari Oracle dan penugasan harian <br>
