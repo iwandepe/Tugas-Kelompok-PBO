@@ -1,5 +1,6 @@
 package id.ac.its.kelompokxyz.view;
 
+import java.awt.Color;
 import java.awt.Dimension;
 
 import java.awt.Graphics;
@@ -31,6 +32,7 @@ public class GamePanel extends JPanel{
 	public GamePanel(List<Ball> balls, List<Brick> bricks, Paddle paddle) {
         setFocusable(true);
         setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
+        setBackground(new Color(93, 100, 111));
 		
 		this.balls = balls;
 		this.bricks = bricks;
