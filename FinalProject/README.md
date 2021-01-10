@@ -21,7 +21,7 @@ username : iwandepe
 Dalam rangka berahirnya proses pembelajaran matakuliah Pemrograman Berorientasi Objek Semester 3 ini, sebagai tugas ahir atau Final Project, kami <a href="https://github.com/iwandepe/Tugas-Kelompok-PBO/">Kelompok XYZ</a> dari Kelas PBO-E merealisasikannya dalam bentuk Game JaBrick ini. JaBrick adalah game GUI sederhana berbasis bahasa Java yang mengimplementasikan Pemrograman Berbasis Objek atau OOP. Game ini dibuat dengan ide referensi dari ZeetCode yang dimodifikasi sedemikian sehingga lebih interaktif dan menarik. Inti dari game ini yakni disediakan beberapa balok, satu bola, dan satu pedal, dimana pemain diharuskan bertahan selama mungkin dan menghancurkan seluruh balok balok yang tersedia dengan bola yang dapat dipantulkan pada pedal, sehingga menghindari bola keluar area permainan yang akan membuat pemain kalah. Pemain dapat memenangkan permainaan jika balok yang tersedia telah habis dihancurkan.
 
 ## Class Diagram 
-<img src="classDiagram.png" width="1200">
+<img src="classDiagram.jpg" width="1200">
 
 ## Struktur Program
 Penjelasan masing-masing kelas yang digunakan dibagi menjadi beberapa package sebagai berikut :
