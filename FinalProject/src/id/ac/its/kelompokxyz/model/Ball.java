@@ -37,7 +37,7 @@ public class Ball extends Sprite {
     public void loadImage() {
     	var ii = new ImageIcon();
     	if (ballType == 1) {
-    		ii = new ImageIcon("src/resources/bigball.png");
+    		ii = new ImageIcon("src/resources/defball.png");
     	}
     	else if (ballType == 11) { // big ball
     		ii = new ImageIcon("src/resources/bigball.png");
