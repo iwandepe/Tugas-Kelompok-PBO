@@ -32,7 +32,7 @@ Kelas ini merupakan kelas inti dari program dimana fungsi main berada. Kelas ini
 
 ### Model
 [`Model`](src/id/ac/its/kelompokxyz/model)
-Package ini merupakan package yang mengorganisasi seluruh data yang dibutuhkan dalam game. Dalam package ini berisi class utama yaitu ['Model.java'](src/id/ac/its/kelompokxyz/model) yang mengorganisasi pemrosesan data. Dalam package ini juga ada kelas-kelas yang merepresentasikan objek dalam game seperti ['Ball'](src/id/ac/its/kelompokxyz/model/Ball.java), ['Brick'](src/id/ac/its/kelompokxyz/model/Brick.java), dan ['Paddle.java'](src/id/ac/its/kelompokxyz/model).
+Package ini merupakan package yang mengorganisasi seluruh data yang dibutuhkan dalam game. Dalam package ini berisi class utama yaitu [`Model.java`](src/id/ac/its/kelompokxyz/model) yang mengorganisasi pemrosesan data. Dalam package ini juga ada kelas-kelas yang merepresentasikan objek dalam game seperti [`Ball`](src/id/ac/its/kelompokxyz/model/Ball.java), [`Brick`](src/id/ac/its/kelompokxyz/model/Brick.java), dan [`Paddle.java`](src/id/ac/its/kelompokxyz/model).
 
 ### Sound
 [`Sound`](src/id/ac/its/kelompokxyz/sound)
