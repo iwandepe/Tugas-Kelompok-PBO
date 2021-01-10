@@ -49,7 +49,7 @@ public class View{
 		
 		content = new JPanel();
     	frame.setLayout(new BorderLayout(10,10));
-    	frame.setLocation(10,10);
+    	frame.setLocation(150,150);
     	frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     	frame.setResizable(false);
     	frame.pack();
@@ -104,6 +104,7 @@ public class View{
 		menuPanel.updateScore(data.getScore());
 		difficultyPanel.updateScore(data.getScore());
 		gameOverPanel.updateScore(data.getScore());
+		winPanel.updateScore(data.getScore());
 	}
 	
 	public void showCredit() {
