@@ -74,36 +74,42 @@ High Score merupakan fitur dalam game yang menyimpan skor pemain berdasar jumlah
 <p align="center">
   <img src="gameMenu.png" width="300">
 </p>
+
 Menampilkan halaman yang akan muncul pertama kali saat program dijalankan. Berisi pilihan PLAY, RESET SCORE, CREDITS, DAN EXIT.
 
 ### Level Panel
 <p align="center">
   <img src="gameLevel.png" width="300">
 </p>
+
 Ketika pada Menu Panel player memilih PLAY maka player akan diarahkan ke Level Panel untuk memilih kesulitan dalam bermain. Tingkat kesulitan disini akan memengaruhi kecepatan bola dalam bergerak.
 
 ### Map Panel
 <p align="center">
   <img src="gameMap.png" width="300">
 </p>
+
 Setelah user memilih tingkat kesulitan game, selanjutnya player dapat memilih susunan brick yang akan dimainkan, akan ada 3 pilihan sususan brick.
 
 ### Credit Panel
 <p align="center">
   <img src="gameCredit.png" width="300">
 </p>
+
 Credit panel berisi informasi mengenai game yang sedang berjalan dan pembuat game serta referensi yang digunakan.
 
 ### Game Play Panel
 <p align="center">
   <img src="gamePlay.png" width="300">
 </p>
+
 Game Play Panel adalah panel dimana user akan bermain.
 
 ### Game Over Panel
 <p align="center">
   <img src="gameOver.png" width="300">
 </p>
+
 Ketika player telah menghancurkan semua brick yang ada, atau telah kehabisan bola maka akan diarahkan ke Game Over Panel untuk mendapatkan keterangan Kalah atau Menang.
 
 
