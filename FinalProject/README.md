@@ -1,7 +1,7 @@
 # JaBrick - Break The Brick [Java Simple GUI Game] as Final Project of PBO Class 2020
 
 <p align="center">
-  <img src="gameTitle.png" width="700">
+  <img src="gameTitle.png" width="300">
 </p>
 
 ## Judul : JaBrick - Break The Brick
@@ -26,7 +26,7 @@ Dalam rangka berahirnya proses pembelajaran matakuliah Pemrograman Berorientasi 
 ## Struktur Program
 Penjelasan masing-masing kelas yang digunakan dibagi menjadi beberapa package sebagai berikut :
 
-### --> Controller
+### Controller
 [`Controller.java`](src/id/ac/its/kelompokxyz/controller/Controller.java)
 Kelas ini merupakan kelas inti dari program dimana fungsi main berada. Kelas ini berfungsi mengatur seluruh jalannya program dengan menjalankan program yang ada pada kelas model dan mengatur panel yang harus ditampilkan pada game sesuai game status. Selain itu, key listener pada saat permainan diatur dalam kelas ini.
 
@@ -48,14 +48,18 @@ Berikut ini merupakan beberapa objek atau komponen permainan yang ada dalam proy
 Paddel merupakan objek game yang digunakan untuk mencegah bola keluar dari area permainan. Paddle dapat dikendalikan oleh pemain menggunakan keyboard arah kanan dan kiri. Pemain harus menggerakkan Paddle sesuai posisi bola untuk memantulaknnya kembali keatas, sehingga bola tidak keluar area permainan
 
 ### Brick
-Brick merupakan objek game yang harus dihancurkan oleh pemain menggunakan bola yang dipantul-pantulkan menggunakan Paddle. Pemain harus menghancurkan seluruh Brick untuk memenangkan permainan.
+Brick merupakan objek game yang harus dihancurkan oleh pemain menggunakan bola yang dipantul-pantulkan menggunakan Paddle. Pemain harus menghancurkan seluruh Brick untuk memenangkan permainan. Brick memiliki beberapa tipe dan masing-masing memiliki berat yang berbeda, sehingga mungkin perlu beberapa kali tabrakan untuk menghancurkan Brick tersebut.
 
 ### Ball
+Ball merupakan objek game yang dapat menghancurkan Brick. Ball dapat memantul sesuai letak pemantulan pada Padlle. Bola memiliki berat sehingga dapat menghancurkan Brick sesuai berat Brick nya.
+
+## Prize
+Prize merupakan objek game yang dapat terlihat pemain jika menghancurkan beberapa Brick tertentu. Prize terlatak pada posisi yang acak sehingga pemain tidak dapat menebak posisi tersebut. Terdapat dua tipe Prize dalam game ini. Pertama, ManyBall yakni bola banyak, jika Ball dapat menabrak Prize ini maka bola akan menjadi banyak dan dapat mempercepat proses penghancuran seluruh Brick. Kedua, BigBall yakni bola berat, jika Ball dapat menabrak Prize ini maka bola akan menjadi lebih berat dan dapat menghancurkan Brick berat dengan lebih cepat.
 
 ### Sound
 Sound disini merupakan unsur tambahan dalam permainan sehingga game lebih menarik dan interaktif.
 
-# High Score
+### High Score
 High Score merupakan fitur dalam game yang menyimpan skor pemain berdasar jumlah Brick yang berhasil dihancurkan pada tiap permainan. High Score disimpan dalam bentuk objek class Data dalam file [`client.ser`]. High Score ditampilkan pada MenuPanel dan GameOverPanel ketika pemain selesai bermain. Pemain juga dapat mereset score kembali menjadi nol jika mengingikan hal tersebut dengan mengklik tombol RESET SCORE.
 
 ### Menu Panel
