@@ -21,7 +21,7 @@ username : iwandepe
 Dalam rangka berakhirnya proses pembelajaran matakuliah Pemrograman Berorientasi Objek Semester 3 ini, sebagai tugas akhir atau Final Project, kami <a href="https://github.com/iwandepe/Tugas-Kelompok-PBO/">Kelompok XYZ</a> dari Kelas PBO-E merealisasikannya dalam bentuk Game JaBrick ini. JaBrick adalah game GUI sederhana berbasis bahasa Java yang mengimplementasikan Pemrograman Berbasis Objek atau OOP. Game ini dibuat dengan ide referensi dari ZetCode yang dimodifikasi sedemikian sehingga lebih interaktif dan menarik. Inti dari game ini yakni disediakan beberapa balok, satu bola, dan satu pedal, dimana pemain diharuskan bertahan selama mungkin dan menghancurkan seluruh balok-balok yang tersedia dengan bola yang dapat dipantulkan pada pedal, sehingga menghindari bola keluar dari area permainan yang akan membuat pemain kalah. Pemain dapat memenangkan permainaan jika balok yang tersedia telah habis dihancurkan.
 
 ## Class Diagram 
-<img src="classDiagram.jpg" width="1200">
+<img src="classDiagram.png" width="1200">
 
 ## Struktur Program
 Penjelasan masing-masing kelas yang digunakan dibagi menjadi beberapa package sebagai berikut :
@@ -31,20 +31,20 @@ Penjelasan masing-masing kelas yang digunakan dibagi menjadi beberapa package se
 Kelas ini merupakan kelas inti dari program dimana fungsi main berada. Kelas ini berfungsi mengatur seluruh jalannya program dengan menjalankan program yang ada pada kelas model dan mengatur panel yang harus ditampilkan pada game sesuai game status. Selain itu, key listener pada saat permainan diatur dalam kelas ini.
 
 ### Model
-['Model'](src/id/ac/its/kelompokxyz/model)
+[`Model`](src/id/ac/its/kelompokxyz/model)
 Package ini merupakan package yang mengorganisasi seluruh data yang dibutuhkan dalam game. Dalam package ini berisi class utama yaitu ['Model.java'](src/id/ac/its/kelompokxyz/model) yang mengorganisasi pemrosesan data. Dalam package ini juga ada kelas-kelas yang merepresentasikan objek dalam game seperti ['Ball'](src/id/ac/its/kelompokxyz/model/Ball.java), ['Brick'](src/id/ac/its/kelompokxyz/model/Brick.java), dan ['Paddle.java'](src/id/ac/its/kelompokxyz/model).
 
 ### Sound
-['Sound'](src/id/ac/its/kelompokxyz/sound)
+[`Sound`](src/id/ac/its/kelompokxyz/sound)
 Package ini berisi backsound yang akan berjalan ketika game mulai dimainkan.
 
 ### Util
-['Util'](src/id/ac/its/kelompokxyz/util)
-Package ini berisi sebuah interface ['Commons'](src/id/ac/its/kelompokxyz/util/Commons.java) yang berisi nilai-nilai inisialisasi ukuran frame, posisi bola, dan lain-lain. Selain itu package ini juga berisi ['GameState'](src/id/ac/its/kelompokxyz/util/GameState.java) yaitu sebuah kelas enum yang menunjukkan halaman apakah yang sedang aktif dalam game.
+[`Util`](src/id/ac/its/kelompokxyz/util)
+Package ini berisi sebuah interface [`Commons`](src/id/ac/its/kelompokxyz/util/Commons.java) yang berisi nilai-nilai inisialisasi ukuran frame, posisi bola, dan lain-lain. Selain itu package ini juga berisi [`GameState`](src/id/ac/its/kelompokxyz/util/GameState.java) yaitu sebuah kelas enum yang menunjukkan halaman apakah yang sedang aktif dalam game.
 
 ### View
-['View'](src/id/ac/its/kelompokxyz/view)
-Package ini berisi semua kelas yang berfungsi untuk menampilkan gambar ke layar. Package ini memiliki kelas utama yaitu ['View.java'](src/id/ac/its/kelompokxyz/view/View.java), kelas ini mengatur panel-panel yang akan ditampilkan ke layar sesuai dengan kelas yang dipanggil dari Model.
+[`View`](src/id/ac/its/kelompokxyz/view)
+Package ini berisi semua kelas yang berfungsi untuk menampilkan gambar ke layar. Package ini memiliki kelas utama yaitu [`View.java`](src/id/ac/its/kelompokxyz/view/View.java), kelas ini mengatur panel-panel yang akan ditampilkan ke layar sesuai dengan kelas yang dipanggil dari Model.
 
 ### Resource
 Berisi gambar-gambar yang dibutuhkan pada game.
@@ -92,4 +92,4 @@ Ketika player telah menghancurkan semua brick yang ada, atau telah kehabisan bol
 ## Referensi
 <a href="http://zetcode.com/javagames/breakout/">ZetCode</a> : Struktur mekanik permainan <br>
 <a href="https://github.com/jbberinger/Snake">Jbbreinger</a> : Struktur kode dan arsitektur program MVC <br>
-<a href="https://github.com/iwandepe/Tugas-Kelompok-PBO">Jbbreinger</a> : Dokumentasi lainnya dari Oracle dan penugasan harian <br>
+<a href="https://github.com/iwandepe/Tugas-Kelompok-PBO">Kelompok XYZ</a> : Dokumentasi lainnya dari Oracle dan penugasan harian <br>
