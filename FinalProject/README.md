@@ -18,7 +18,7 @@ Nama : Iwan Dwi Prakoso (05111940000229) <br>
 username : iwandepe
 
 ## Deskripsi Aplikasi
-Dalam rangka berahirnya proses pembelajaran matakuliah Pemrograman Berorientasi Objek Semester 3 ini, sebagai tugas ahir atau Final Project, kami <a href="https://github.com/iwandepe/Tugas-Kelompok-PBO/">Kelompok XYZ</a> dari Kelas PBO-E merealisasikannya dalam bentuk Game JaBrick ini. JaBrick adalah game GUI sederhana berbasis bahasa Java yang mengimplementasikan Pemrograman Berbasis Objek atau OOP. Game ini dibuat dengan ide referensi dari ZeetCode yang dimodifikasi sedemikian sehingga lebih interaktif dan menarik. Inti dari game ini yakni disediakan beberapa balok, satu bola, dan satu pedal, dimana pemain diharuskan bertahan selama mungkin dan menghancurkan seluruh balok balok yang tersedia dengan bola yang dapat dipantulkan pada pedal, sehingga menghindari bola keluar area permainan yang akan membuat pemain kalah. Pemain dapat memenangkan permainaan jika balok yang tersedia telah habis dihancurkan.
+Dalam rangka berakhirnya proses pembelajaran matakuliah Pemrograman Berorientasi Objek Semester 3 ini, sebagai tugas akhir atau Final Project, kami <a href="https://github.com/iwandepe/Tugas-Kelompok-PBO/">Kelompok XYZ</a> dari Kelas PBO-E merealisasikannya dalam bentuk Game JaBrick ini. JaBrick adalah game GUI sederhana berbasis bahasa Java yang mengimplementasikan Pemrograman Berbasis Objek atau OOP. Game ini dibuat dengan ide referensi dari ZetCode yang dimodifikasi sedemikian rupa sehingga lebih interaktif dan menarik. Inti dari game ini yakni disediakan beberapa balok, satu bola, dan satu pedal, dimana pemain diharuskan bertahan selama mungkin dan menghancurkan seluruh balok balok yang tersedia dengan bola yang dapat dipantulkan pada pedal, sehingga menghindari bola keluar area permainan yang akan membuat pemain kalah. Pemain dapat memenangkan permainaan jika balok yang tersedia telah habis dihancurkan.
 
 ## Class Diagram 
 <img src="classDiagram.jpg" width="1200">
@@ -33,8 +33,13 @@ Kelas ini merupakan kelas inti dari program dimana fungsi main berada. Kelas ini
 ### Model
 
 ### Sound
+Package ini berisi kumpulan audio yang digunakan sebagai pengisi suara dalam game.
 
 ### Util
+[`Commons.java`](src/id/ac/its/kelompokxyz/util/Commons.java)
+Kelas ini merupakan sebuah interface yang berisi beberapa konstanta umum yang digunakan dalam pembuatan game. <br>
+[`GameState.java`](src/id/ac/its/kelompokxyz/util/GameState.java)
+Kelas ini merupakan enum yang terdiri dari kumpulan variabel konstanta yang merupakan fitur-fitur dalam game.
 
 ### View
 
@@ -45,7 +50,7 @@ Kelas ini merupakan kelas inti dari program dimana fungsi main berada. Kelas ini
 Berikut ini merupakan beberapa objek atau komponen permainan yang ada dalam proyek ini :
 
 ### Paddle
-Paddel merupakan objek game yang digunakan untuk mencegah bola keluar dari area permainan. Paddle dapat dikendalikan oleh pemain menggunakan keyboard arah kanan dan kiri. Pemain harus menggerakkan Paddle sesuai posisi bola untuk memantulaknnya kembali keatas, sehingga bola tidak keluar area permainan
+Paddle merupakan objek game yang digunakan untuk mencegah bola keluar dari area permainan. Paddle dapat dikendalikan oleh pemain menggunakan keyboard arah kanan dan kiri. Pemain harus menggerakkan Paddle sesuai posisi bola untuk memantulkannya kembali ke atas, sehingga bola tidak keluar area permainan.
 
 ### Brick
 Brick merupakan objek game yang harus dihancurkan oleh pemain menggunakan bola yang dipantul-pantulkan menggunakan Paddle. Pemain harus menghancurkan seluruh Brick untuk memenangkan permainan. Brick memiliki beberapa tipe dan masing-masing memiliki berat yang berbeda, sehingga mungkin perlu beberapa kali tabrakan untuk menghancurkan Brick tersebut.
@@ -54,7 +59,7 @@ Brick merupakan objek game yang harus dihancurkan oleh pemain menggunakan bola y
 Ball merupakan objek game yang dapat menghancurkan Brick. Ball dapat memantul sesuai letak pemantulan pada Padlle. Bola memiliki berat sehingga dapat menghancurkan Brick sesuai berat Brick nya.
 
 ## Prize
-Prize merupakan objek game yang dapat terlihat pemain jika menghancurkan beberapa Brick tertentu. Prize terlatak pada posisi yang acak sehingga pemain tidak dapat menebak posisi tersebut. Terdapat dua tipe Prize dalam game ini. Pertama, ManyBall yakni bola banyak, jika Ball dapat menabrak Prize ini maka bola akan menjadi banyak dan dapat mempercepat proses penghancuran seluruh Brick. Kedua, BigBall yakni bola berat, jika Ball dapat menabrak Prize ini maka bola akan menjadi lebih berat dan dapat menghancurkan Brick berat dengan lebih cepat.
+Prize merupakan objek game yang dapat terlihat jika pemain menghancurkan beberapa Brick tertentu. Prize terletak pada posisi yang acak sehingga pemain tidak dapat menebak posisi tersebut. Terdapat dua tipe Prize dalam game ini. Pertama, ManyBall yakni bola banyak, jika Ball dapat menabrak Prize ini maka bola akan menjadi banyak dan dapat mempercepat proses penghancuran seluruh Brick. Kedua, BigBall yakni bola berat, jika Ball dapat menabrak Prize ini maka bola akan menjadi lebih berat dan dapat menghancurkan Brick berat dengan lebih cepat.
 
 ### Sound
 Sound disini merupakan unsur tambahan dalam permainan sehingga game lebih menarik dan interaktif.
@@ -75,6 +80,6 @@ High Score merupakan fitur dalam game yang menyimpan skor pemain berdasar jumlah
 ### Game Over Panel
 
 ## Referensi
-<a href="http://zetcode.com/javagames/breakout/">ZeetCode</a> : Struktur mekanik permainan <br>
+<a href="http://zetcode.com/javagames/breakout/">ZetCode</a> : Struktur mekanik permainan <br>
 <a href="https://github.com/jbberinger/Snake">Jbbreinger</a> : Struktur kode dan arsitektur program MVC <br>
 <a href="https://github.com/iwandepe/Tugas-Kelompok-PBO">Jbbreinger</a> : Dokumentasi lainnya dari Oracle dan penugasan harian <br>
