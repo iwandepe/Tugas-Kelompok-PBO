@@ -33,6 +33,12 @@ public class Brick extends Sprite {
 		else if (brickType == 3){
 			ii = new ImageIcon("src/resources/brick3.png");
 		}
+		else if (brickType == 11) {
+			ii = new ImageIcon("src/resources/treasureManyBall.png");
+		}
+		else if (brickType == 12) {
+			ii = new ImageIcon("src/resources/treasureBigBall.png");
+		}
 		image = ii.getImage();
 		getImageDimensions();
     }

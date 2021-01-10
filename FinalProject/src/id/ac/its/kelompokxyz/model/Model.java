@@ -15,16 +15,15 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import id.ac.its.kelompokxyz.util.Commons;
 import id.ac.its.kelompokxyz.view.View;
 
-/** 
+/**
  * Main Model  --- organize all data object
- * 
+ *
  */
 
 public class Model {
 	
     private List<Ball> balls;
     private List<Brick> bricks;
-    private List<Prize> prizes;
     private Paddle paddle;
 	public View view;
 	private Clip gameMusic, gameOverSound, eatAppleSound;
@@ -52,10 +51,6 @@ public class Model {
 		view = new View(balls, bricks, paddle);
     }
     
-    /**
-     * Initialize sound effect of game
-     */
-    
     private void initSounds() {
         try {
         	String address = "id/ac/its/kelompokxyz/sound/gameOver.wav";
@@ -80,12 +75,8 @@ public class Model {
         }
     }
     
-    /**
-     * Initialize brick with various structure
-     */
-    
     private void initBrick() {
-    	int[][] mapCoordinate1,mapCoordinate2;
+int[][] mapCoordinate1,mapCoordinate2;
     	
     	switch(mapCode) {
     		case 1:
@@ -154,14 +145,11 @@ public class Model {
     
     public void continueGame() {
     	
-        bricks 	= new ArrayList<Brick>();
-        balls 	= new ArrayList<Ball>();
-        prizes 	= new ArrayList<Prize>();
-        paddle 	= new Paddle(3);
-        
+        bricks = new ArrayList<Brick>();
+        paddle = new Paddle(3);
+        balls = new ArrayList<Ball>();
         balls.add(new Ball(100, gameSpeed, 1));
         initBrick();
-        
     	view.updateView(balls, bricks, paddle, score);
         playMusic();
     	view.continueGame();
@@ -239,7 +227,6 @@ public class Model {
     	
     	/**
     	 * Check collicion for ball and paddle
-    	 * if there is collision then change direction of ball
     	 */
         
         for (Ball ball: balls) {
@@ -288,7 +275,6 @@ public class Model {
         
         /**
          * Check if ball hit the brick
-         * if there is collision then brick weight is decrease
          */
         
         for (ListIterator<Brick> iter = bricks.listIterator(); iter.hasNext(); ) {
@@ -329,11 +315,7 @@ public class Model {
                     
                     brick.decreaseWeight(ball.getWeight());
                     
-                    /**
-                     * Check if the brick has destroyed or not
-                     */
-                    
-                    if (brick.getWeight() <= 0) { 
+                    if (brick.getWeight() <= 0) {
                     	iter.remove();
                 		// clone the ball
                 		if ( brick.getBrickType() == 11) {
