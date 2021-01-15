@@ -112,6 +112,8 @@ Game Play Panel adalah panel dimana user akan bermain.
 
 Ketika player telah menghancurkan semua brick yang ada, atau telah kehabisan bola maka akan diarahkan ke Game Over Panel untuk mendapatkan keterangan Kalah atau Menang.
 
+## Video Penjelasan
+Youtube : https://youtu.be/joPO8PZoy9Q
 
 ## Referensi
 <a href="http://zetcode.com/javagames/breakout/">ZetCode</a> : Struktur mekanik permainan <br>
